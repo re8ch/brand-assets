@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RE8CH Logo Motion Assets</title>
+    <script src="./re8ch-logo-motion.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #111;
+        --muted: #686868;
+        --line: #d7d7d2;
+        --paper: #f4f3ef;
+        --panel: #ffffff;
+        --soft: #e6e4dd;
+        --dark: #1f1f1f;
+        --accent: #00b559;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-block-size: 100vh;
+        color: var(--ink);
+        font-family: ui-serif, Georgia, "Times New Roman", serif;
+        background:
+          linear-gradient(90deg, rgb(0 0 0 / .035) 1px, transparent 1px) 0 0 / 44px 44px,
+          linear-gradient(rgb(0 0 0 / .025) 1px, transparent 1px) 0 0 / 44px 44px,
+          var(--paper);
+      }
+
+      button,
+      select,
+      code,
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      main {
+        inline-size: min(1180px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 38px 0 56px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: end;
+        padding-block: 14px 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(34px, 5vw, 72px);
+        line-height: .94;
+        letter-spacing: 0;
+        max-inline-size: 780px;
+      }
+
+      .lead {
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.55;
+        max-inline-size: 680px;
+      }
+
+      .hero-mark {
+        display: grid;
+        place-items: center;
+        inline-size: 220px;
+        aspect-ratio: 1.22;
+        background:
+          linear-gradient(45deg, #d6d6d6 25%, transparent 25%),
+          linear-gradient(-45deg, #d6d6d6 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #d6d6d6 75%),
+          linear-gradient(-45deg, transparent 75%, #d6d6d6 75%);
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+        background-size: 20px 20px;
+      }
+
+      section {
+        margin-block-start: 34px;
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: rgb(255 255 255 / .68);
+        backdrop-filter: blur(10px);
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+      }
+
+      select,
+      button {
+        min-block-size: 40px;
+        border: 1px solid #b9b7af;
+        border-radius: 6px;
+        color: var(--ink);
+        background: #fff;
+      }
+
+      select {
+        padding-inline: 10px;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #111;
+      }
+
+      .showcase {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+        gap: 22px;
+      }
+
+      .stage {
+        min-block-size: 460px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(45deg, #d4d4d4 25%, transparent 25%),
+          linear-gradient(-45deg, #d4d4d4 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #d4d4d4 75%),
+          linear-gradient(-45deg, transparent 75%, #d4d4d4 75%);
+        background-color: #efefef;
+        background-position: 0 0, 0 14px, 14px -14px, -14px 0;
+        background-size: 28px 28px;
+      }
+
+      .stage.dark {
+        background: var(--dark);
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 18px;
+      }
+
+      .panel h2 {
+        margin: 0 0 14px;
+        font-size: 22px;
+        line-height: 1.15;
+      }
+
+      .spec-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .spec-list strong {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      pre {
+        overflow: auto;
+        margin: 18px 0 0;
+        padding: 14px;
+        color: #f3f3ed;
+        background: #151515;
+        border-radius: 6px;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .tile {
+        min-block-size: 234px;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        border: 1px solid var(--line);
+        background: #f8f7f4;
+      }
+
+      .tile-visual {
+        display: grid;
+        place-items: center;
+        min-block-size: 186px;
+      }
+
+      .tile.dark .tile-visual {
+        background: var(--dark);
+      }
+
+      .tile-name {
+        padding: 10px 12px;
+        border-top: 1px solid var(--line);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        color: var(--muted);
+        background: #fff;
+      }
+
+      @media (max-width: 860px) {
+        header,
+        .showcase,
+        .toolbar,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-mark {
+          inline-size: min(220px, 100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>RE8CH motion assets</h1>
+          <p class="lead">一套透明背景、零依赖、可直接复用的品牌 Logo 动效组件。克制、清晰，适合加载、入场、退出和状态反馈。</p>
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <re8ch-logo-motion motion="reveal" size="lg"></re8ch-logo-motion>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Motion controls">
+        <label>
+          Theme
+          <select id="theme">
+            <option value="color">color</option>
+            <option value="gray">gray</option>
+            <option value="invert">invert</option>
+            <option value="no-edge">no-edge</option>
+            <option value="no-edge-gray">no-edge-gray</option>
+            <option value="no-edge-invert">no-edge-invert</option>
+          </select>
+        </label>
+        <label>
+          Motion
+          <select id="motion">
+            <option value="loader">loader</option>
+            <option value="enter">enter</option>
+            <option value="exit">exit</option>
+            <option value="idle" selected>idle</option>
+            <option value="pulse">pulse</option>
+            <option value="success">success</option>
+            <option value="error">error</option>
+            <option value="reveal">reveal</option>
+          </select>
+        </label>
+        <label>
+          Size
+          <select id="size">
+            <option value="sm">sm</option>
+            <option value="md">md</option>
+            <option value="lg" selected>lg</option>
+            <option value="xl">xl</option>
+          </select>
+        </label>
+        <label>
+          Playback
+          <button id="restart" type="button">restart</button>
+        </label>
+      </section>
+
+      <section class="showcase">
+        <div id="mainStage" class="stage">
+          <re8ch-logo-motion id="demoLogo" theme="color" motion="idle" size="lg"></re8ch-logo-motion>
+        </div>
+        <aside class="panel">
+          <h2>Drop-in usage</h2>
+          <ul class="spec-list">
+            <li><strong>Tag:</strong> <code>&lt;re8ch-logo-motion&gt;</code></li>
+            <li><strong>Themes:</strong> color, gray, invert, no-edge, no-edge-gray, no-edge-invert</li>
+            <li><strong>Motions:</strong> loader, enter, exit, idle, pulse, success, error, reveal</li>
+            <li><strong>Background:</strong> always transparent; dark surfaces are only used in this preview.</li>
+          </ul>
+          <pre><code>&lt;script src="./re8ch-logo-motion.js"&gt;&lt;/script&gt;
+&lt;re8ch-logo-motion
+  theme="color"
+  motion="loader"
+  loop
+  size="lg"&gt;
+&lt;/re8ch-logo-motion&gt;</code></pre>
+        </aside>
+      </section>
+
+      <section>
+        <div class="grid" aria-label="Theme overview">
+          <article class="tile"><div class="tile-visual"><re8ch-logo-motion theme="color" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo</div></article>
+          <article class="tile"><div class="tile-visual"><re8ch-logo-motion theme="gray" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-gray</div></article>
+          <article class="tile dark"><div class="tile-visual"><re8ch-logo-motion theme="invert" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-invert</div></article>
+          <article class="tile"><div class="tile-visual"><re8ch-logo-motion theme="no-edge" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-no-edge</div></article>
+          <article class="tile"><div class="tile-visual"><re8ch-logo-motion theme="no-edge-gray" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-no-edge-gray</div></article>
+          <article class="tile dark"><div class="tile-visual"><re8ch-logo-motion theme="no-edge-invert" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-no-edge-invert</div></article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const demoLogo = document.querySelector("#demoLogo");
+      const mainStage = document.querySelector("#mainStage");
+      const theme = document.querySelector("#theme");
+      const motion = document.querySelector("#motion");
+      const size = document.querySelector("#size");
+      const restart = document.querySelector("#restart");
+
+      const sync = () => {
+        demoLogo.setAttribute("theme", theme.value);
+        demoLogo.setAttribute("motion", motion.value);
+        demoLogo.setAttribute("size", size.value);
+        mainStage.classList.toggle("dark", theme.value.includes("invert"));
+        if (["loader", "idle", "pulse"].includes(motion.value)) {
+          demoLogo.setAttribute("loop", "");
+        } else {
+          demoLogo.removeAttribute("loop");
+        }
+        demoLogo.restart();
+      };
+
+      theme.addEventListener("change", sync);
+      motion.addEventListener("change", sync);
+      size.addEventListener("change", sync);
+      restart.addEventListener("click", sync);
+      sync();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,761 @@
+:host {
+  --re8ch-size: 160px;
+  --re8ch-duration: 1400ms;
+  --re8ch-ease: cubic-bezier(.22, 1, .36, 1);
+  --re8ch-spring: cubic-bezier(.18, .89, .32, 1.16);
+  --re8ch-quiet: cubic-bezier(.33, 0, .2, 1);
+  --re8ch-iteration: 1;
+  --re8ch-shadow: drop-shadow(0 18px 28px rgb(0 0 0 / .14));
+  display: inline-block;
+  inline-size: var(--re8ch-size);
+  block-size: calc(var(--re8ch-size) * .8177);
+  line-height: 0;
+  color: inherit;
+  contain: layout style paint;
+}
+
+:host([size="sm"]) {
+  --re8ch-size: 64px;
+}
+
+:host([size="md"]) {
+  --re8ch-size: 144px;
+}
+
+:host([size="lg"]) {
+  --re8ch-size: 240px;
+}
+
+:host([size="xl"]) {
+  --re8ch-size: 360px;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.stage,
+.logo {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.stage {
+  display: grid;
+  place-items: center;
+  transform-origin: 50% 50%;
+}
+
+.logo {
+  overflow: visible;
+  filter: var(--re8ch-shadow);
+}
+
+.mark,
+.piece,
+.edge {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: opacity, transform, filter;
+}
+
+.edge {
+  fill: var(--edge);
+}
+
+.red {
+  fill: var(--red);
+}
+
+.green {
+  fill: var(--green);
+}
+
+.yellow {
+  fill: var(--yellow);
+}
+
+.blue {
+  fill: var(--blue);
+}
+
+:host([theme="color"]),
+:host(:not([theme])) {
+  --edge: #020202;
+  --red: #f81018;
+  --green: #00b559;
+  --yellow: #ffd619;
+  --blue: #0a7fbe;
+}
+
+:host([theme="gray"]) {
+  --edge: #020202;
+  --red: #3b3b3b;
+  --green: #818181;
+  --yellow: #d3d3d3;
+  --blue: #6d6d6d;
+}
+
+:host([theme="invert"]) {
+  --edge: #fdfdfd;
+  --red: #07efe7;
+  --green: #ff4aa6;
+  --yellow: #0029e6;
+  --blue: #f58041;
+  --re8ch-shadow: drop-shadow(0 18px 28px rgb(0 0 0 / .24));
+}
+
+:host([theme="no-edge"]) {
+  --edge: transparent;
+  --red: #f81018;
+  --green: #00b559;
+  --yellow: #ffd619;
+  --blue: #0a7fbe;
+  --re8ch-shadow: none;
+}
+
+:host([theme="no-edge-gray"]) {
+  --edge: transparent;
+  --red: #3b3b3b;
+  --green: #818181;
+  --yellow: #d3d3d3;
+  --blue: #6d6d6d;
+  --re8ch-shadow: none;
+}
+
+:host([theme="no-edge-invert"]) {
+  --edge: transparent;
+  --red: #07efe7;
+  --green: #ff4aa6;
+  --yellow: #0029e6;
+  --blue: #f58041;
+  --re8ch-shadow: none;
+}
+
+:host([theme^="no-edge"]) .edge {
+  opacity: 0;
+}
+
+:host([paused]) *,
+:host(.is-paused) * {
+  animation-play-state: paused !important;
+}
+
+:host([loop]) {
+  --re8ch-iteration: infinite;
+}
+
+:host([motion="loader"]) .stage {
+  animation: re8ch-loader-turn 2200ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="loader"]) .edge {
+  animation: re8ch-loader-edge 2200ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="loader"]) .red {
+  animation: re8ch-loader-red 2200ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="loader"]) .green {
+  animation: re8ch-loader-green 2200ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="loader"]) .yellow {
+  animation: re8ch-loader-yellow 2200ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="loader"]) .blue {
+  animation: re8ch-loader-blue 2200ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="enter"]) .mark {
+  animation: re8ch-enter-mark 980ms var(--re8ch-spring) both;
+}
+
+:host([motion="enter"]) .edge {
+  animation: re8ch-enter-edge 920ms var(--re8ch-ease) both;
+}
+
+:host([motion="enter"]) .red {
+  animation: re8ch-enter-red 780ms var(--re8ch-ease) 80ms both;
+}
+
+:host([motion="enter"]) .yellow {
+  animation: re8ch-enter-yellow 760ms var(--re8ch-ease) 160ms both;
+}
+
+:host([motion="enter"]) .blue {
+  animation: re8ch-enter-blue 760ms var(--re8ch-ease) 220ms both;
+}
+
+:host([motion="enter"]) .green {
+  animation: re8ch-enter-green 780ms var(--re8ch-ease) 300ms both;
+}
+
+:host([motion="exit"]) .mark {
+  animation: re8ch-exit-mark 680ms var(--re8ch-quiet) both;
+}
+
+:host([motion="exit"]) .red {
+  animation: re8ch-exit-red 620ms var(--re8ch-quiet) both;
+}
+
+:host([motion="exit"]) .yellow {
+  animation: re8ch-exit-yellow 620ms var(--re8ch-quiet) 40ms both;
+}
+
+:host([motion="exit"]) .blue {
+  animation: re8ch-exit-blue 620ms var(--re8ch-quiet) 70ms both;
+}
+
+:host([motion="exit"]) .green {
+  animation: re8ch-exit-green 620ms var(--re8ch-quiet) 100ms both;
+}
+
+:host([motion="idle"]) .mark {
+  animation: re8ch-idle 3600ms ease-in-out var(--re8ch-iteration);
+}
+
+:host([motion="pulse"]) .edge {
+  animation: re8ch-pulse-edge 1500ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="pulse"]) .red {
+  animation: re8ch-pulse-red 1500ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="pulse"]) .green {
+  animation: re8ch-pulse-green 1500ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="pulse"]) .yellow {
+  animation: re8ch-pulse-yellow 1500ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="pulse"]) .blue {
+  animation: re8ch-pulse-blue 1500ms var(--re8ch-quiet) var(--re8ch-iteration);
+}
+
+:host([motion="success"]) .mark {
+  animation: re8ch-success-lift 920ms var(--re8ch-spring) both;
+}
+
+:host([motion="success"]) .green {
+  animation: re8ch-success-green 1040ms var(--re8ch-ease) both;
+}
+
+:host([motion="success"]) .red {
+  animation: re8ch-success-red 1040ms var(--re8ch-ease) both;
+}
+
+:host([motion="success"]) .yellow {
+  animation: re8ch-success-yellow 1040ms var(--re8ch-ease) both;
+}
+
+:host([motion="success"]) .blue {
+  animation: re8ch-success-blue 1040ms var(--re8ch-ease) both;
+}
+
+:host([motion="error"]) .mark {
+  animation: re8ch-error-shake 580ms cubic-bezier(.36, .07, .19, .97) both;
+}
+
+:host([motion="error"]) .red {
+  animation: re8ch-error-red 720ms var(--re8ch-quiet) both;
+}
+
+:host([motion="error"]) .green,
+:host([motion="error"]) .yellow,
+:host([motion="error"]) .blue {
+  animation: re8ch-error-drain 720ms var(--re8ch-quiet) both;
+}
+
+:host([motion="reveal"]) .edge {
+  animation: re8ch-reveal-edge 1100ms var(--re8ch-ease) both;
+}
+
+:host([motion="reveal"]) .red {
+  animation: re8ch-reveal-red 1120ms var(--re8ch-ease) both;
+}
+
+:host([motion="reveal"]) .green {
+  animation: re8ch-reveal-green 1120ms var(--re8ch-ease) 180ms both;
+}
+
+:host([motion="reveal"]) .yellow {
+  animation: re8ch-reveal-yellow 1120ms var(--re8ch-ease) 80ms both;
+}
+
+:host([motion="reveal"]) .yellow {
+  animation-delay: 80ms;
+}
+
+:host([motion="reveal"]) .blue {
+  animation: re8ch-reveal-blue 1120ms var(--re8ch-ease) 130ms both;
+}
+
+@keyframes re8ch-loader-turn {
+  0%, 12% {
+    transform: rotate(0deg) scale(1);
+  }
+  32%, 44% {
+    transform: rotate(120deg) scale(.985);
+  }
+  64%, 76% {
+    transform: rotate(240deg) scale(1.015);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes re8ch-loader-edge {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  32% {
+    transform: scale(1.018);
+    opacity: .92;
+  }
+  64% {
+    transform: scale(.99);
+    opacity: .98;
+  }
+}
+
+@keyframes re8ch-loader-red {
+  0%, 100% {
+    fill: var(--red);
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    fill: var(--blue);
+    transform: translate(10px, -12px) scale(.985);
+  }
+  66% {
+    fill: var(--green);
+    transform: translate(-8px, 10px) scale(1.018);
+  }
+}
+
+@keyframes re8ch-loader-green {
+  0%, 100% {
+    fill: var(--green);
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    fill: var(--yellow);
+    transform: translate(-12px, 8px) scale(1.018);
+  }
+  66% {
+    fill: var(--red);
+    transform: translate(10px, 8px) scale(.99);
+  }
+}
+
+@keyframes re8ch-loader-yellow {
+  0%, 100% {
+    fill: var(--yellow);
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    fill: var(--green);
+    transform: translate(-14px, 10px) scale(.985);
+  }
+  66% {
+    fill: var(--blue);
+    transform: translate(8px, -8px) scale(1.02);
+  }
+}
+
+@keyframes re8ch-loader-blue {
+  0%, 100% {
+    fill: var(--blue);
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    fill: var(--red);
+    transform: translate(12px, -10px) scale(1.018);
+  }
+  66% {
+    fill: var(--yellow);
+    transform: translate(-8px, 12px) scale(.985);
+  }
+}
+
+@keyframes re8ch-enter-mark {
+  0% {
+    opacity: 0;
+    transform: scale(.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes re8ch-enter-edge {
+  0% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes re8ch-enter-red {
+  0% {
+    opacity: 0;
+    transform: translateY(-34px) scale(.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes re8ch-enter-green {
+  0% {
+    opacity: 0;
+    transform: translateY(38px) translateX(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes re8ch-enter-yellow {
+  0% {
+    opacity: 0;
+    transform: translateX(-42px) translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes re8ch-enter-blue {
+  0% {
+    opacity: 0;
+    transform: translateX(40px) translateY(-22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes re8ch-exit-mark {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(.34) rotate(12deg);
+  }
+}
+
+@keyframes re8ch-exit-red {
+  to {
+    transform: translateY(-46px) scale(.74);
+  }
+}
+
+@keyframes re8ch-exit-green {
+  to {
+    transform: translateY(52px) scale(.72);
+  }
+}
+
+@keyframes re8ch-exit-yellow {
+  to {
+    transform: translateX(-54px) translateY(24px) scale(.7);
+  }
+}
+
+@keyframes re8ch-exit-blue {
+  to {
+    transform: translateX(48px) translateY(-22px) scale(.7);
+  }
+}
+
+@keyframes re8ch-idle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.018) translateY(-2px);
+  }
+}
+
+@keyframes re8ch-pulse-edge {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  42% {
+    transform: scale(1.055);
+    opacity: .76;
+  }
+}
+
+@keyframes re8ch-pulse-red {
+  0%, 100% {
+    fill: var(--red);
+    transform: scale(1);
+  }
+  48% {
+    fill: var(--yellow);
+    transform: scale(1.055);
+  }
+}
+
+@keyframes re8ch-pulse-green {
+  0%, 100% {
+    fill: var(--green);
+    transform: scale(1);
+  }
+  48% {
+    fill: var(--blue);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes re8ch-pulse-yellow {
+  0%, 100% {
+    fill: var(--yellow);
+    transform: translate(0, 0) scale(1);
+  }
+  48% {
+    fill: var(--red);
+    transform: translate(-8px, 8px) scale(1.08);
+  }
+}
+
+@keyframes re8ch-pulse-blue {
+  0%, 100% {
+    fill: var(--blue);
+    transform: translate(0, 0) scale(1);
+  }
+  48% {
+    fill: var(--green);
+    transform: translate(8px, -8px) scale(1.07);
+  }
+}
+
+@keyframes re8ch-success-lift {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  44% {
+    transform: translateY(-16px) scale(1.045);
+  }
+}
+
+@keyframes re8ch-success-green {
+  0%, 100% {
+    fill: var(--green);
+    filter: brightness(1) saturate(1);
+    transform: scale(1);
+  }
+  44% {
+    fill: var(--yellow);
+    filter: brightness(1.24) saturate(1.18);
+    transform: translateY(-8px) scale(1.055);
+  }
+  68% {
+    fill: var(--green);
+  }
+}
+
+@keyframes re8ch-success-red {
+  0%, 100% {
+    fill: var(--red);
+    transform: scale(1);
+  }
+  44% {
+    fill: var(--green);
+    transform: translateY(-6px) scale(1.025);
+  }
+}
+
+@keyframes re8ch-success-yellow {
+  0%, 100% {
+    fill: var(--yellow);
+    transform: scale(1);
+  }
+  44% {
+    fill: var(--green);
+    transform: translate(-8px, 6px) scale(1.05);
+  }
+}
+
+@keyframes re8ch-success-blue {
+  0%, 100% {
+    fill: var(--blue);
+    transform: scale(1);
+  }
+  44% {
+    fill: var(--green);
+    transform: translate(8px, -6px) scale(1.04);
+  }
+}
+
+@keyframes re8ch-error-shake {
+  10%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 80% {
+    transform: translateX(7px) rotate(1deg);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-12px) rotate(-1.4deg);
+  }
+  40%, 60% {
+    transform: translateX(12px) rotate(1.4deg);
+  }
+}
+
+@keyframes re8ch-error-red {
+  0%, 100% {
+    fill: var(--red);
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  18%, 48% {
+    fill: var(--yellow);
+    filter: brightness(1.22) saturate(1.2);
+    transform: scale(1.055);
+  }
+  32%, 62% {
+    fill: var(--red);
+    filter: brightness(.9) saturate(1.3);
+    transform: scale(.985);
+  }
+}
+
+@keyframes re8ch-error-drain {
+  0%, 100% {
+    filter: saturate(1) brightness(1);
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  42% {
+    fill: var(--red);
+    filter: saturate(.45) brightness(.82);
+    opacity: .72;
+    transform: translateY(7px) scale(.98);
+  }
+}
+
+@keyframes re8ch-reveal-edge {
+  0% {
+    opacity: 0;
+    transform: scale(.9) rotate(-4deg);
+  }
+  58% {
+    opacity: 0;
+    transform: scale(.94) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes re8ch-reveal-red {
+  0% {
+    fill: var(--blue);
+    opacity: 0;
+    transform: translateY(-52px) scale(.92);
+  }
+  58% {
+    fill: var(--yellow);
+    opacity: 1;
+    transform: translateY(8px) scale(1.04);
+  }
+  100% {
+    fill: var(--red);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes re8ch-reveal-green {
+  0% {
+    fill: var(--red);
+    opacity: 0;
+    transform: translateY(58px) translateX(28px) scale(.9);
+  }
+  58% {
+    fill: var(--blue);
+    opacity: 1;
+    transform: translateY(-8px) translateX(-6px) scale(1.045);
+  }
+  100% {
+    fill: var(--green);
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes re8ch-reveal-yellow {
+  0% {
+    fill: var(--green);
+    opacity: 0;
+    transform: translateX(-58px) translateY(38px) scale(.9);
+  }
+  58% {
+    fill: var(--red);
+    opacity: 1;
+    transform: translateX(8px) translateY(-4px) scale(1.06);
+  }
+  100% {
+    fill: var(--yellow);
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes re8ch-reveal-blue {
+  0% {
+    fill: var(--yellow);
+    opacity: 0;
+    transform: translateX(56px) translateY(-38px) scale(.9);
+  }
+  58% {
+    fill: var(--green);
+    opacity: 1;
+    transform: translateX(-8px) translateY(4px) scale(1.055);
+  }
+  100% {
+    fill: var(--blue);
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  :host([motion="loader"]) .stage,
+  :host([motion="idle"]) .mark,
+  :host([motion="pulse"]) .edge,
+  :host([motion="pulse"]) .piece {
+    animation: none !important;
+  }
+}

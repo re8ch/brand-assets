@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1130 924" width="1130" height="924" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Logo Invert</title>
+  <desc id="desc">Inverted logo with white edge on transparent background.</desc>
+  <defs>
+    <clipPath id="transparent-hole" clip-rule="evenodd">
+      <path d="M0 0 H1130 V924 H0 Z M518 670 L583 533 L650 647 L579 647 Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#transparent-hole)">
+    <path d="M135 722 L510 66 Q518 55 532 55 L632 55 Q650 55 659 75 L1029 722 Q1034 733 1027 745 L965 848 Q955 866 932 866 L222 866 Q207 866 198 849 L138 743 Q132 733 135 722 Z" fill="#fdfdfd"/>
+    <path d="M225 843 L156 727 L526 83 Q531 78 540 78 L632 78 Q639 78 644 88 L955 632 L813 632 L583 244 L252 795 Z" fill="#07efe7"/>
+    <path d="M246 845 L566 638 L973 638 Q983 639 989 648 L1023 716 Q1032 729 1023 743 L963 840 Q954 856 934 856 L222 856 Q239 847 246 845 Z" fill="#fdfdfd"/>
+    <path d="M253 844 L574 657 L966 657 L1009 727 L943 834 Q940 844 927 845 L253 845 Z" fill="#ff4aa6"/>
+    <path d="M251 808 L504 383 L590 531 L503 697 Z" fill="#fdfdfd"/>
+    <path d="M291 777 L505 413 L571 532 L494 666 Z" fill="#0029e6"/>
+    <path d="M497 386 L582 239 L824 657 L646 657 Z" fill="#fdfdfd"/>
+    <path d="M516 390 L582 275 L792 638 L657 638 Z" fill="#f58041"/>
+    <path d="M503 682 L583 536 L654 656 L575 656 Z" fill="#fdfdfd"/>
+  </g>
+</svg>
