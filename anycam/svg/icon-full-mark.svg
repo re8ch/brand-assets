@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#3730a3"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="42%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#ecfeff"/>
+      <stop offset="45%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </radialGradient>
+  </defs>
+  <rect width="108" height="108" rx="22" fill="url(#bg)"/>
+
+  <!-- outer barrel ring: high contrast -->
+  <circle cx="54" cy="52" r="34" fill="#020617" stroke="#7dd3fc" stroke-width="4"/>
+
+  <!-- inner housing -->
+  <circle cx="54" cy="52" r="29" fill="#0f172a" stroke="#22d3ee" stroke-width="3"/>
+
+  <!-- lens (brighter glass) -->
+  <circle cx="54" cy="52" r="22" fill="url(#glass)"/>
+  <!-- inner bezel for readability at small dp -->
+  <circle cx="54" cy="52" r="17" fill="none" stroke="#164e63" stroke-width="2.5"/>
+
+  <!-- crisp spec highlight -->
+  <ellipse cx="47" cy="44" rx="8" ry="6" fill="#ffffff" opacity="0.55"/>
+
+  <!-- chunkier focus brackets -->
+  <path d="M30 38h14v5h-9v9h-5z" fill="#e0f2fe"/>
+  <path d="M64 38h14v14h-5v-9h-9z" fill="#e0f2fe"/>
+  <path d="M30 66v14h14v-5h-9v-9z" fill="#e0f2fe"/>
+  <path d="M74 66v14h-14v-5h9v-9z" fill="#e0f2fe"/>
+
+  <!-- AI sparks: larger dots -->
+  <circle cx="36" cy="78" r="3.25" fill="#a5f3fc"/>
+  <circle cx="54" cy="82" r="3.75" fill="#67e8f9"/>
+  <circle cx="72" cy="78" r="3.25" fill="#a5f3fc"/>
+</svg>

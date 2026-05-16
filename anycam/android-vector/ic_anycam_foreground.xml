@@ -1,0 +1,47 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- outer barrel -->
+    <path
+        android:pathData="M54,18a34,34 0 1,1 0,68a34,34 0 1,1 0,-68"
+        android:fillColor="#FF020617"
+        android:strokeWidth="4"
+        android:strokeColor="#FF7DD3FC"/>
+
+    <!-- housing -->
+    <path
+        android:pathData="M54,23a29,29 0 1,1 0,58a29,29 0 1,1 0,-58"
+        android:fillColor="#FF0F172A"
+        android:strokeWidth="3"
+        android:strokeColor="#FF22D3EE"/>
+
+    <!-- lens -->
+    <path
+        android:pathData="M54,30a22,22 0 1,1 0,44a22,22 0 1,1 0,-44"
+        android:fillColor="#FF0891B2"/>
+
+    <!-- inner bezel -->
+    <path
+        android:pathData="M54,35a17,17 0 1,1 0,34a17,17 0 1,1 0,-34"
+        android:strokeWidth="2.5"
+        android:strokeColor="#FF164E63"
+        android:fillColor="@android:color/transparent"/>
+
+    <!-- spec highlight -->
+    <path
+        android:pathData="M47,34a7,7 0 1,1 0,14a7,7 0 1,1 0,-14"
+        android:fillColor="#8CFFFFFF"/>
+
+    <!-- focus brackets -->
+    <path
+        android:pathData="M30,38h14v5h-9v9h-5z M64,38h14v14h-5v-9h-9z M30,66v14h14v-5h-9v-9z M74,66v14h-14v-5h9v-9z"
+        android:fillColor="#FFE0F2FE"/>
+
+    <!-- dots -->
+    <path
+        android:pathData="M39.25,78a3.25,3.25 0 1,1 -6.5,0a3.25,3.25 0 1,1 6.5,0 M57.75,82a3.75,3.75 0 1,1 -7.5,0a3.75,3.75 0 1,1 7.5,0 M75.25,78a3.25,3.25 0 1,1 -6.5,0a3.25,3.25 0 1,1 6.5,0"
+        android:fillColor="#FFA5F3FC"/>
+</vector>
