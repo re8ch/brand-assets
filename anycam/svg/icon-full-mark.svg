@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e1b4b"/>
-      <stop offset="100%" stop-color="#3730a3"/>
+      <stop offset="100%" stop-color="#312e81"/>
     </linearGradient>
     <radialGradient id="glass" cx="42%" cy="38%" r="65%">
       <stop offset="0%" stop-color="#ecfeff"/>
@@ -12,6 +12,7 @@
   </defs>
   <rect width="108" height="108" rx="22" fill="url(#bg)"/>
 
+  <g transform="translate(54 52) scale(0.75) translate(-54 -52)">
   <!-- outer barrel ring: high contrast -->
   <circle cx="54" cy="52" r="34" fill="#020617" stroke="#7dd3fc" stroke-width="4"/>
 
@@ -36,4 +37,5 @@
   <circle cx="36" cy="78" r="3.25" fill="#a5f3fc"/>
   <circle cx="54" cy="82" r="3.75" fill="#67e8f9"/>
   <circle cx="72" cy="78" r="3.25" fill="#a5f3fc"/>
+  </g>
 </svg>
