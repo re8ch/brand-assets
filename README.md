@@ -18,6 +18,7 @@ Use the graphic logo mark with one of the following brand names:
 - `SVG/` - transparent SVG logo variants.
 - `PNG/` - transparent PNG logo variants.
 - `ANIME/` - reusable web animation assets built around `<re8ch-logo-motion>`.
+- `PRODUCTS/` - product-specific icons that extend the RE8CH visual language.
 
 ## Core Variants
 
@@ -27,3 +28,7 @@ Use the graphic logo mark with one of the following brand names:
 - `logo-no-edge` - color logo with transparent edge gaps.
 - `logo-no-edge-gray` - grayscale no-edge logo.
 - `logo-no-edge-invert` - inverted no-edge logo.
+
+## Product Icons
+
+- `PRODUCTS/lizhang-ledger-ai/` - 立账 / Ledger AI finance system icon.
