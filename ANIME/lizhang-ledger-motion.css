@@ -1,0 +1,54 @@
+:host {
+  display: inline-block;
+  height: 96px;
+  width: 96px;
+}
+
+.lizhang-ledger-motion {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.lizhang-ledger-motion .book {
+  transform-origin: 48px 48px;
+}
+
+.lizhang-ledger-motion[data-motion="idle"] .book {
+  animation: lizhang-float 4.8s ease-in-out infinite;
+}
+
+.lizhang-ledger-motion[data-motion="pulse"] .book {
+  animation: lizhang-pulse 2.6s ease-in-out infinite;
+}
+
+.lizhang-ledger-motion[data-motion="draw"] .check {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: lizhang-check 1.2s ease-out forwards;
+}
+
+@keyframes lizhang-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+}
+
+@keyframes lizhang-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes lizhang-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
