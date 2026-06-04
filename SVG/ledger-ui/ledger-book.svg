@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Ledger Book</title>
+  <desc id="desc">A simple account book with a bound spine and ruled pages.</desc>
+  <rect x="14" y="12" width="68" height="72" rx="12" fill="#12313b"/>
+  <path d="M27 12h43c7 0 12 5 12 12v60H27c-7 0-13-6-13-13V25c0-7 6-13 13-13Z" fill="#fffdf8"/>
+  <path d="M27 12h11v72H27c-7 0-13-6-13-13V25c0-7 6-13 13-13Z" fill="#1d6f84"/>
+  <path d="M47 30h22M47 43h22M47 56h16" stroke="#d6d2c8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M27 68h55v16H29c-6 0-10-3-10-8s4-8 8-8Z" fill="#f1efe7"/>
+  <path d="M31 75h45" stroke="#c7c2b7" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Ledger Report</title>
+  <desc id="desc">A ledger report page with account bars and a summary line.</desc>
+  <rect x="16" y="12" width="64" height="72" rx="12" fill="#fffdf8" stroke="#12313b" stroke-width="5"/>
+  <path d="M29 65V48M45 65V33M61 65V42" stroke="#1d6f84" stroke-width="9" stroke-linecap="round"/>
+  <path d="M28 25h28M28 73h38" stroke="#d6d2c8" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="66" cy="25" r="7" fill="#d9a21b"/>
+</svg>

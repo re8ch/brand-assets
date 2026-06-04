@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Ledger Mark</title>
+  <desc id="desc">A compact ledger book mark with balanced posting lines and a reconcile check.</desc>
+  <rect x="12" y="10" width="66" height="76" rx="13" fill="#0b1f2a"/>
+  <path d="M25 10h43c10 0 16 6 16 16v60H25c-8 0-13-5-13-13V23c0-8 5-13 13-13Z" fill="#fcfbf7"/>
+  <path d="M25 10h12v76H25c-8 0-13-5-13-13V23c0-8 5-13 13-13Z" fill="#d93d32"/>
+  <path d="M37 10h31c10 0 16 6 16 16v10H37Z" fill="#1d6f84"/>
+  <path d="M37 70h47v16H37c-6 0-10-3-10-8s4-8 10-8Z" fill="#2f9d6a"/>
+  <path d="M46 48h20M46 57h15" stroke="#0b1f2a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M61 50l8 8 15-18" fill="none" stroke="#d9a21b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

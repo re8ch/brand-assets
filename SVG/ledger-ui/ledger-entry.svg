@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Ledger Entry</title>
+  <desc id="desc">Balanced debit and credit entry lines on a ledger sheet.</desc>
+  <rect x="14" y="12" width="68" height="72" rx="12" fill="#fffdf8" stroke="#12313b" stroke-width="5"/>
+  <path d="M25 30h46M25 46h46M25 62h46" stroke="#d6d2c8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M48 22v52" stroke="#e7e0d2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M27 30h13M56 46h13M27 62h13" stroke="#1d6f84" stroke-width="5" stroke-linecap="round"/>
+  <path d="M56 30h13M27 46h13M56 62h13" stroke="#2563a7" stroke-width="5" stroke-linecap="round"/>
+</svg>

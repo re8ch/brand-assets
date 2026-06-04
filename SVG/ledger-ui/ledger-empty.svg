@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 96" width="144" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Empty Ledger State</title>
+  <desc id="desc">An open ledger waiting for its first account entry.</desc>
+  <path d="M22 24c0-7 5-12 12-12h78c7 0 12 5 12 12v54c0 3-3 6-6 6H28c-3 0-6-3-6-6Z" fill="#fffdf8" stroke="#12313b" stroke-width="5"/>
+  <path d="M72 15v66" stroke="#e3dacc" stroke-width="5" stroke-linecap="round"/>
+  <path d="M38 34h22M38 48h18M86 34h20M86 48h14" stroke="#d6d2c8" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="72" cy="74" r="9" fill="#1d6f84"/>
+  <path d="M68 74h8M72 70v8" stroke="#fffdf8" stroke-width="4" stroke-linecap="round"/>
+</svg>
