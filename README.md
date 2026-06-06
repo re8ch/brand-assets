@@ -16,6 +16,7 @@ Use the graphic logo mark with one of the following brand names:
 ## Folders
 
 - `SVG/` - transparent SVG logo variants.
+- `SVG/ledger-ui/` - ledger-specific mini program UI icons for account books, entries, documents, reconciliation, reports, profile, and empty states.
 - `PNG/` - transparent PNG logo variants.
 - `ANIME/` - reusable web animation assets built around `<re8ch-logo-motion>`.
 - `PRODUCTS/` - product-specific icons that extend the RE8CH visual language.
