@@ -1,0 +1,35 @@
+{
+  "name": "brand-assets",
+  "version": "1.0.0",
+  "description": "Reusable logo, transparent PNG, SVG, and web motion assets for RE8CH / 锐奇.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:all": "node scripts/sync-brand-assets.mjs --target=all",
+    "sync:r2": "node scripts/sync-brand-assets.mjs --target=r2",
+    "sync:cos": "node scripts/sync-brand-assets.mjs --target=cos",
+    "sync:dry-run": "node scripts/sync-brand-assets.mjs --target=all --dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/re8ch/brand-assets.git"
+  },
+  "keywords": [
+    "re8ch",
+    "brand",
+    "assets"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/re8ch/brand-assets/issues"
+  },
+  "homepage": "https://github.com/re8ch/brand-assets#readme",
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1067.0",
+    "@aws-sdk/lib-storage": "^3.1067.0",
+    "cos-nodejs-sdk-v5": "^2.15.4",
+    "dotenv": "^17.4.2",
+    "mime-types": "^3.0.2"
+  }
+}
