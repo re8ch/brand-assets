@@ -1,6 +1,7 @@
-# Phonaid / 万能接线助手 Icon
+# Anycam / 任意相机 Icon
 
-Product icon assets for **Phonaid 万能接线助手**, a call-routing assistant.
+Product icon assets for **Anycam 任意相机**, separate from the Android launcher
+asset set in `/anycam`.
 
 ## Files
 
@@ -13,8 +14,8 @@ Product icon assets for **Phonaid 万能接线助手**, a call-routing assistant
 ## Public URLs
 
 ```text
-https://brand-assets.re8ch.com/PRODUCTS/phonaid/SVG/icon.svg
-https://zh-brand-assets.re8ch.com/PRODUCTS/phonaid/SVG/icon.svg
+https://brand-assets.re8ch.com/PRODUCTS/anycam/SVG/icon.svg
+https://zh-brand-assets.re8ch.com/PRODUCTS/anycam/SVG/icon.svg
 ```
 
 © 2026 RE8CH / 锐奇. All rights reserved.

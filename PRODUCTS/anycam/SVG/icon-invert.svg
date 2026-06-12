@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Anycam 任意相机 Icon Invert</title>
+  <desc id="desc">A dark-surface RE8CH-style camera lens product icon for Anycam.</desc>
+  <path d="M13 30Q13 22 21 22H34L40 14H57L63 22H75Q83 22 83 30V74Q83 82 75 82H21Q13 82 13 74Z" fill="#f8fafc"/>
+  <path d="M21 30H38L44 22H54L60 30H75V74H21Z" fill="#0f172a"/>
+  <path d="M21 30H38L44 22H54L60 30H75V40H21Z" fill="#60a5fa"/>
+  <path d="M21 40H75V74H21Z" fill="#111827"/>
+  <circle cx="49" cy="56" r="24" fill="#f8fafc"/>
+  <circle cx="49" cy="56" r="19" fill="#34d399"/>
+  <circle cx="49" cy="56" r="13" fill="#60a5fa"/>
+  <circle cx="49" cy="56" r="7" fill="#ffd619"/>
+  <path d="M25 34H35V40H25Z" fill="#ff4b55"/>
+  <path d="M63 22H75Q83 22 83 30V40H71Q71 28 63 22Z" fill="#34d399"/>
+  <path d="M37 53H28V45H34V49H37ZM61 53H70V45H64V49H61ZM37 59H28V67H34V63H37ZM61 59H70V67H64V63H61Z" fill="#0f172a"/>
+</svg>
