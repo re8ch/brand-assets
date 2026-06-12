@@ -35,6 +35,10 @@ Use the graphic logo mark with one of the following brand names:
 ## Product Icons
 
 - `PRODUCTS/lizhang-ledger-ai/` - 立账 / Ledger AI finance system icon.
+- `PRODUCTS/anysiteonearth/` - Any Site on Earth geospatial product icon.
+- `PRODUCTS/phonaid/` - Phonaid product asset placeholder.
+- `anycam/` - AnyCAM product icon source assets.
+- `re8ch-registry/` - Re8ch Registry product mark and motion assets.
 
 ## Asset Source Of Truth
 
