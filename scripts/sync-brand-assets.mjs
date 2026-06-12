@@ -67,6 +67,10 @@ function cacheControl(key) {
     : 'public, max-age=31536000, immutable';
 }
 
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function getAssetFiles() {
   const files = INCLUDE.flatMap((entry) => walk(entry)).sort();
   const manifest = {
@@ -128,12 +132,17 @@ async function syncR2(files) {
 
   if (!hasS3Keys) {
     console.log('R2 S3 keys not found; using wrangler upload fallback without remote deletion.');
+    const wranglerEnv = { ...process.env };
+    if (process.env.R2_CLOUDFLARE_API_TOKEN) {
+      wranglerEnv.CLOUDFLARE_API_TOKEN = process.env.R2_CLOUDFLARE_API_TOKEN;
+    } else {
+      delete wranglerEnv.CLOUDFLARE_API_TOKEN;
+    }
+
     for (const file of files) {
       console.log(`${dryRun ? 'Would upload' : 'Uploading'} R2 ${file.key}`);
       if (dryRun) continue;
-      const wranglerEnv = { ...process.env };
-      delete wranglerEnv.CLOUDFLARE_API_TOKEN;
-      const result = spawnSync('wrangler', [
+      const args = [
         'r2',
         'object',
         'put',
@@ -146,7 +155,18 @@ async function syncR2(files) {
         '--cache-control',
         file.cacheControl,
         '--force',
-      ], { stdio: 'inherit', env: wranglerEnv });
+      ];
+
+      let result;
+      for (let attempt = 1; attempt <= 3; attempt += 1) {
+        result = spawnSync('wrangler', args, { stdio: 'inherit', env: wranglerEnv });
+        if (result.status === 0) break;
+        if (attempt < 3) {
+          console.warn(`wrangler failed for ${file.key}; retrying (${attempt + 1}/3).`);
+          await wait(attempt * 2000);
+        }
+      }
+
       if (result.status !== 0) throw new Error(`wrangler failed for ${file.key}`);
     }
     return;

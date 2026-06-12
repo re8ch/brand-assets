@@ -84,7 +84,8 @@ npm run sync:cos
 R2 notes:
 
 - If `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` are set, the script uses the S3-compatible R2 API and deletes stale remote objects.
-- If those keys are not set, the script falls back to local `wrangler r2 object put` and only overwrites/uploads current objects. This is enough for immediate local publishing, but not for stale deletion.
+- If those keys are not set, the script falls back to `wrangler r2 object put` and only overwrites/uploads current objects. This is enough for immediate publishing, but not for stale deletion.
+- For GitHub Actions without R2 S3 keys, add `R2_CLOUDFLARE_API_TOKEN`. The token must allow editing R2 objects for the `brand-assets` bucket. Local runs without this variable use the current `wrangler` login.
 
 Tencent notes:
 
@@ -100,11 +101,12 @@ Add these GitHub Actions secrets to the `re8ch/brand-assets` repository:
 ```text
 R2_ACCESS_KEY_ID
 R2_SECRET_ACCESS_KEY
+R2_CLOUDFLARE_API_TOKEN
 COS_SECRET_ID
 COS_SECRET_KEY
 ```
 
-Use a Cloudflare R2 token scoped to the `brand-assets` bucket. Use Tencent credentials with permission for the `brandassets-1301339749` bucket.
+Use either the R2 S3 key pair or `R2_CLOUDFLARE_API_TOKEN`. The S3 key pair enables stale-object deletion; the token mode uses `wrangler` upload-only sync. Use Tencent credentials with permission for the `brandassets-1301339749` bucket.
 
 ### DNS / CDN Binding
 
