@@ -1,0 +1,40 @@
+.re8ch-registry-mark .harbor-beam {
+  animation: harbor-beam 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.re8ch-registry-mark .harbor-light {
+  animation: harbor-light 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes harbor-beam {
+  0%, 100% {
+    opacity: 0.46;
+    transform: scaleX(0.92);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes harbor-light {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .re8ch-registry-mark .harbor-beam,
+  .re8ch-registry-mark .harbor-light {
+    animation: none;
+  }
+}

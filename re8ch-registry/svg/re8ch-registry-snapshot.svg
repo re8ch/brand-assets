@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">Re8ch Registry harbor tower snapshot</title>
+  <desc id="desc">Product card artwork for Re8ch Registry using a simplified harbor watchtower mark.</desc>
+  <rect width="1280" height="720" fill="#f5f7fb"/>
+  <rect x="0" y="0" width="1280" height="12" fill="url(#brand)"/>
+  <rect x="96" y="92" width="1088" height="536" rx="18" fill="#ffffff" stroke="#d9e0ea" stroke-width="2"/>
+  <g transform="translate(150 150) scale(4)">
+    <path d="M55 29L86 16V42L55 36Z" fill="#ffd619" opacity=".72"/>
+    <path d="M23 24L48 11L73 24V32H23Z" fill="#020202"/>
+    <path d="M30 25L48 16L66 25V29H30Z" fill="#f81018"/>
+    <path d="M30 31H66V50Q66 57 59 57H37Q30 57 30 50Z" fill="#020202"/>
+    <path d="M38 36H58V49H38Z" fill="#f8fafc"/>
+    <path d="M44 39H52V47H44Z" fill="#ffd619"/>
+    <path d="M30 56H66L74 78H22Z" fill="#020202"/>
+    <path d="M38 58H58L64 74H32Z" fill="#ffffff"/>
+    <path d="M28 76H68V84H28Z" fill="#00b559"/>
+    <path d="M36 60L60 74M60 60L36 74" stroke="#0a7fbe" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(590 228)">
+    <text x="0" y="0" fill="#0a7fbe" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="900" letter-spacing="5">RE8CH REGISTRY</text>
+    <text x="0" y="86" fill="#10151f" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="900">Harbor for signed</text>
+    <text x="0" y="158" fill="#10151f" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="900">container flow</text>
+    <text x="2" y="222" fill="#526070" font-family="Inter, Arial, sans-serif" font-size="25">A watched entrance for OCI images, Cosign signatures,</text>
+    <text x="2" y="258" fill="#526070" font-family="Inter, Arial, sans-serif" font-size="25">SBOMs, scans, and member project isolation.</text>
+  </g>
+  <defs>
+    <linearGradient id="brand" x1="0" y1="6" x2="1280" y2="6" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f81018"/>
+      <stop offset=".34" stop-color="#ffd619"/>
+      <stop offset=".66" stop-color="#00b559"/>
+      <stop offset="1" stop-color="#0a7fbe"/>
+    </linearGradient>
+  </defs>
+</svg>
