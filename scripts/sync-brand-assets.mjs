@@ -161,6 +161,7 @@ async function syncR2(files) {
       for (let attempt = 1; attempt <= 3; attempt += 1) {
         result = spawnSync('wrangler', args, { stdio: 'inherit', env: wranglerEnv });
         if (result.status === 0) break;
+        if (result.error) console.warn(result.error.message);
         if (attempt < 3) {
           console.warn(`wrangler failed for ${file.key}; retrying (${attempt + 1}/3).`);
           await wait(attempt * 2000);
