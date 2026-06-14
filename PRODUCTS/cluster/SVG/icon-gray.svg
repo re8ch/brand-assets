@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Cluster Icon</title>
+  <desc id="desc">SF Symbols-inspired RE8CH cluster build and operations product mark.</desc>
+  <path d="M48 10L78 27V62L48 79L18 62V27Z" fill="#1f2937"/>
+  <path d="M48 19L70 32V57L48 70L26 57V32Z" fill="#f8fafc"/>
+  <path d="M48 19L70 32L48 45L26 32Z" fill="#334155"/>
+  <path d="M26 32L48 45V70L26 57Z" fill="#64748b"/>
+  <path d="M70 32L48 45V70L70 57Z" fill="#cbd5e1"/>
+  <circle cx="48" cy="45" r="8" fill="#1f2937"/>
+  <circle cx="31" cy="32" r="6" fill="#334155"/>
+  <circle cx="65" cy="32" r="6" fill="#64748b"/>
+  <circle cx="48" cy="65" r="6" fill="#334155"/>
+  <path d="M31 32L48 45L65 32M48 45V65" fill="none" stroke="#1f2937" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Registry Icon</title>
+  <desc id="desc">SF Symbols-inspired RE8CH signed image registry product mark.</desc>
+  <path d="M17 23Q17 16 24 16H72Q79 16 79 23V73Q79 80 72 80H24Q17 80 17 73Z" fill="#020202"/>
+  <path d="M25 24H71V72H25Z" fill="#f8fafc"/>
+  <path d="M25 24H71V38H25Z" fill="#0a7fbe"/>
+  <path d="M34 47H62V66H34Z" fill="#020202"/>
+  <path d="M40 47H68V66H40Z" fill="#00b559"/>
+  <path d="M28 40H56V59H28Z" fill="#020202"/>
+  <path d="M34 40H62V59H34Z" fill="#f8fafc"/>
+  <path d="M34 40H62V47H34Z" fill="#ffd619"/>
+  <path d="M40 53H56" stroke="#020202" stroke-width="5" stroke-linecap="round"/>
+  <path d="M33 28H43" stroke="#f8fafc" stroke-width="5" stroke-linecap="round"/>
+  <path d="M50 28H63" stroke="#f8fafc" stroke-width="5" stroke-linecap="round"/>
+  <path d="M71 55L82 61L71 67Z" fill="#f81018"/>
+</svg>

@@ -1,6 +1,6 @@
-# Anycam / 任意相机 Icon
+# RE8CH Registry Icon
 
-Product icon assets for **Anycam / 任意相机**.
+Product icon assets for **RE8CH Registry**.
 
 ## Design Direction
 
@@ -20,10 +20,10 @@ copy Apple symbols.
 ## Public URLs
 
 ```text
-https://brand-assets.re8ch.com/PRODUCTS/anycam/SVG/icon.svg
-https://brand-assets.re8ch.com/PRODUCTS/anycam/PNG/icon.png
-https://zh-brand-assets.re8ch.com/PRODUCTS/anycam/SVG/icon.svg
-https://zh-brand-assets.re8ch.com/PRODUCTS/anycam/PNG/icon.png
+https://brand-assets.re8ch.com/PRODUCTS/registry/SVG/icon.svg
+https://brand-assets.re8ch.com/PRODUCTS/registry/PNG/icon.png
+https://zh-brand-assets.re8ch.com/PRODUCTS/registry/SVG/icon.svg
+https://zh-brand-assets.re8ch.com/PRODUCTS/registry/PNG/icon.png
 ```
 
 © 2026 RE8CH / 锐奇. All rights reserved.

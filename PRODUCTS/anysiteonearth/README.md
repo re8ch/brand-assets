@@ -1,25 +1,29 @@
-# Any Site on Earth Icon Assets
+# Any Site on Earth Icon
 
-Product icon assets for **Any Site on Earth**, a RE8CH geospatial product surface.
+Product icon assets for **Any Site on Earth**.
+
+## Design Direction
+
+These marks are inspired by the system discipline of SF Symbols: clear vector
+silhouette, small-size legibility, palette-friendly layers, and geometry that
+aligns cleanly with adjacent text. They are original RE8CH assets and do not
+copy Apple symbols.
 
 ## Files
 
-- `SVG/icon.svg` - primary RE8CH-style rocket and orbit mark with black edge.
-- `SVG/icon-flat.svg` - color icon without black edge.
-- `SVG/icon-inverse.svg` - reverse-color icon for dark surfaces.
-- `SVG/icon-minimal-light.svg` - launcher/favicon-compatible light surface icon.
-- `SVG/icon-minimal-dark.svg` - launcher/favicon-compatible dark surface icon.
+- `SVG/icon.svg` - primary transparent product mark.
+- `SVG/icon-gray.svg` - grayscale product mark.
+- `SVG/icon-no-edge.svg` - color mark without the outer black edge.
+- `SVG/icon-invert.svg` - dark-surface product mark.
+- `PNG/icon.png` - 512 px transparent PNG rendered from the primary SVG.
 
 ## Public URLs
 
-Use these assets through the public brand asset domains:
-
 ```text
 https://brand-assets.re8ch.com/PRODUCTS/anysiteonearth/SVG/icon.svg
+https://brand-assets.re8ch.com/PRODUCTS/anysiteonearth/PNG/icon.png
 https://zh-brand-assets.re8ch.com/PRODUCTS/anysiteonearth/SVG/icon.svg
+https://zh-brand-assets.re8ch.com/PRODUCTS/anysiteonearth/PNG/icon.png
 ```
-
-Product pages should select the base URL with `BRAND_ASSETS_REGION` and
-`BRAND_ASSETS_BASE_URL`, then append the product asset path.
 
 © 2026 RE8CH / 锐奇. All rights reserved.

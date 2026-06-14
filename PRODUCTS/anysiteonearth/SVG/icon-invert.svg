@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
   <title id="title">Any Site on Earth Icon</title>
   <desc id="desc">SF Symbols-inspired RE8CH location launch product mark.</desc>
-  <path d="M48 10Q67 28 67 55Q67 69 58 80H38Q29 69 29 55Q29 28 48 10Z" fill="#020202"/>
-  <path d="M48 20Q60 34 60 55Q60 64 55 73H41Q36 64 36 55Q36 34 48 20Z" fill="#f8fafc"/>
+  <path d="M48 10Q67 28 67 55Q67 69 58 80H38Q29 69 29 55Q29 28 48 10Z" fill="#f8fafc"/>
+  <path d="M48 20Q60 34 60 55Q60 64 55 73H41Q36 64 36 55Q36 34 48 20Z" fill="#111827"/>
   <path d="M48 20Q57 32 59 48H37Q39 32 48 20Z" fill="#0a7fbe"/>
   <circle cx="48" cy="51" r="8" fill="#ffd619"/>
   <path d="M30 57Q14 64 9 78Q23 77 35 67Z" fill="#00b559"/>
   <path d="M66 57Q82 64 87 78Q73 77 61 67Z" fill="#00b559"/>
   <path d="M37 72L25 86H43Z" fill="#f81018"/>
   <path d="M59 72L71 86H53Z" fill="#00b559"/>
-  <path d="M43 75L48 91L54 75Z" fill="#020202"/>
+  <path d="M43 75L48 91L54 75Z" fill="#f8fafc"/>
   <path d="M46 77L48 86L51 77Z" fill="#ffd619"/>
-  <path d="M14 68Q32 77 48 77Q64 77 82 68" fill="none" stroke="#020202" stroke-width="6" stroke-linecap="round"/>
+  <path d="M14 68Q32 77 48 77Q64 77 82 68" fill="none" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
 </svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Observable Icon</title>
+  <desc id="desc">SF Symbols-inspired RE8CH observability product mark.</desc>
+  <path d="M8 48Q22 24 48 24Q74 24 88 48Q74 72 48 72Q22 72 8 48Z" fill="#f8fafc"/>
+  <path d="M18 48Q30 32 48 32Q66 32 78 48Q66 64 48 64Q30 64 18 48Z" fill="#111827"/>
+  <circle cx="48" cy="48" r="18" fill="#0a7fbe"/>
+  <circle cx="48" cy="48" r="11" fill="#00b559"/>
+  <circle cx="48" cy="48" r="5" fill="#ffd619"/>
+  <path d="M14 72H30L38 59L48 76L58 57L66 72H82" fill="none" stroke="#f81018" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 24H35" stroke="#00b559" stroke-width="6" stroke-linecap="round"/>
+  <path d="M61 24H77" stroke="#ffd619" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="42" cy="42" r="4" fill="#111827" opacity=".72"/>
+</svg>

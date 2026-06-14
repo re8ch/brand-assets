@@ -38,8 +38,24 @@ Use the graphic logo mark with one of the following brand names:
 - `PRODUCTS/anysiteonearth/` - Any Site on Earth geospatial product icon.
 - `PRODUCTS/anycam/` - Anycam / 任意相机 product icon for websites.
 - `PRODUCTS/phonaid/` - Phonaid / 万能接线助手 product icon.
+- `PRODUCTS/registry/` - RE8CH Registry signed image distribution icon.
+- `PRODUCTS/cluster/` - RE8CH Cluster build and operations icon.
+- `PRODUCTS/observable/` - RE8CH Observable observability icon.
 - `anycam/` - AnyCAM product icon source assets.
 - `re8ch-registry/` - Re8ch Registry product mark and motion assets.
+
+Product icons are generated with:
+
+```bash
+npm run icons:products
+```
+
+The current product icon system borrows SF Symbols' discipline rather than its
+artwork: clear vector silhouettes, text-friendly geometry, small-size
+legibility, and layered shapes that can support palette, multicolor, grayscale,
+inverted, and future motion variants. The artwork itself is original RE8CH
+geometry using the red/yellow/green/blue brand palette and black/white
+structure edges.
 
 ## Asset Source Of Truth
 
