@@ -17,6 +17,8 @@
       "productNetworkTitle": "Product Network",
       "productNetworkBody": "Owned products and capability sites",
       "contactTitle": "Contact",
+      "externalTitle": "External verification",
+      "addressTitle": "Address",
       "email": "contact@re8ch.com",
       "careerEmail": "career@re8ch.com",
       "website": "www.re8ch.com",
@@ -30,6 +32,8 @@
       "productNetworkTitle": "Product Network",
       "productNetworkBody": "自营产品与能力展示站点",
       "contactTitle": "Contact",
+      "externalTitle": "External verification",
+      "addressTitle": "Address",
       "email": "contact@re8ch.com",
       "careerEmail": "career@re8ch.com",
       "website": "www.re8ch.com",
@@ -44,6 +48,8 @@
     ["D-U-N-S", "https://www.dnb.com/duns-number/lookup.html"],
     ["Crunchbase", "https://www.crunchbase.com/organization/re8ch"],
     ["AngelList", "https://stack.angellist.com/company/re8ch"],
+    ["YC Co-Founder", "https://www.startupschool.org/cofounder-matching/candidate/k04bmwSEL"],
+    ["CoffeeSpace", "https://www.coffeespace.com/find-cofounders/by-location/united-states"],
     ["China Credit", "https://www.gsxt.gov.cn/index.html"]
   ]
 }

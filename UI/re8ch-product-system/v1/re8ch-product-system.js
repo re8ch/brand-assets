@@ -2,7 +2,8 @@ const currentScript = document.currentScript;
 const scriptUrl = new URL(currentScript?.src || import.meta.url);
 const baseUrl = scriptUrl.href.replace(/\/UI\/re8ch-product-system\/v1\/re8ch-product-system\.js(?:\?.*)?$/, '');
 const componentBase = `${baseUrl}/UI/re8ch-product-system/v1`;
-const cssHref = `${componentBase}/re8ch-product-system.css`;
+const assetVersion = scriptUrl.search || '';
+const cssHref = `${componentBase}/re8ch-product-system.css${assetVersion}`;
 
 const colors = {
   registry: '#7b4dff',
@@ -33,6 +34,8 @@ const footerData = {
     ['D-U-N-S', 'https://www.dnb.com/duns-number/lookup.html'],
     ['Crunchbase', 'https://www.crunchbase.com/organization/re8ch'],
     ['AngelList', 'https://stack.angellist.com/company/re8ch'],
+    ['YC Co-Founder', 'https://www.startupschool.org/cofounder-matching/candidate/k04bmwSEL'],
+    ['CoffeeSpace', 'https://www.coffeespace.com/find-cofounders/by-location/united-states'],
     ['China Credit', 'https://www.gsxt.gov.cn/index.html'],
   ],
   content: {
@@ -42,6 +45,8 @@ const footerData = {
       productNetworkTitle: 'Product Network',
       productNetworkBody: 'Owned products and capability sites',
       contactTitle: 'Contact',
+      externalTitle: 'External verification',
+      addressTitle: 'Address',
       email: 'contact@re8ch.com',
       careerEmail: 'career@re8ch.com',
       website: 'www.re8ch.com',
@@ -55,6 +60,8 @@ const footerData = {
       productNetworkTitle: 'Product Network',
       productNetworkBody: '自营产品与能力展示站点',
       contactTitle: 'Contact',
+      externalTitle: 'External verification',
+      addressTitle: 'Address',
       email: 'contact@re8ch.com',
       careerEmail: 'career@re8ch.com',
       website: 'www.re8ch.com',
@@ -479,13 +486,13 @@ class Re8chProductFooter extends HTMLElement {
             <img class="rps-footer-logo" src="${baseUrl}/SVG/logo.svg" alt="">
             <div><strong>${escapeHtml(t.brand)}</strong><p>${escapeHtml(t.tagline)}</p></div>
           </div>
-          <div class="rps-footer-grid">
-            <section>
+          <div class="rps-footer-main">
+            <section class="rps-footer-section">
               <h2>${escapeHtml(t.productNetworkTitle)}</h2>
               <p>${escapeHtml(t.productNetworkBody)}</p>
               <nav class="rps-links" aria-label="Product Network">${footerData.productLinks.map(([label, href]) => `<a href="${href}"${href.includes(currentProduct) ? ' aria-current="page"' : ''}>${escapeHtml(label)}</a>`).join('')}</nav>
             </section>
-            <section>
+            <section class="rps-footer-section">
               <h2>${escapeHtml(t.contactTitle)}</h2>
               <div class="rps-links">
                 <a href="mailto:${t.email}">${escapeHtml(t.email)}</a>
@@ -493,12 +500,10 @@ class Re8chProductFooter extends HTMLElement {
                 <a href="https://www.re8ch.com">${escapeHtml(t.website)}</a>
               </div>
             </section>
+            <section class="rps-footer-section"><h2>${escapeHtml(t.externalTitle)}</h2><nav class="rps-links">${footerData.trustLinks.map(([label, href]) => `<a href="${href}" rel="noopener">${escapeHtml(label)}</a>`).join('')}</nav></section>
+            <section class="rps-footer-section"><h2>${escapeHtml(t.addressTitle)}</h2><p>${escapeHtml(t.address)}</p></section>
           </div>
-          <div class="rps-footer-grid">
-            <section><h2>External verification</h2><nav class="rps-links">${footerData.trustLinks.map(([label, href]) => `<a href="${href}" rel="noopener">${escapeHtml(label)}</a>`).join('')}</nav></section>
-            <section><h2>Address</h2><p>${escapeHtml(t.address)}</p></section>
-          </div>
-          <div class="rps-footer-bottom"><span>${escapeHtml(t.copyright)}</span><span>${escapeHtml(t.icp)}</span></div>
+          <div class="rps-footer-bottom"><span>${escapeHtml(t.copyright)}</span><a href="https://beian.miit.gov.cn" rel="noopener">${escapeHtml(t.icp)}</a></div>
         </div>
       </footer>`;
   }
