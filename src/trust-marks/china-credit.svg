@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="National Emblem of China">
+  <circle cx="24" cy="24" r="20" fill="#d91f26" stroke="#f3c54a" stroke-width="2.2"/>
+  <path d="M24 7.5 25.5 12h4.7l-3.8 2.8 1.5 4.4-3.9-2.7-3.9 2.7 1.5-4.4-3.8-2.8h4.7z" fill="#ffd45a"/>
+  <g fill="#ffd45a">
+    <path d="m14.3 12.2 1.1 2.1 2.3.2-1.7 1.6.5 2.3-2.1-1.1-2 1.2.4-2.3-1.8-1.5 2.3-.3z"/>
+    <path d="m33.7 12.2 1 2.1 2.4.2-1.8 1.6.5 2.3-2.1-1.1-2 1.2.4-2.3-1.7-1.5 2.3-.3z"/>
+    <path d="m17 19 1 1.9 2.1.2-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.2z"/>
+    <path d="m31 19 1 1.9 2.1.2-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.2z"/>
+  </g>
+  <path d="M13.4 31.2h21.2M16 34.4h16M19 28.2h10l-1.7-5.2h-6.6z" fill="none" stroke="#ffd45a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.6 23.5c1.6 9.4 7.5 15 15.4 15s13.8-5.6 15.4-15" fill="none" stroke="#f3c54a" stroke-width="2" stroke-linecap="round"/>
+</svg>
