@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RE8CH Product System Demo</title>
+    <script type="module" src="./re8ch-product-system.js"></script>
+    <style>body{margin:0;background:#f7faff} .demo{padding:32px;font-family:system-ui}</style>
+  </head>
+  <body>
+    <re8ch-product-hero product="cluster" active-layer="cluster" simulation="cluster-traffic" eyebrow="RE8CH CLUSTER" title="Traffic enters the cluster, then finds the right runtime." subtitle="User Request → Gateway → Cloud Function → Control Plane → Worker Pool → Service" lead="Reusable hero stage demo." primary-label="Watch traffic flow" primary-href="#workflow" secondary-label="Live Case" secondary-href="#live"></re8ch-product-hero>
+    <div class="demo">
+      <re8ch-layer-stack active-layer="observable"></re8ch-layer-stack>
+    </div>
+    <re8ch-product-footer product="cluster" locale="en"></re8ch-product-footer>
+  </body>
+</html>

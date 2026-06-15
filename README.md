@@ -15,11 +15,12 @@ Use the graphic logo mark with one of the following brand names:
 
 ## Folders
 
-- `SVG/` - transparent SVG logo variants.
+- `SVG/` - transparent RE8CH trademark SVG logo variants.
 - `SVG/ledger-ui/` - ledger-specific mini program UI icons for account books, entries, documents, reconciliation, reports, profile, and empty states.
-- `PNG/` - transparent PNG logo variants.
+- `PNG/` - transparent RE8CH trademark PNG logo variants.
 - `ANIME/` - reusable web animation assets built around `<re8ch-logo-motion>`.
-- `PRODUCTS/` - product-specific icons that extend the RE8CH visual language.
+- `PRODUCTS/` - dedicated product logo directory. Product logos live here instead of beside the RE8CH trademark files.
+- `UI/` - reusable CDN web components for product pages and shared product UI.
 - `anycam/` - AnyCAM app icon source assets.
 - `re8ch-registry/` - Re8ch Registry harbor tower mark and motion assets.
 
@@ -41,6 +42,7 @@ Use the graphic logo mark with one of the following brand names:
 - `PRODUCTS/registry/` - RE8CH Registry signed image distribution icon.
 - `PRODUCTS/cluster/` - RE8CH Cluster build and operations icon.
 - `PRODUCTS/observable/` - RE8CH Observable observability icon.
+- `UI/re8ch-product-system/v1/` - reusable product hero, three-layer stack, and product footer web components.
 - `anycam/` - AnyCAM product icon source assets.
 - `re8ch-registry/` - Re8ch Registry product mark and motion assets.
 
@@ -50,12 +52,10 @@ Product icons are generated with:
 npm run icons:products
 ```
 
-The current product icon system borrows SF Symbols' discipline rather than its
-artwork: clear vector silhouettes, text-friendly geometry, small-size
-legibility, and layered shapes that can support palette, multicolor, grayscale,
-inverted, and future motion variants. The artwork itself is original RE8CH
-geometry using the red/yellow/green/blue brand palette and black/white
-structure edges.
+The current product logo system uses an original RE8CH system-symbol language:
+rounded strokes, compact silhouettes, text-friendly geometry, small-size
+legibility, and palette-aware variants. These are not Apple SF Symbols artwork
+and do not copy Apple symbol shapes.
 
 ## Asset Source Of Truth
 

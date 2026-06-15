@@ -1,0 +1,49 @@
+{
+  "version": "v1",
+  "productLinks": [
+    ["RE8CH", "https://re8ch.com"],
+    ["AnySite", "https://anysiteonearth.re8ch.com"],
+    ["Ledger", "https://ledger.re8ch.com"],
+    ["Registry Image", "https://image.re8ch.com"],
+    ["Cluster", "https://cluster.re8ch.com"],
+    ["Observable", "https://observable.re8ch.com"],
+    ["Anycam", "https://anycam.re8ch.com"],
+    ["Phonaid", "https://phonaid.com"]
+  ],
+  "content": {
+    "en": {
+      "brand": "RE8CH",
+      "tagline": "Reusable product surfaces, runtime layers, and verification signals.",
+      "productNetworkTitle": "Product Network",
+      "productNetworkBody": "Owned products and capability sites",
+      "contactTitle": "Contact",
+      "email": "contact@re8ch.com",
+      "careerEmail": "career@re8ch.com",
+      "website": "www.re8ch.com",
+      "address": "13359 North Highway 183, Austin, Texas, USA",
+      "copyright": "© 2026 Reachieve LLC. All rights reserved.",
+      "icp": "湘ICP备2025130798号-4"
+    },
+    "zh": {
+      "brand": "锐奇创想 RE8CH",
+      "tagline": "统一产品视觉、运行层级与外部核验入口。",
+      "productNetworkTitle": "Product Network",
+      "productNetworkBody": "自营产品与能力展示站点",
+      "contactTitle": "Contact",
+      "email": "contact@re8ch.com",
+      "careerEmail": "career@re8ch.com",
+      "website": "www.re8ch.com",
+      "address": "湖南省娄底市涟源市杨市镇锐奇软件开发工作室",
+      "copyright": "© 2026 锐奇创想经济咨询. All rights reserved.",
+      "icp": "湘ICP备2025130798号-4"
+    }
+  },
+  "trustLinks": [
+    ["Career", "https://www.linkedin.com/company/107777110"],
+    ["US Certificate", "https://biz.sosmt.gov/search/business"],
+    ["D-U-N-S", "https://www.dnb.com/duns-number/lookup.html"],
+    ["Crunchbase", "https://www.crunchbase.com/organization/re8ch"],
+    ["AngelList", "https://stack.angellist.com/company/re8ch"],
+    ["China Credit", "https://www.gsxt.gov.cn/index.html"]
+  ]
+}

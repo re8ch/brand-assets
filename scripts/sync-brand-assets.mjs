@@ -18,8 +18,16 @@ dotenv.config({ path: path.join(root, '.env') });
 dotenv.config({ path: path.join(root, '../re8ch/.env') });
 dotenv.config();
 
-const INCLUDE = ['README.md', 'overview.png', 'SVG', 'PNG', 'ANIME', 'PRODUCTS', 'anycam', 're8ch-registry'];
+const INCLUDE = ['README.md', 'overview.png', 'SVG', 'PNG', 'ANIME', 'PRODUCTS', 'UI', 'anycam', 're8ch-registry'];
 const SKIP_NAMES = new Set(['.DS_Store']);
+const r2CorsConfigPath = path.join(root, 'scripts', 'r2-cors.json');
+const cosCorsRules = [{
+  AllowedOrigin: ['*'],
+  AllowedMethod: ['GET', 'HEAD'],
+  AllowedHeader: ['*'],
+  ExposeHeader: ['ETag', 'Content-Length', 'Content-Type', 'Cache-Control'],
+  MaxAgeSeconds: 86400,
+}];
 
 const target = process.argv.find((arg) => arg.startsWith('--target='))?.split('=')[1] || 'all';
 const dryRun = process.argv.includes('--dry-run');
@@ -170,6 +178,14 @@ async function syncR2(files) {
 
       if (result.status !== 0) throw new Error(`wrangler failed for ${file.key}`);
     }
+    console.log(`${dryRun ? 'Would set' : 'Setting'} R2 CORS for ${r2Bucket}`);
+    if (!dryRun) {
+      const corsResult = spawnSync('wrangler', ['r2', 'bucket', 'cors', 'set', r2Bucket, '--file', r2CorsConfigPath, '--force'], {
+        stdio: 'inherit',
+        env: wranglerEnv,
+      });
+      if (corsResult.status !== 0) throw new Error(`wrangler failed to set R2 CORS for ${r2Bucket}`);
+    }
     return;
   }
 
@@ -207,6 +223,19 @@ async function syncR2(files) {
       Bucket: r2Bucket,
       Delete: { Objects: batch.map((Key) => ({ Key })) },
     }));
+  }
+
+  console.log(`${dryRun ? 'Would set' : 'Setting'} R2 CORS for ${r2Bucket}`);
+  if (!dryRun) {
+    const wranglerEnv = { ...process.env };
+    if (process.env.R2_CLOUDFLARE_API_TOKEN) {
+      wranglerEnv.CLOUDFLARE_API_TOKEN = process.env.R2_CLOUDFLARE_API_TOKEN;
+    }
+    const corsResult = spawnSync('wrangler', ['r2', 'bucket', 'cors', 'set', r2Bucket, '--file', r2CorsConfigPath, '--force'], {
+      stdio: 'inherit',
+      env: wranglerEnv,
+    });
+    if (corsResult.status !== 0) throw new Error(`wrangler failed to set R2 CORS for ${r2Bucket}`);
   }
 }
 
@@ -250,6 +279,11 @@ async function ensureCOSBucket(cos) {
 
   if (!dryRun) {
     await cosCall(cos, 'putBucketAcl', { Bucket: cosBucket, Region: cosRegion, ACL: 'public-read' });
+    await cosCall(cos, 'putBucketCors', {
+      Bucket: cosBucket,
+      Region: cosRegion,
+      CORSRules: cosCorsRules,
+    });
   }
 }
 
