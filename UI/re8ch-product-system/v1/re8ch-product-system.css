@@ -9,9 +9,9 @@
   --re8ch-yellow: #ffd619;
   --re8ch-green: #00b559;
   --re8ch-blue: #0a7fbe;
-  --re8ch-registry: #7b4dff;
+  --re8ch-registry: #0a7fbe;
   --re8ch-cluster: #00b559;
-  --re8ch-observable: #1268f3;
+  --re8ch-observable: #f81018;
   --re8ch-accent: var(--re8ch-registry);
   color: var(--re8ch-ink);
   display: block;

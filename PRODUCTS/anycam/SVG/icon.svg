@@ -1,15 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
   <title id="title">Anycam / 任意相机 Icon</title>
-  <desc id="desc">SF Symbols-inspired RE8CH camera product mark.</desc>
-  <path d="M13 35Q13 26 22 26H33L39 18H58L64 26H74Q83 26 83 35V72Q83 81 74 81H22Q13 81 13 72Z" fill="#020202"/>
-  <path d="M21 36H38L44 28H54L60 36H75V71H21Z" fill="#f8fafc"/>
-  <path d="M21 36H38L44 28H54L60 36H75V45H21Z" fill="#0a7fbe"/>
-  <circle cx="49" cy="58" r="25" fill="#020202"/>
-  <circle cx="49" cy="58" r="19" fill="#00b559"/>
-  <circle cx="49" cy="58" r="12" fill="#2287c9"/>
-  <circle cx="49" cy="58" r="6" fill="#ffd619"/>
-  <path d="M25 39H34V46H25Z" fill="#f81018"/>
-  <path d="M66 46H75V57H70V51H66Z" fill="#f81018"/>
-  <circle cx="32" cy="42" r="4" fill="#f81018"/>
-  <circle cx="42" cy="53" r="4" fill="#f8fafc" opacity=".72"/>
+  <desc id="desc">Original RE8CH system-symbol camera product mark.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 36.5Q17 29 24.5 29H34L40 21H56L62 29H71.5Q79 29 79 36.5V69Q79 76 72 76H24Q17 76 17 69Z" stroke="#111820" stroke-width="7"/>
+    <path d="M33 29H63" stroke="rgba(17,24,32,.16)" stroke-width="7"/>
+    <circle cx="48" cy="55" r="18" stroke="#111820" stroke-width="7"/>
+    <circle cx="48" cy="55" r="7" stroke="#2287c9" stroke-width="7"/>
+    <path d="M27 43H34" stroke="#ffd619" stroke-width="7"/>
+    <path d="M65 43H69" stroke="#111820" stroke-width="7"/>
+  </g>
 </svg>

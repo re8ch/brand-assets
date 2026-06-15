@@ -21,6 +21,9 @@ Use the graphic logo mark with one of the following brand names:
 - `ANIME/` - reusable web animation assets built around `<re8ch-logo-motion>`.
 - `PRODUCTS/` - dedicated product logo directory. Product logos live here instead of beside the RE8CH trademark files.
 - `UI/` - reusable CDN web components for product pages and shared product UI.
+- `src/` - source files for the CDN navigator/footer web components and trust mark fallback assets.
+- `dist/` - publishable CDN navigator/footer component files and trust mark fallback assets.
+- `demo/` - local HTML demo for the footer component.
 - `anycam/` - AnyCAM app icon source assets.
 - `re8ch-registry/` - Re8ch Registry harbor tower mark and motion assets.
 
@@ -56,6 +59,95 @@ The current product logo system uses an original RE8CH system-symbol language:
 rounded strokes, compact silhouettes, text-friendly geometry, small-size
 legibility, and palette-aware variants. These are not Apple SF Symbols artwork
 and do not copy Apple symbol shapes.
+
+## CDN Footer Component
+
+The reusable trust footer is a framework-agnostic Web Component. It renders a
+compressed Company Trust Mark Strip: product network scroll rail with a compact
+RE8CH mark head, looping company record/public profile rail, and legal/contact
+row.
+
+```html
+<link rel="stylesheet" href="https://brand-assets.re8ch.com/dist/re8ch-footer.css">
+<script type="module" src="https://brand-assets.re8ch.com/dist/re8ch-footer.js"></script>
+<re8ch-footer active-product="registry-image" theme="light"></re8ch-footer>
+```
+
+Source files live in `src/`; publishable files live in `dist/`. Product sites
+can use lightweight attributes for common page-level differences:
+
+```html
+<re8ch-footer
+  active-product="cluster"
+  theme="light"
+  product-ids="anysite,ledger,registry-image,cluster,observable,anycam,phonaid"
+  record-ids="montana-sos,duns,icp,china-credit,linkedin,crunchbase,angellist"
+  records-visible="8"
+  contact-email="contact@re8ch.com"
+  career-email="career@re8ch.com"
+  contact-label="Contact Us"
+  career-label="Join Us"
+  address="Where We Are"
+  address-title="湖南省娄底市涟源市杨市镇锐奇软件开发工作室"
+  max-width="1600px">
+</re8ch-footer>
+```
+
+Supported attributes:
+
+- `active-product` - highlights one product: `anysite`, `ledger`, `registry-image`, `cluster`, `observable`, `anycam`, or `phonaid`.
+- `theme` - `light` or `dark`.
+- `compact`, `variant`, `max-width` - visual density and layout tuning.
+- `brand-logo` - RE8CH mark shown at the start of the product rail.
+- `products-label`, `product-ids`, `record-ids`, `records-visible` - rail content and loop-window tuning.
+- `hide-products`, `hide-records` - optional section suppression.
+- `copyright`, `icp`, `icp-href`, `address`, `address-title`, `contact-email`, `career-email`, `contact-label`, `career-label` - legal/contact overrides.
+
+## CDN Navigator Component
+
+The reusable product navigator is a framework-agnostic Web Component for shared
+RE8CH product navigation, CDN product logos, global language discovery, Liquid
+Glass theme controls, and baseline accessibility preferences.
+
+```html
+<link rel="stylesheet" href="https://brand-assets.re8ch.com/dist/re8ch-navigator.css">
+<script type="module" src="https://brand-assets.re8ch.com/dist/re8ch-navigator.js"></script>
+<re8ch-navigator
+  product="cluster"
+  locale="zh-CN"
+  links='[{"label":"Metrics","href":"#metrics"},{"label":"Workflow","href":"#workflow"},{"label":"Live Case","href":"#live"}]'>
+</re8ch-navigator>
+```
+
+Supported attributes:
+
+- `product` - `re8ch`, `anysite`, `ledger`, `registry-image`, `cluster`, `observable`, `anycam`, or `phonaid`.
+- `locale`, `brand`, `home-href`, `sticky`, `max-width` - layout and identity tuning.
+- `links`, `language-options`, `extra-actions` - JSON arrays for page-specific navigation and controls.
+- `language-mode` - `global` shows the built-in macro language catalog with unsupported items muted; `available` only shows `language-options`.
+- `glass-opacity` - optional initial Liquid Glass opacity from `0.1` to `0.9`.
+
+The component stores `light`, `dark`, or local-time `auto` theme preference in
+`re8ch-product-theme`. Accessibility preferences, including Reduce Motion, High
+Contrast, Larger Text, and Glass Opacity, are stored in `re8ch-accessibility`,
+then synchronized to `documentElement.dataset` and the shared footer.
+
+For larger site-level changes, override the default data before loading the component:
+
+```html
+<script>
+  window.RE8CH_FOOTER_CONFIG = {
+    brand: { logoSrc: "https://brand-assets.re8ch.com/SVG/logo.svg" }
+  };
+</script>
+```
+
+Trust mark fallback SVGs live in `src/trust-marks/` and `dist/trust-marks/`.
+They are compact identification assets for the footer and can be replaced by
+approved official brand-kit files without changing the component API. Current
+assets include the Montana Secretary of State state seal visual and the MIIT
+favicon for ICP context where available; other marks remain local fallbacks
+linked to official/public profile pages.
 
 ## Asset Source Of Truth
 

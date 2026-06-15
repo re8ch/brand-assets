@@ -1,14 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
   <title id="title">RE8CH Cluster Icon</title>
-  <desc id="desc">SF Symbols-inspired RE8CH cluster build and operations product mark.</desc>
-  <path d="M48 10L78 27V62L48 79L18 62V27Z" fill="transparent"/>
-  <path d="M48 19L70 32V57L48 70L26 57V32Z" fill="#f8fafc"/>
-  <path d="M48 19L70 32L48 45L26 32Z" fill="#0a7fbe"/>
-  <path d="M26 32L48 45V70L26 57Z" fill="#00b559"/>
-  <path d="M70 32L48 45V70L70 57Z" fill="#ffd619"/>
-  <circle cx="48" cy="45" r="8" fill="transparent"/>
-  <circle cx="31" cy="32" r="6" fill="#f81018"/>
-  <circle cx="65" cy="32" r="6" fill="#00b559"/>
-  <circle cx="48" cy="65" r="6" fill="#0a7fbe"/>
-  <path d="M31 32L48 45L65 32M48 45V65" fill="none" stroke="transparent" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <desc id="desc">RE8CH Cluster product mark derived from the yellow and green execution and delivery regions of the RE8CH flagship mark.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(-17 -30) scale(0.105)">
+      <path d="M291 777 L505 413 L571 532 L494 666 Z" fill="#ffd619" stroke="none"/>
+      <path d="M253 844 L574 657 L966 657 L1009 727 L943 834 Q940 844 927 845 L253 845 Z" fill="#00b559" stroke="none"/>
+    </g>
+  </g>
 </svg>

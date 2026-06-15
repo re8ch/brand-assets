@@ -1,21 +1,23 @@
 # Phonaid / 万能接线助手 Icon
 
-Product icon assets for **Phonaid / 万能接线助手**.
+Product logo assets for **Phonaid / 万能接线助手**.
 
 ## Design Direction
 
-These marks are inspired by the system discipline of SF Symbols: clear vector
-silhouette, small-size legibility, palette-friendly layers, and geometry that
-aligns cleanly with adjacent text. They are original RE8CH assets and do not
-copy Apple symbols.
+These marks use an original RE8CH system-symbol language: rounded strokes,
+compact silhouettes, small-size legibility, and palette-aware variants. They are
+not Apple SF Symbols artwork and do not copy Apple symbol shapes.
 
 ## Files
 
-- `SVG/icon.svg` - primary transparent product mark.
-- `SVG/icon-gray.svg` - grayscale product mark.
-- `SVG/icon-no-edge.svg` - color mark without the outer black edge.
-- `SVG/icon-invert.svg` - dark-surface product mark.
-- `PNG/icon.png` - 512 px transparent PNG rendered from the primary SVG.
+- `SVG/icon.svg` - primary transparent product logo.
+- `SVG/icon-no-edge.svg` - color-accent product logo without black keyline.
+- `SVG/icon-gray.svg` - grayscale product logo.
+- `SVG/icon-invert.svg` - dark-surface product logo.
+- `PNG/icon.png` - 512 px PNG render of `SVG/icon.svg`.
+- `PNG/icon-no-edge.png` - 512 px PNG render of `SVG/icon-no-edge.svg`.
+- `PNG/icon-gray.png` - 512 px PNG render of `SVG/icon-gray.svg`.
+- `PNG/icon-invert.png` - 512 px PNG render of `SVG/icon-invert.svg`.
 
 ## Public URLs
 

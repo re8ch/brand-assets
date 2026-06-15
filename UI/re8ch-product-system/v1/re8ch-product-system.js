@@ -6,9 +6,9 @@ const assetVersion = scriptUrl.search || '';
 const cssHref = `${componentBase}/re8ch-product-system.css${assetVersion}`;
 
 const colors = {
-  registry: '#7b4dff',
+  registry: '#0a7fbe',
   cluster: '#00b559',
-  observable: '#1268f3',
+  observable: '#f81018',
   red: '#f81018',
   yellow: '#ffd619',
   green: '#00b559',
@@ -85,7 +85,8 @@ function cssLink() {
 }
 
 function iconUrl(product) {
-  return `${baseUrl}/PRODUCTS/${product === 'image' ? 'registry' : product}/SVG/icon.svg`;
+  const key = product === 'image' || product === 'registry-image' ? 'registry' : product;
+  return `${baseUrl}/PRODUCTS/${key}/SVG/icon.svg`;
 }
 
 function themeIsDark(host) {

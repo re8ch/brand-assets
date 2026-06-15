@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RE8CH Footer Component Demo</title>
+    <link rel="stylesheet" href="../dist/re8ch-footer.css">
+    <style>
+      :root {
+        color: #0f172a;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body {
+        background: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      main {
+        display: grid;
+        flex: 1;
+        min-height: 0;
+        place-items: center;
+        padding: 56px 20px;
+      }
+
+      .demo-copy {
+        max-width: 760px;
+        text-align: center;
+      }
+
+      .demo-copy h1 {
+        font-size: clamp(36px, 7vw, 72px);
+        letter-spacing: 0;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .demo-copy p {
+        color: #64748b;
+        font-size: 18px;
+        line-height: 1.7;
+        margin: 20px auto 0;
+        max-width: 580px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="demo-copy">
+        <h1>Trust Center + Product Network</h1>
+        <p>Framework-agnostic CDN footer component for RE8CH product surfaces.</p>
+      </div>
+    </main>
+
+    <script>
+      window.RE8CH_FOOTER_CONFIG = {
+        brand: {
+          logoSrc: '../SVG/logo.svg',
+        },
+      };
+    </script>
+    <script type="module" src="../dist/re8ch-footer.js"></script>
+    <re8ch-footer active-product="cluster" theme="light"></re8ch-footer>
+  </body>
+</html>

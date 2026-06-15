@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
-  <title id="title">Any Site on Earth Icon Inverse</title>
-  <desc id="desc">A reverse-color RE8CH-style rocket and orbit mark for dark backgrounds.</desc>
-  <path d="M17 61C28 77 66 82 81 58" fill="none" stroke="#60a5fa" stroke-width="6" stroke-linecap="round"/>
-  <path d="M21 50C34 30 61 22 78 34" fill="none" stroke="#34d399" stroke-width="6" stroke-linecap="round"/>
-  <path d="M48 8C63 22 70 44 64 67H57L77 78H55L48 89L41 78H19L39 67H32C26 44 33 22 48 8Z" fill="#f8fafc"/>
-  <path d="M48 16C59 29 64 45 59 62H37C32 45 37 29 48 16Z" fill="#0b1220"/>
-  <path d="M48 16C55 24 59 33 61 43H35C37 33 41 24 48 16Z" fill="#2563eb"/>
-  <circle cx="48" cy="41" r="8" fill="#ffd619"/>
-  <path d="M37 62L26 73H41L44 63Z" fill="#f81018"/>
-  <path d="M59 62L70 73H55L52 63Z" fill="#00b559"/>
-  <path d="M43 69C44 75 46 80 48 83C50 80 52 75 53 69Z" fill="#ffd619"/>
-  <path d="M13 35L18 37L23 35L21 40L23 45L18 43L13 45L15 40Z" fill="#ffd619"/>
+  <title id="title">Any Site on Earth Icon</title>
+  <desc id="desc">Original RE8CH system-symbol location launch product mark.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 10Q65 27 65 53Q65 67 56 78H40Q31 67 31 53Q31 27 48 10Z" stroke="#f8fafc" stroke-width="7"/>
+    <circle cx="48" cy="45" r="8" stroke="#00b559" stroke-width="7"/>
+    <path d="M32 58Q19 63 13 78Q26 77 37 68" stroke="#0a7fbe" stroke-width="7"/>
+    <path d="M64 58Q77 63 83 78Q70 77 59 68" stroke="#0a7fbe" stroke-width="7"/>
+    <path d="M43 78L48 89L53 78" stroke="#f8fafc" stroke-width="7"/>
+    <path d="M17 82Q48 67 79 82" stroke="rgba(248,250,252,.28)" stroke-width="6"/>
+  </g>
 </svg>

@@ -1,19 +1,23 @@
-# 理账 / Ledger Icon
+# 理账 Ledger Icon
 
-Product icon assets for **理账 Ledger**, based on the original compact ledger
-mark from the shared `SVG/` and `PNG/` directories.
+Product logo assets for **理账 Ledger**.
+
+## Design Direction
+
+These marks use an original RE8CH system-symbol language: rounded strokes,
+compact silhouettes, small-size legibility, and palette-aware variants. They are
+not Apple SF Symbols artwork and do not copy Apple symbol shapes.
 
 ## Files
 
-- `SVG/icon.svg` - primary color icon with black edge.
-- `SVG/icon-gray.svg` - grayscale icon.
-- `SVG/icon-no-edge.svg` - color icon without the outer black edge.
-- `SVG/icon-invert.svg` - dark-surface icon with a light edge.
-- `PNG/icon.png` - primary transparent PNG.
-- `PNG/icon-512.png` - 512 px transparent PNG for app and touch icons.
-- `PNG/icon-gray.png` - grayscale transparent PNG.
-- `PNG/icon-no-edge.png` - no-edge transparent PNG.
-- `PNG/icon-invert.png` - inverted transparent PNG.
+- `SVG/icon.svg` - primary transparent product logo.
+- `SVG/icon-no-edge.svg` - color-accent product logo without black keyline.
+- `SVG/icon-gray.svg` - grayscale product logo.
+- `SVG/icon-invert.svg` - dark-surface product logo.
+- `PNG/icon.png` - 512 px PNG render of `SVG/icon.svg`.
+- `PNG/icon-no-edge.png` - 512 px PNG render of `SVG/icon-no-edge.svg`.
+- `PNG/icon-gray.png` - 512 px PNG render of `SVG/icon-gray.svg`.
+- `PNG/icon-invert.png` - 512 px PNG render of `SVG/icon-invert.svg`.
 
 ## Public URLs
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Montana Secretary of State">
+  <circle cx="24" cy="24" r="20" fill="#f8fafc" stroke="#47657f" stroke-width="2.4"/>
+  <circle cx="24" cy="24" r="15" fill="none" stroke="#47657f" stroke-width="1.2" opacity=".62"/>
+  <path d="M13 29h22M16 26l8-11 8 11M18 29l6-7 6 7" fill="none" stroke="#47657f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 34h20" stroke="#47657f" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -9,189 +9,242 @@ const __filename = fileURLToPath(import.meta.url);
 const root = path.dirname(path.dirname(__filename));
 
 const COLORS = {
-  edge: '#020202',
-  invertEdge: '#f8fafc',
+  ink: '#111820',
   white: '#f8fafc',
   red: '#f81018',
   green: '#00b559',
   yellow: '#ffd619',
   blue: '#0a7fbe',
   softBlue: '#2287c9',
-  grayEdge: '#1f2937',
-  grayA: '#f8fafc',
-  grayB: '#cbd5e1',
-  grayC: '#64748b',
-  grayD: '#334155',
+  grayInk: '#1f2937',
+  grayAccent: '#64748b',
+  grayAccent2: '#cbd5e1',
 };
 
 const products = [
   {
     slug: 'anycam',
     name: 'Anycam / 任意相机',
-    description: 'SF Symbols-inspired RE8CH camera product mark.',
+    description: 'Original RE8CH system-symbol camera product mark.',
+    accent: COLORS.softBlue,
+    accent2: COLORS.yellow,
     symbol: camera,
   },
   {
     slug: 'phonaid',
     name: 'Phonaid / 万能接线助手',
-    description: 'SF Symbols-inspired RE8CH call assistant product mark.',
+    description: 'Original RE8CH system-symbol call assistant product mark.',
+    accent: COLORS.green,
+    accent2: COLORS.yellow,
     symbol: microphone,
   },
   {
     slug: 'anysiteonearth',
     name: 'Any Site on Earth',
-    description: 'SF Symbols-inspired RE8CH location launch product mark.',
+    description: 'Original RE8CH system-symbol location launch product mark.',
+    accent: COLORS.blue,
+    accent2: COLORS.green,
     symbol: rocket,
+    extraVariants: [
+      ['icon-flat.svg', 'flat'],
+      ['icon-inverse.svg', 'inverse'],
+      ['icon-minimal-light.svg', 'minimal-light'],
+      ['icon-minimal-dark.svg', 'minimal-dark'],
+    ],
+  },
+  {
+    slug: 'lizhang-ledger',
+    name: '理账 Ledger',
+    description: 'Original RE8CH system-symbol ledger product mark.',
+    accent: COLORS.blue,
+    accent2: COLORS.yellow,
+    symbol: ledger,
   },
   {
     slug: 'registry',
     name: 'RE8CH Registry',
-    description: 'SF Symbols-inspired RE8CH signed image registry product mark.',
+    description: 'RE8CH Registry product mark derived from the blue and yellow security and certification regions of the RE8CH flagship mark.',
+    designDirection: 'This mark directly reuses the original RE8CH flagship SVG path geometry for the blue and yellow regions, representing security, registry, and certification surfaces.',
+    accent: COLORS.blue,
+    accent2: COLORS.yellow,
     symbol: registry,
   },
   {
     slug: 'cluster',
     name: 'RE8CH Cluster',
-    description: 'SF Symbols-inspired RE8CH cluster build and operations product mark.',
+    description: 'RE8CH Cluster product mark derived from the yellow and green execution and delivery regions of the RE8CH flagship mark.',
+    designDirection: 'This mark directly reuses the original RE8CH flagship SVG path geometry for the yellow and green regions, representing execution, delivery, and cluster operations.',
+    accent: COLORS.green,
+    accent2: COLORS.yellow,
     symbol: cluster,
   },
   {
     slug: 'observable',
     name: 'RE8CH Observable',
-    description: 'SF Symbols-inspired RE8CH observability product mark.',
+    description: 'RE8CH Observable product mark derived from the red observability region of the RE8CH flagship mark.',
+    designDirection: 'This mark directly reuses the original RE8CH flagship SVG path geometry for the red inverted-V region, representing observability and signal surfaces.',
+    accent: COLORS.red,
+    accent2: COLORS.red,
     symbol: observable,
   },
 ];
 
-const variants = [
+const baseVariants = [
   ['icon.svg', 'primary'],
   ['icon-no-edge.svg', 'no-edge'],
   ['icon-gray.svg', 'gray'],
   ['icon-invert.svg', 'invert'],
 ];
 
-function palette(mode) {
+function palette(product, mode) {
   if (mode === 'gray') {
     return {
-      edge: COLORS.grayEdge,
-      white: COLORS.grayA,
-      red: COLORS.grayD,
-      green: COLORS.grayC,
-      yellow: COLORS.grayB,
-      blue: COLORS.grayD,
-      softBlue: COLORS.grayC,
+      ink: COLORS.grayInk,
+      accent: COLORS.grayAccent,
+      accent2: COLORS.grayAccent2,
+      soft: COLORS.grayAccent2,
+      edge: COLORS.grayInk,
+      red: COLORS.grayAccent,
+      blue: COLORS.grayAccent,
+      yellow: COLORS.grayAccent2,
+      green: COLORS.grayAccent,
     };
   }
 
-  if (mode === 'invert') {
+  if (mode === 'invert' || mode === 'inverse' || mode === 'minimal-dark') {
     return {
-      ...COLORS,
-      edge: COLORS.invertEdge,
-      white: '#111827',
+      ink: COLORS.white,
+      accent: product.accent,
+      accent2: product.accent2,
+      soft: 'rgba(248,250,252,.28)',
+      edge: COLORS.white,
+      red: COLORS.red,
+      blue: COLORS.blue,
+      yellow: COLORS.yellow,
+      green: COLORS.green,
     };
   }
 
-  if (mode === 'no-edge') {
+  if (mode === 'no-edge' || mode === 'flat') {
     return {
-      ...COLORS,
+      ink: product.accent,
+      accent: product.accent2,
+      accent2: COLORS.red,
+      soft: 'rgba(17,24,32,.18)',
       edge: 'transparent',
+      red: COLORS.red,
+      blue: COLORS.blue,
+      yellow: COLORS.yellow,
+      green: COLORS.green,
     };
   }
 
-  return COLORS;
+  if (mode === 'minimal-light') {
+    return {
+      ink: COLORS.ink,
+      accent: COLORS.ink,
+      accent2: COLORS.ink,
+      soft: 'rgba(17,24,32,.18)',
+      edge: COLORS.ink,
+      red: COLORS.ink,
+      blue: COLORS.ink,
+      yellow: COLORS.ink,
+      green: COLORS.ink,
+    };
+  }
+
+  return {
+    ink: COLORS.ink,
+    accent: product.accent,
+    accent2: product.accent2,
+    soft: 'rgba(17,24,32,.16)',
+    edge: COLORS.ink,
+    red: COLORS.red,
+    blue: COLORS.blue,
+    yellow: COLORS.yellow,
+    green: COLORS.green,
+  };
 }
 
 function svg({ product, mode }) {
-  const p = palette(mode);
+  const p = palette(product, mode);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
   <title id="title">${escapeXml(product.name)} Icon</title>
   <desc id="desc">${escapeXml(product.description)}</desc>
-  ${product.symbol(p, mode)}
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    ${product.symbol(p)}
+  </g>
 </svg>
 `;
 }
 
 function camera(p) {
-  return `<path d="M13 35Q13 26 22 26H33L39 18H58L64 26H74Q83 26 83 35V72Q83 81 74 81H22Q13 81 13 72Z" fill="${p.edge}"/>
-  <path d="M21 36H38L44 28H54L60 36H75V71H21Z" fill="${p.white}"/>
-  <path d="M21 36H38L44 28H54L60 36H75V45H21Z" fill="${p.blue}"/>
-  <circle cx="49" cy="58" r="25" fill="${p.edge}"/>
-  <circle cx="49" cy="58" r="19" fill="${p.green}"/>
-  <circle cx="49" cy="58" r="12" fill="${p.softBlue}"/>
-  <circle cx="49" cy="58" r="6" fill="${p.yellow}"/>
-  <path d="M25 39H34V46H25Z" fill="${p.red}"/>
-  <path d="M66 46H75V57H70V51H66Z" fill="${p.red}"/>
-  <circle cx="32" cy="42" r="4" fill="${p.red}"/>
-  <circle cx="42" cy="53" r="4" fill="${p.white}" opacity=".72"/>`;
+  return `<path d="M17 36.5Q17 29 24.5 29H34L40 21H56L62 29H71.5Q79 29 79 36.5V69Q79 76 72 76H24Q17 76 17 69Z" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M33 29H63" stroke="${p.soft}" stroke-width="7"/>
+    <circle cx="48" cy="55" r="18" stroke="${p.ink}" stroke-width="7"/>
+    <circle cx="48" cy="55" r="7" stroke="${p.accent}" stroke-width="7"/>
+    <path d="M27 43H34" stroke="${p.accent2}" stroke-width="7"/>
+    <path d="M65 43H69" stroke="${p.ink}" stroke-width="7"/>`;
 }
 
 function microphone(p) {
-  return `<path d="M34 23Q34 13 48 13Q62 13 62 23V43Q62 53 48 53Q34 53 34 43Z" fill="${p.edge}"/>
-  <path d="M41 24Q41 19 48 19Q55 19 55 24V42Q55 47 48 47Q41 47 41 42Z" fill="${p.white}"/>
-  <path d="M23 39Q19 48 23 58" fill="none" stroke="${p.red}" stroke-width="7" stroke-linecap="round"/>
-  <path d="M14 34Q8 49 14 64" fill="none" stroke="${p.red}" stroke-width="7" stroke-linecap="round"/>
-  <path d="M73 39Q77 48 73 58" fill="none" stroke="${p.yellow}" stroke-width="7" stroke-linecap="round"/>
-  <path d="M82 34Q88 49 82 64" fill="none" stroke="${p.yellow}" stroke-width="7" stroke-linecap="round"/>
-  <path d="M28 49Q28 68 48 68Q68 68 68 49" fill="none" stroke="${p.edge}" stroke-width="9" stroke-linecap="round"/>
-  <path d="M34 51Q34 61 48 61Q62 61 62 51" fill="none" stroke="${p.white}" stroke-width="8" stroke-linecap="round"/>
-  <path d="M48 67V78" stroke="${p.edge}" stroke-width="8" stroke-linecap="round"/>
-  <path d="M33 82H63" stroke="${p.edge}" stroke-width="8" stroke-linecap="round"/>
-  <path d="M13 66H83V82Q83 88 77 88H19Q13 88 13 82Z" fill="${p.green}" opacity=".96"/>
-  <path d="M35 82H61" stroke="${p.white}" stroke-width="6" stroke-linecap="round"/>`;
+  return `<rect x="36" y="13" width="24" height="40" rx="12" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M25 43Q25 66 48 66Q71 66 71 43" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M48 66V80" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M34 80H62" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M20 35Q13 48 20 61" stroke="${p.accent}" stroke-width="7"/>
+    <path d="M76 35Q83 48 76 61" stroke="${p.accent2}" stroke-width="7"/>
+    <path d="M43 26H53" stroke="${p.soft}" stroke-width="6"/>`;
 }
 
 function rocket(p) {
-  return `<path d="M48 10Q67 28 67 55Q67 69 58 80H38Q29 69 29 55Q29 28 48 10Z" fill="${p.edge}"/>
-  <path d="M48 20Q60 34 60 55Q60 64 55 73H41Q36 64 36 55Q36 34 48 20Z" fill="${p.white}"/>
-  <path d="M48 20Q57 32 59 48H37Q39 32 48 20Z" fill="${p.blue}"/>
-  <circle cx="48" cy="51" r="8" fill="${p.yellow}"/>
-  <path d="M30 57Q14 64 9 78Q23 77 35 67Z" fill="${p.green}"/>
-  <path d="M66 57Q82 64 87 78Q73 77 61 67Z" fill="${p.green}"/>
-  <path d="M37 72L25 86H43Z" fill="${p.red}"/>
-  <path d="M59 72L71 86H53Z" fill="${p.green}"/>
-  <path d="M43 75L48 91L54 75Z" fill="${p.edge}"/>
-  <path d="M46 77L48 86L51 77Z" fill="${p.yellow}"/>
-  <path d="M14 68Q32 77 48 77Q64 77 82 68" fill="none" stroke="${p.edge}" stroke-width="6" stroke-linecap="round"/>`;
+  return `<path d="M48 10Q65 27 65 53Q65 67 56 78H40Q31 67 31 53Q31 27 48 10Z" stroke="${p.ink}" stroke-width="7"/>
+    <circle cx="48" cy="45" r="8" stroke="${p.accent2}" stroke-width="7"/>
+    <path d="M32 58Q19 63 13 78Q26 77 37 68" stroke="${p.accent}" stroke-width="7"/>
+    <path d="M64 58Q77 63 83 78Q70 77 59 68" stroke="${p.accent}" stroke-width="7"/>
+    <path d="M43 78L48 89L53 78" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M17 82Q48 67 79 82" stroke="${p.soft}" stroke-width="6"/>`;
 }
 
+function ledger(p) {
+  return `<path d="M23 18H64Q74 18 74 28V78H34Q23 78 23 67Z" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M34 18V78" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M34 65H74" stroke="${p.ink}" stroke-width="7"/>
+    <path d="M45 36H61" stroke="${p.soft}" stroke-width="6"/>
+    <path d="M45 48H58" stroke="${p.soft}" stroke-width="6"/>
+    <path d="M55 55L62 62L76 44" stroke="${p.accent2}" stroke-width="7"/>
+    <path d="M24 31H33" stroke="${p.accent}" stroke-width="7"/>`;
+}
+
+const LOGO_REGION_PATHS = {
+  red: 'M225 843 L156 727 L526 83 Q531 78 540 78 L632 78 Q639 78 644 88 L955 632 L813 632 L583 244 L252 795 Z',
+  greenEdge: 'M246 845 L566 638 L973 638 Q983 639 989 648 L1023 716 Q1032 729 1023 743 L963 840 Q954 856 934 856 L222 856 Q239 847 246 845 Z',
+  green: 'M253 844 L574 657 L966 657 L1009 727 L943 834 Q940 844 927 845 L253 845 Z',
+  yellowEdge: 'M251 808 L504 383 L590 531 L503 697 Z',
+  yellow: 'M291 777 L505 413 L571 532 L494 666 Z',
+  blueEdge: 'M497 386 L582 239 L824 657 L646 657 Z',
+  blue: 'M516 390 L582 275 L792 638 L657 638 Z',
+  centerEdge: 'M503 682 L583 536 L654 656 L575 656 Z',
+};
+
 function registry(p) {
-  return `<path d="M17 23Q17 16 24 16H72Q79 16 79 23V73Q79 80 72 80H24Q17 80 17 73Z" fill="${p.edge}"/>
-  <path d="M25 24H71V72H25Z" fill="${p.white}"/>
-  <path d="M25 24H71V38H25Z" fill="${p.blue}"/>
-  <path d="M34 47H62V66H34Z" fill="${p.edge}"/>
-  <path d="M40 47H68V66H40Z" fill="${p.green}"/>
-  <path d="M28 40H56V59H28Z" fill="${p.edge}"/>
-  <path d="M34 40H62V59H34Z" fill="${p.white}"/>
-  <path d="M34 40H62V47H34Z" fill="${p.yellow}"/>
-  <path d="M40 53H56" stroke="${p.edge}" stroke-width="5" stroke-linecap="round"/>
-  <path d="M33 28H43" stroke="${p.white}" stroke-width="5" stroke-linecap="round"/>
-  <path d="M50 28H63" stroke="${p.white}" stroke-width="5" stroke-linecap="round"/>
-  <path d="M71 55L82 61L71 67Z" fill="${p.red}"/>`;
+  return `<g transform="translate(-30 -26) scale(0.145)">
+      <path d="${LOGO_REGION_PATHS.yellow}" fill="${p.yellow}" stroke="none"/>
+      <path d="${LOGO_REGION_PATHS.blue}" fill="${p.blue}" stroke="none"/>
+    </g>`;
 }
 
 function cluster(p) {
-  return `<path d="M48 10L78 27V62L48 79L18 62V27Z" fill="${p.edge}"/>
-  <path d="M48 19L70 32V57L48 70L26 57V32Z" fill="${p.white}"/>
-  <path d="M48 19L70 32L48 45L26 32Z" fill="${p.blue}"/>
-  <path d="M26 32L48 45V70L26 57Z" fill="${p.green}"/>
-  <path d="M70 32L48 45V70L70 57Z" fill="${p.yellow}"/>
-  <circle cx="48" cy="45" r="8" fill="${p.edge}"/>
-  <circle cx="31" cy="32" r="6" fill="${p.red}"/>
-  <circle cx="65" cy="32" r="6" fill="${p.green}"/>
-  <circle cx="48" cy="65" r="6" fill="${p.blue}"/>
-  <path d="M31 32L48 45L65 32M48 45V65" fill="none" stroke="${p.edge}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+  return `<g transform="translate(-17 -30) scale(0.105)">
+      <path d="${LOGO_REGION_PATHS.yellow}" fill="${p.yellow}" stroke="none"/>
+      <path d="${LOGO_REGION_PATHS.green}" fill="${p.green}" stroke="none"/>
+    </g>`;
 }
 
 function observable(p) {
-  return `<path d="M8 48Q22 24 48 24Q74 24 88 48Q74 72 48 72Q22 72 8 48Z" fill="${p.edge}"/>
-  <path d="M18 48Q30 32 48 32Q66 32 78 48Q66 64 48 64Q30 64 18 48Z" fill="${p.white}"/>
-  <circle cx="48" cy="48" r="18" fill="${p.blue}"/>
-  <circle cx="48" cy="48" r="11" fill="${p.green}"/>
-  <circle cx="48" cy="48" r="5" fill="${p.yellow}"/>
-  <path d="M14 72H30L38 59L48 76L58 57L66 72H82" fill="none" stroke="${p.red}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M19 24H35" stroke="${p.green}" stroke-width="6" stroke-linecap="round"/>
-  <path d="M61 24H77" stroke="${p.yellow}" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="42" cy="42" r="4" fill="${p.white}" opacity=".72"/>`;
+  return `<g transform="translate(-13 -7) scale(0.105)">
+      <path d="${LOGO_REGION_PATHS.red}" fill="${p.red}" stroke="${p.edge}" stroke-width="22" paint-order="stroke fill"/>
+    </g>`;
 }
 
 function escapeXml(value) {
@@ -202,25 +255,24 @@ function escapeXml(value) {
     .replaceAll('"', '&quot;');
 }
 
-function readme(product) {
+function readme(product, variants) {
+  const svgFiles = variants.map(([fileName]) => `- \`SVG/${fileName}\` - ${variantDescription(fileName)}.`).join('\n');
+  const pngFiles = variants.map(([fileName]) => `- \`PNG/${fileName.replace(/\.svg$/, '.png')}\` - 512 px PNG render of \`SVG/${fileName}\`.`).join('\n');
+
   return `# ${product.name} Icon
 
-Product icon assets for **${product.name}**.
+Product logo assets for **${product.name}**.
 
 ## Design Direction
 
-These marks are inspired by the system discipline of SF Symbols: clear vector
-silhouette, small-size legibility, palette-friendly layers, and geometry that
-aligns cleanly with adjacent text. They are original RE8CH assets and do not
-copy Apple symbols.
+${product.designDirection || `These marks use an original RE8CH system-symbol language: rounded strokes,
+compact silhouettes, small-size legibility, and palette-aware variants. They are
+not Apple SF Symbols artwork and do not copy Apple symbol shapes.`}
 
 ## Files
 
-- \`SVG/icon.svg\` - primary transparent product mark.
-- \`SVG/icon-gray.svg\` - grayscale product mark.
-- \`SVG/icon-no-edge.svg\` - color mark without the outer black edge.
-- \`SVG/icon-invert.svg\` - dark-surface product mark.
-- \`PNG/icon.png\` - 512 px transparent PNG rendered from the primary SVG.
+${svgFiles}
+${pngFiles}
 
 ## Public URLs
 
@@ -235,23 +287,47 @@ https://zh-brand-assets.re8ch.com/PRODUCTS/${product.slug}/PNG/icon.png
 `;
 }
 
+function variantDescription(fileName) {
+  switch (fileName) {
+    case 'icon.svg':
+      return 'primary transparent product logo';
+    case 'icon-no-edge.svg':
+      return 'color-accent product logo without black keyline';
+    case 'icon-gray.svg':
+      return 'grayscale product logo';
+    case 'icon-invert.svg':
+    case 'icon-inverse.svg':
+      return 'dark-surface product logo';
+    case 'icon-flat.svg':
+      return 'flat color-accent product logo';
+    case 'icon-minimal-light.svg':
+      return 'single-color light-surface product logo';
+    case 'icon-minimal-dark.svg':
+      return 'single-color dark-surface product logo';
+    default:
+      return 'product logo variant';
+  }
+}
+
 async function main() {
   for (const product of products) {
+    const variants = [...baseVariants, ...(product.extraVariants || [])];
     const base = path.join(root, 'PRODUCTS', product.slug);
     const svgDir = path.join(base, 'SVG');
     const pngDir = path.join(base, 'PNG');
     await fs.mkdir(svgDir, { recursive: true });
     await fs.mkdir(pngDir, { recursive: true });
 
-    let primary;
     for (const [fileName, mode] of variants) {
       const content = svg({ product, mode });
-      if (fileName === 'icon.svg') primary = content;
       await fs.writeFile(path.join(svgDir, fileName), content, 'utf8');
+      await sharp(Buffer.from(content))
+        .resize(512, 512)
+        .png()
+        .toFile(path.join(pngDir, fileName.replace(/\.svg$/, '.png')));
     }
 
-    await sharp(Buffer.from(primary)).resize(512, 512).png().toFile(path.join(pngDir, 'icon.png'));
-    await fs.writeFile(path.join(base, 'README.md'), readme(product), 'utf8');
+    await fs.writeFile(path.join(base, 'README.md'), readme(product, variants), 'utf8');
   }
 }
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="ICP Certified">
+  <circle cx="24" cy="24" r="19" fill="#f8fafc" stroke="#2563eb" stroke-width="2.4"/>
+  <path d="M15 15h18v18H15z" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M19 21h10M19 26h10M19 31h6" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="m31 18 4-4M31 14h4v4" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
