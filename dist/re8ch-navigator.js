@@ -79,6 +79,50 @@ const GLASS_OPACITY_MIN = 0.1;
 const GLASS_OPACITY_MAX = 0.9;
 const GLASS_OPACITY_STEP = 0.05;
 
+const NAVIGATOR_UI_COPY = {
+  en: {
+    menu: 'Menu',
+    language: 'Language',
+    theme: 'Theme',
+    darkTheme: 'Dark theme',
+    autoTheme: 'Auto theme by local time',
+    lightTheme: 'Light theme',
+    accessibility: 'Accessibility',
+    accessibilitySettings: 'Accessibility quick settings',
+    reduceMotion: 'Reduce Motion',
+    highContrast: 'High Contrast',
+    largerText: 'Larger Text',
+    glass: 'Glass',
+    glassOpacity: 'Glass opacity',
+  },
+  'zh-CN': { menu: '菜单', language: '语言', theme: '主题', darkTheme: '深色主题', autoTheme: '自动主题', lightTheme: '浅色主题', accessibility: '无障碍', accessibilitySettings: '无障碍快捷设置', reduceMotion: '减少动态效果', highContrast: '高对比度', largerText: '更大文字', glass: '玻璃', glassOpacity: '玻璃透明度' },
+  'zh-TW': { menu: '選單', language: '語言', theme: '主題', darkTheme: '深色主題', autoTheme: '自動主題', lightTheme: '淺色主題', accessibility: '無障礙', accessibilitySettings: '無障礙快捷設定', reduceMotion: '減少動態效果', highContrast: '高對比度', largerText: '更大文字', glass: '玻璃', glassOpacity: '玻璃透明度' },
+  es: { menu: 'Menú', language: 'Idioma', theme: 'Tema', darkTheme: 'Tema oscuro', autoTheme: 'Tema automático', lightTheme: 'Tema claro', accessibility: 'Accesibilidad', accessibilitySettings: 'Ajustes rápidos de accesibilidad', reduceMotion: 'Reducir movimiento', highContrast: 'Alto contraste', largerText: 'Texto más grande', glass: 'Cristal', glassOpacity: 'Opacidad del cristal' },
+  ar: { menu: 'القائمة', language: 'اللغة', theme: 'السمة', darkTheme: 'السمة الداكنة', autoTheme: 'السمة التلقائية', lightTheme: 'السمة الفاتحة', accessibility: 'إمكانية الوصول', accessibilitySettings: 'إعدادات إمكانية الوصول السريعة', reduceMotion: 'تقليل الحركة', highContrast: 'تباين عال', largerText: 'نص أكبر', glass: 'زجاج', glassOpacity: 'شفافية الزجاج' },
+  hi: { menu: 'मेनू', language: 'भाषा', theme: 'थीम', darkTheme: 'डार्क थीम', autoTheme: 'ऑटो थीम', lightTheme: 'लाइट थीम', accessibility: 'एक्सेसिबिलिटी', accessibilitySettings: 'एक्सेसिबिलिटी त्वरित सेटिंग्स', reduceMotion: 'मोशन कम करें', highContrast: 'हाई कॉन्ट्रास्ट', largerText: 'बड़ा टेक्स्ट', glass: 'ग्लास', glassOpacity: 'ग्लास अपारदर्शिता' },
+  'pt-BR': { menu: 'Menu', language: 'Idioma', theme: 'Tema', darkTheme: 'Tema escuro', autoTheme: 'Tema automático', lightTheme: 'Tema claro', accessibility: 'Acessibilidade', accessibilitySettings: 'Ajustes rápidos de acessibilidade', reduceMotion: 'Reduzir movimento', highContrast: 'Alto contraste', largerText: 'Texto maior', glass: 'Vidro', glassOpacity: 'Opacidade do vidro' },
+  bn: { menu: 'মেনু', language: 'ভাষা', theme: 'থিম', darkTheme: 'ডার্ক থিম', autoTheme: 'অটো থিম', lightTheme: 'লাইট থিম', accessibility: 'অ্যাক্সেসিবিলিটি', accessibilitySettings: 'অ্যাক্সেসিবিলিটি দ্রুত সেটিংস', reduceMotion: 'মোশন কমান', highContrast: 'উচ্চ কনট্রাস্ট', largerText: 'বড় লেখা', glass: 'গ্লাস', glassOpacity: 'গ্লাস অপাসিটি' },
+  ru: { menu: 'Меню', language: 'Язык', theme: 'Тема', darkTheme: 'Темная тема', autoTheme: 'Авто тема', lightTheme: 'Светлая тема', accessibility: 'Доступность', accessibilitySettings: 'Быстрые настройки доступности', reduceMotion: 'Меньше движения', highContrast: 'Высокий контраст', largerText: 'Крупный текст', glass: 'Стекло', glassOpacity: 'Прозрачность стекла' },
+  ja: { menu: 'メニュー', language: '言語', theme: 'テーマ', darkTheme: 'ダークテーマ', autoTheme: '自動テーマ', lightTheme: 'ライトテーマ', accessibility: 'アクセシビリティ', accessibilitySettings: 'アクセシビリティ設定', reduceMotion: '動きを減らす', highContrast: '高コントラスト', largerText: '大きな文字', glass: 'ガラス', glassOpacity: 'ガラスの透明度' },
+  fr: { menu: 'Menu', language: 'Langue', theme: 'Thème', darkTheme: 'Thème sombre', autoTheme: 'Thème automatique', lightTheme: 'Thème clair', accessibility: 'Accessibilité', accessibilitySettings: 'Réglages rapides d’accessibilité', reduceMotion: 'Réduire les animations', highContrast: 'Contraste élevé', largerText: 'Texte plus grand', glass: 'Verre', glassOpacity: 'Opacité du verre' },
+  de: { menu: 'Menü', language: 'Sprache', theme: 'Design', darkTheme: 'Dunkles Design', autoTheme: 'Automatisches Design', lightTheme: 'Helles Design', accessibility: 'Barrierefreiheit', accessibilitySettings: 'Schnelleinstellungen für Barrierefreiheit', reduceMotion: 'Bewegung reduzieren', highContrast: 'Hoher Kontrast', largerText: 'Größerer Text', glass: 'Glas', glassOpacity: 'Glas-Deckkraft' },
+  ko: { menu: '메뉴', language: '언어', theme: '테마', darkTheme: '다크 테마', autoTheme: '자동 테마', lightTheme: '라이트 테마', accessibility: '접근성', accessibilitySettings: '접근성 빠른 설정', reduceMotion: '동작 줄이기', highContrast: '고대비', largerText: '큰 글자', glass: '글래스', glassOpacity: '글래스 투명도' },
+  id: { menu: 'Menu', language: 'Bahasa', theme: 'Tema', darkTheme: 'Tema gelap', autoTheme: 'Tema otomatis', lightTheme: 'Tema terang', accessibility: 'Aksesibilitas', accessibilitySettings: 'Pengaturan cepat aksesibilitas', reduceMotion: 'Kurangi gerakan', highContrast: 'Kontras tinggi', largerText: 'Teks lebih besar', glass: 'Kaca', glassOpacity: 'Opasitas kaca' },
+  tr: { menu: 'Menü', language: 'Dil', theme: 'Tema', darkTheme: 'Koyu tema', autoTheme: 'Otomatik tema', lightTheme: 'Açık tema', accessibility: 'Erişilebilirlik', accessibilitySettings: 'Erişilebilirlik hızlı ayarları', reduceMotion: 'Hareketi azalt', highContrast: 'Yüksek kontrast', largerText: 'Daha büyük metin', glass: 'Cam', glassOpacity: 'Cam opaklığı' },
+  vi: { menu: 'Menu', language: 'Ngôn ngữ', theme: 'Giao diện', darkTheme: 'Giao diện tối', autoTheme: 'Giao diện tự động', lightTheme: 'Giao diện sáng', accessibility: 'Trợ năng', accessibilitySettings: 'Cài đặt trợ năng nhanh', reduceMotion: 'Giảm chuyển động', highContrast: 'Tương phản cao', largerText: 'Chữ lớn hơn', glass: 'Kính', glassOpacity: 'Độ mờ kính' },
+  it: { menu: 'Menu', language: 'Lingua', theme: 'Tema', darkTheme: 'Tema scuro', autoTheme: 'Tema automatico', lightTheme: 'Tema chiaro', accessibility: 'Accessibilità', accessibilitySettings: 'Impostazioni rapide di accessibilità', reduceMotion: 'Riduci movimento', highContrast: 'Contrasto elevato', largerText: 'Testo più grande', glass: 'Vetro', glassOpacity: 'Opacità del vetro' },
+  fa: { menu: 'منو', language: 'زبان', theme: 'پوسته', darkTheme: 'پوسته تیره', autoTheme: 'پوسته خودکار', lightTheme: 'پوسته روشن', accessibility: 'دسترس‌پذیری', accessibilitySettings: 'تنظیمات سریع دسترس‌پذیری', reduceMotion: 'کاهش حرکت', highContrast: 'کنتراست بالا', largerText: 'متن بزرگ‌تر', glass: 'شیشه', glassOpacity: 'شفافیت شیشه' },
+  ur: { menu: 'مینو', language: 'زبان', theme: 'تھیم', darkTheme: 'ڈارک تھیم', autoTheme: 'آٹو تھیم', lightTheme: 'لائٹ تھیم', accessibility: 'رسائی', accessibilitySettings: 'رسائی کی فوری ترتیبات', reduceMotion: 'حرکت کم کریں', highContrast: 'زیادہ کنٹراسٹ', largerText: 'بڑا متن', glass: 'شیشہ', glassOpacity: 'شیشے کی شفافیت' },
+  th: { menu: 'เมนู', language: 'ภาษา', theme: 'ธีม', darkTheme: 'ธีมมืด', autoTheme: 'ธีมอัตโนมัติ', lightTheme: 'ธีมสว่าง', accessibility: 'การช่วยการเข้าถึง', accessibilitySettings: 'ตั้งค่าการช่วยการเข้าถึงด่วน', reduceMotion: 'ลดการเคลื่อนไหว', highContrast: 'คอนทราสต์สูง', largerText: 'ข้อความใหญ่ขึ้น', glass: 'กระจก', glassOpacity: 'ความทึบของกระจก' },
+  pl: { menu: 'Menu', language: 'Język', theme: 'Motyw', darkTheme: 'Ciemny motyw', autoTheme: 'Automatyczny motyw', lightTheme: 'Jasny motyw', accessibility: 'Dostępność', accessibilitySettings: 'Szybkie ustawienia dostępności', reduceMotion: 'Ogranicz ruch', highContrast: 'Wysoki kontrast', largerText: 'Większy tekst', glass: 'Szkło', glassOpacity: 'Przezroczystość szkła' },
+  nl: { menu: 'Menu', language: 'Taal', theme: 'Thema', darkTheme: 'Donker thema', autoTheme: 'Automatisch thema', lightTheme: 'Licht thema', accessibility: 'Toegankelijkheid', accessibilitySettings: 'Snelle toegankelijkheidsinstellingen', reduceMotion: 'Minder beweging', highContrast: 'Hoog contrast', largerText: 'Grotere tekst', glass: 'Glas', glassOpacity: 'Glasdekking' },
+  sw: { menu: 'Menyu', language: 'Lugha', theme: 'Mandhari', darkTheme: 'Mandhari meusi', autoTheme: 'Mandhari ya moja kwa moja', lightTheme: 'Mandhari meupe', accessibility: 'Ufikiaji', accessibilitySettings: 'Mipangilio ya haraka ya ufikiaji', reduceMotion: 'Punguza mwendo', highContrast: 'Utofautishaji mkubwa', largerText: 'Maandishi makubwa', glass: 'Kioo', glassOpacity: 'Uwazi wa kioo' },
+  ms: { menu: 'Menu', language: 'Bahasa', theme: 'Tema', darkTheme: 'Tema gelap', autoTheme: 'Tema automatik', lightTheme: 'Tema cerah', accessibility: 'Kebolehcapaian', accessibilitySettings: 'Tetapan pantas kebolehcapaian', reduceMotion: 'Kurangkan gerakan', highContrast: 'Kontras tinggi', largerText: 'Teks lebih besar', glass: 'Kaca', glassOpacity: 'Kelegapan kaca' },
+  fil: { menu: 'Menu', language: 'Wika', theme: 'Tema', darkTheme: 'Madilim na tema', autoTheme: 'Awtomatikong tema', lightTheme: 'Maliwanag na tema', accessibility: 'Pagiging naa-access', accessibilitySettings: 'Mabilisang setting sa accessibility', reduceMotion: 'Bawasan ang galaw', highContrast: 'Mataas na contrast', largerText: 'Mas malaking text', glass: 'Salamin', glassOpacity: 'Opacity ng salamin' },
+  uk: { menu: 'Меню', language: 'Мова', theme: 'Тема', darkTheme: 'Темна тема', autoTheme: 'Автоматична тема', lightTheme: 'Світла тема', accessibility: 'Доступність', accessibilitySettings: 'Швидкі налаштування доступності', reduceMotion: 'Менше руху', highContrast: 'Високий контраст', largerText: 'Більший текст', glass: 'Скло', glassOpacity: 'Прозорість скла' },
+  he: { menu: 'תפריט', language: 'שפה', theme: 'ערכת נושא', darkTheme: 'ערכת נושא כהה', autoTheme: 'ערכת נושא אוטומטית', lightTheme: 'ערכת נושא בהירה', accessibility: 'נגישות', accessibilitySettings: 'הגדרות נגישות מהירות', reduceMotion: 'הפחתת תנועה', highContrast: 'ניגודיות גבוהה', largerText: 'טקסט גדול יותר', glass: 'זכוכית', glassOpacity: 'אטימות זכוכית' },
+};
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -167,13 +211,41 @@ function mergeConfig() {
   };
 }
 
-function localeKind(locale) {
-  return String(locale || document.documentElement.lang || 'en').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+function normalizeNavigatorLocale(locale) {
+  const normalized = localeKey(locale || document.documentElement.lang || 'en');
+  if (!normalized) return 'en';
+  if (['zh', 'zh-cn', 'zh-hans', 'zh-hans-cn'].includes(normalized)) return 'zh-CN';
+  if (['zh-tw', 'zh-hant', 'zh-hant-tw', 'zh-hk', 'zh-mo'].includes(normalized)) return 'zh-TW';
+  if (normalized === 'pt' || normalized.startsWith('pt-')) return 'pt-BR';
+  return Object.keys(NAVIGATOR_UI_COPY).find((key) => localeKey(key) === normalized) || normalized;
+}
+
+function localizedValue(label, locale) {
+  if (!label || typeof label !== 'object') return label || '';
+  const normalized = normalizeNavigatorLocale(locale);
+  const language = localeKey(normalized).split('-')[0];
+  const candidates = [normalized, localeKey(normalized), language];
+
+  for (const candidate of candidates) {
+    if (Object.prototype.hasOwnProperty.call(label, candidate)) return label[candidate];
+  }
+
+  const matchingKey = Object.keys(label).find((key) => candidates.includes(localeKey(key)));
+  if (matchingKey) return label[matchingKey];
+  if (language === 'zh' && label.zh) return label.zh;
+  if (language === 'pt' && label.pt) return label.pt;
+  return label.en || label.zh || Object.values(label).find((value) => typeof value === 'string') || '';
 }
 
 function labelText(label, locale) {
-  if (label && typeof label === 'object') return label[localeKind(locale)] || label.en || label.zh || '';
-  return label || '';
+  return localizedValue(label, locale);
+}
+
+function uiCopy(locale) {
+  return {
+    ...NAVIGATOR_UI_COPY.en,
+    ...(NAVIGATOR_UI_COPY[normalizeNavigatorLocale(locale)] || {}),
+  };
 }
 
 function normalizeProductId(id) {
@@ -267,6 +339,7 @@ class Re8chNavigator extends HTMLElement {
     if (!this.shadowRoot) this.attachShadow({ mode: 'open' });
 
     const { productId, product, locale, links, languages, languageCatalog, languageMode, extraActions, brand, homeHref } = this.data;
+    const ui = uiCopy(locale);
     const sticky = this.getAttribute('sticky') || 'true';
     const maxWidth = this.getAttribute('max-width') || '1240px';
     const activeColor = product.color || '#2563eb';
@@ -282,7 +355,7 @@ class Re8chNavigator extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="${escapeHtml(CSS_HREF)}">
-      <nav class="re8ch-nav" aria-label="${escapeHtml(brand)} navigation">
+      <nav class="re8ch-nav" aria-label="${escapeHtml(brand)}">
         <div class="re8ch-nav__inner">
           <a class="re8ch-nav__brand" href="${escapeHtml(homeHref)}" aria-label="${escapeHtml(brand)}">
             <span class="re8ch-nav__mark"><img src="${escapeHtml(iconHref)}" alt="" decoding="async"></span>
@@ -290,7 +363,7 @@ class Re8chNavigator extends HTMLElement {
           </a>
           <button class="re8ch-nav__menu" type="button" aria-expanded="false" aria-controls="re8ch-nav-panel">
             <span></span><span></span><span></span>
-            <span class="re8ch-nav__sr">Menu</span>
+            <span class="re8ch-nav__sr">${escapeHtml(ui.menu)}</span>
           </button>
           <div class="re8ch-nav__panel" id="re8ch-nav-panel">
             <div class="re8ch-nav__links">
@@ -298,9 +371,9 @@ class Re8chNavigator extends HTMLElement {
             </div>
             <div class="re8ch-nav__actions">
               ${extraActions.map((action) => this.renderAction(action, locale)).join('')}
-              ${this.renderLanguageMenu(resolveLanguages(languageCatalog, languages, locale, languageMode), locale)}
-              ${this.renderThemeButton()}
-              ${this.renderAccessibilityMenu()}
+              ${this.renderLanguageMenu(resolveLanguages(languageCatalog, languages, locale, languageMode), locale, ui)}
+              ${this.renderThemeButton(ui)}
+              ${this.renderAccessibilityMenu(ui)}
             </div>
           </div>
         </div>
@@ -308,6 +381,7 @@ class Re8chNavigator extends HTMLElement {
 
     this.bindEvents();
     this.syncControlState();
+    this.syncFooters();
   }
 
   renderLink(link, locale) {
@@ -321,7 +395,7 @@ class Re8chNavigator extends HTMLElement {
     return `<a class="re8ch-nav__action" href="${escapeHtml(action.href || '#')}" rel="${escapeHtml(action.rel || 'noopener')}">${escapeHtml(label)}</a>`;
   }
 
-  renderLanguageMenu(languages, locale) {
+  renderLanguageMenu(languages, locale, ui) {
     const normalized = localeKey(locale);
     const active = languages.find((language) => {
       const keys = [language.locale, language.value, ...(language.aliases || [])].map(localeKey);
@@ -344,9 +418,9 @@ class Re8chNavigator extends HTMLElement {
     }).join('');
     return `
       <div class="re8ch-nav__menu-wrap">
-        <button class="re8ch-nav__language-button" type="button" data-re8ch-menu-button="language" aria-expanded="false" aria-label="Language">
+        <button class="re8ch-nav__language-button" type="button" data-re8ch-menu-button="language" aria-expanded="false" aria-label="${escapeHtml(ui.language)}" title="${escapeHtml(ui.language)}">
           <span class="re8ch-nav__language-icon" aria-hidden="true">${escapeHtml(activeLabel)}</span>
-          <span class="re8ch-nav__sr">Language</span>
+          <span class="re8ch-nav__sr">${escapeHtml(ui.language)}</span>
         </button>
         <div class="re8ch-nav__popover re8ch-nav__language-menu" data-re8ch-menu="language">
           ${items}
@@ -354,31 +428,31 @@ class Re8chNavigator extends HTMLElement {
       </div>`;
   }
 
-  renderThemeButton() {
+  renderThemeButton(ui) {
     return `
-      <div class="re8ch-nav__theme-control" role="group" aria-label="Theme">
-        <button class="re8ch-nav__theme-zone re8ch-nav__theme-zone--dark" type="button" data-theme-option="dark" aria-label="Dark theme"><span aria-hidden="true">Dark</span></button>
-        <button class="re8ch-nav__theme-zone re8ch-nav__theme-zone--auto" type="button" data-theme-option="auto" aria-label="Auto theme by local time"><span aria-hidden="true">Auto</span></button>
-        <button class="re8ch-nav__theme-zone re8ch-nav__theme-zone--light" type="button" data-theme-option="light" aria-label="Light theme"><span aria-hidden="true">Light</span></button>
+      <div class="re8ch-nav__theme-control" role="group" aria-label="${escapeHtml(ui.theme)}">
+        <button class="re8ch-nav__theme-zone re8ch-nav__theme-zone--dark" type="button" data-theme-option="dark" aria-label="${escapeHtml(ui.darkTheme)}" title="${escapeHtml(ui.darkTheme)}"><span class="re8ch-nav__theme-icon" aria-hidden="true">${this.icon('moon')}</span><span class="re8ch-nav__sr">${escapeHtml(ui.darkTheme)}</span></button>
+        <button class="re8ch-nav__theme-zone re8ch-nav__theme-zone--auto" type="button" data-theme-option="auto" aria-label="${escapeHtml(ui.autoTheme)}" title="${escapeHtml(ui.autoTheme)}"><span class="re8ch-nav__theme-icon" aria-hidden="true">${this.icon('auto')}</span><span class="re8ch-nav__sr">${escapeHtml(ui.autoTheme)}</span></button>
+        <button class="re8ch-nav__theme-zone re8ch-nav__theme-zone--light" type="button" data-theme-option="light" aria-label="${escapeHtml(ui.lightTheme)}" title="${escapeHtml(ui.lightTheme)}"><span class="re8ch-nav__theme-icon" aria-hidden="true">${this.icon('sun')}</span><span class="re8ch-nav__sr">${escapeHtml(ui.lightTheme)}</span></button>
       </div>`;
   }
 
-  renderAccessibilityMenu() {
+  renderAccessibilityMenu(ui) {
     return `
       <div class="re8ch-nav__menu-wrap">
-        <button class="re8ch-nav__icon-button" type="button" data-re8ch-menu-button="accessibility" aria-expanded="false" aria-label="Accessibility">
+        <button class="re8ch-nav__icon-button" type="button" data-re8ch-menu-button="accessibility" aria-expanded="false" aria-label="${escapeHtml(ui.accessibility)}" title="${escapeHtml(ui.accessibility)}">
           ${this.icon('accessibility')}
         </button>
         <div class="re8ch-nav__popover re8ch-nav__accessibility-menu" data-re8ch-menu="accessibility">
-          <div class="re8ch-nav__a11y-toggles" role="group" aria-label="Accessibility quick settings">
-            <label title="Reduce Motion"><input type="checkbox" data-accessibility-option="reduceMotion"><span aria-hidden="true">${this.icon('motion')}</span><span class="re8ch-nav__sr">Reduce Motion</span></label>
-            <label title="High Contrast"><input type="checkbox" data-accessibility-option="highContrast"><span aria-hidden="true">${this.icon('contrast')}</span><span class="re8ch-nav__sr">High Contrast</span></label>
-            <label title="Larger Text"><input type="checkbox" data-accessibility-option="largerText"><span aria-hidden="true">Aa</span><span class="re8ch-nav__sr">Larger Text</span></label>
+          <div class="re8ch-nav__a11y-toggles" role="group" aria-label="${escapeHtml(ui.accessibilitySettings)}">
+            <label title="${escapeHtml(ui.reduceMotion)}"><input type="checkbox" data-accessibility-option="reduceMotion"><span aria-hidden="true">${this.icon('motion')}</span><span class="re8ch-nav__sr">${escapeHtml(ui.reduceMotion)}</span></label>
+            <label title="${escapeHtml(ui.highContrast)}"><input type="checkbox" data-accessibility-option="highContrast"><span aria-hidden="true">${this.icon('contrast')}</span><span class="re8ch-nav__sr">${escapeHtml(ui.highContrast)}</span></label>
+            <label title="${escapeHtml(ui.largerText)}"><input type="checkbox" data-accessibility-option="largerText"><span aria-hidden="true">Aa</span><span class="re8ch-nav__sr">${escapeHtml(ui.largerText)}</span></label>
           </div>
           <div class="re8ch-nav__dial-label">
-            <span><strong>Glass</strong><output data-glass-output>78%</output></span>
+            <span><strong>${escapeHtml(ui.glass)}</strong><output data-glass-output>78%</output></span>
             <button class="re8ch-nav__opacity-dial" type="button" data-accessibility-dial="glassOpacity"
-              role="slider" aria-label="Glass opacity" aria-valuemin="10" aria-valuemax="90" aria-valuenow="78">
+              role="slider" aria-label="${escapeHtml(ui.glassOpacity)}" aria-valuemin="10" aria-valuemax="90" aria-valuenow="78">
               <span class="re8ch-nav__dial-face" aria-hidden="true"><i></i></span>
             </button>
           </div>
@@ -395,6 +469,15 @@ class Re8chNavigator extends HTMLElement {
     }
     if (name === 'contrast') {
       return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 4v16"></path></svg>';
+    }
+    if (name === 'moon') {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M20 14.2A7.2 7.2 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2Z"></path></svg>';
+    }
+    if (name === 'auto') {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="7"></circle><path d="M12 5v7l4 2"></path><path d="M4.8 4.8 6.2 6.2"></path><path d="M17.8 17.8l1.4 1.4"></path></svg>';
+    }
+    if (name === 'sun') {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="M5.6 5.6 7 7"></path><path d="M17 17l1.4 1.4"></path><path d="M3 12h2"></path><path d="M19 12h2"></path><path d="M5.6 18.4 7 17"></path><path d="M17 7l1.4-1.4"></path><circle cx="12" cy="12" r="4"></circle></svg>';
     }
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="m4.22 4.22 1.42 1.42"></path><path d="m18.36 18.36 1.42 1.42"></path><path d="M3 12h2"></path><path d="M19 12h2"></path><path d="m4.22 19.78 1.42-1.42"></path><path d="m18.36 5.64 1.42-1.42"></path><circle cx="12" cy="12" r="4"></circle></svg>';
   }
@@ -413,6 +496,7 @@ class Re8chNavigator extends HTMLElement {
       button.addEventListener('click', () => {
         if (button.getAttribute('aria-disabled') === 'true') return;
         const href = button.dataset.href;
+        document.querySelectorAll('re8ch-footer').forEach((footer) => footer.setAttribute('locale', button.dataset.languageOption));
         if (href) window.location.href = href;
         this.dispatchEvent(new CustomEvent('re8ch-language-change', { bubbles: true, detail: { locale: button.dataset.languageOption } }));
       }, { signal });
@@ -497,8 +581,18 @@ class Re8chNavigator extends HTMLElement {
     document.documentElement.dataset.themePreference = this.themePreference;
     this.setAttribute('data-theme', resolved);
     this.syncControlState();
-    document.querySelectorAll('re8ch-footer').forEach((footer) => footer.setAttribute('theme', resolved));
+    this.syncFooters(resolved);
     window.dispatchEvent(new CustomEvent('re8ch-theme-change', { detail: { theme: resolved, preference: this.themePreference } }));
+  }
+
+  syncFooters(theme = this.getAttribute('data-theme')) {
+    const data = this.data || this.parseData();
+    document.querySelectorAll('re8ch-footer').forEach((footer) => {
+      footer.setAttribute('locale', data.locale);
+      footer.setAttribute('language-options', JSON.stringify(data.languages || []));
+      footer.setAttribute('language-mode', data.languageMode || 'global');
+      if (theme) footer.setAttribute('theme', theme);
+    });
   }
 
   applyAccessibility() {
