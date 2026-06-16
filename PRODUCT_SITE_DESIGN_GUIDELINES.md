@@ -35,12 +35,16 @@ Navigator principles:
 - Use the product mark as the page identity.
 - Use page-specific `links` for local anchors only.
 - Keep global controls consistent: language, theme, accessibility.
-- Theme control is a compact three-segment control: `Dark / Auto / Light`.
+- Theme control is a compact three-segment icon control for dark, auto, and
+  light modes. It should not render visible `Dark / Auto / Light` text.
 - Accessibility is a compact popover with icon toggles and a small clock-style
   glass opacity dial.
 - Glass opacity range is `10%` to `90%`.
 - `auto` theme resolves from local time: light from 07:00 to 18:59, dark
   otherwise.
+- Navigator chrome must localize with the active `locale`: menu, language,
+  theme, accessibility, toggle labels, glass labels, and page-provided
+  navigation/action labels all need localized values for every rendered option.
 
 ## Shared Footer
 
@@ -56,12 +60,19 @@ Footer principles:
 
 - It is a Company Trust Mark Strip, not a sitemap or badge wall.
 - RE8CH appears as the parent mark at the product rail head, not as a product.
+- The RE8CH rail head must remain a crawlable link to `https://re8ch.com/`.
+- The legal/contact row should keep the low-key Founder Profile link to
+  `https://2wood.cn/` so RE8CH/product sites and the personal site maintain
+  a visible backlink relationship.
 - Product rail and record rail are horizontal and compact.
 - Company records link to public profiles or official lookup pages; they should
   not imply government endorsement.
 - Record marquee uses a looping window model and supports arrow, wheel, and
   trackpad interaction.
 - Bottom legal/contact row should stay one-line on desktop where possible.
+- Footer `locale`, `language-options`, and `language-mode` should match the
+  shared navigator. Product sites that expose only the approved localized pages
+  should use `language-mode="available"`.
 
 ## Visual Tone
 
@@ -86,6 +97,11 @@ Every product page should include:
 - A valid `/sitemap.xml` with `xhtml:link` alternates where localized versions
   exist.
 - `/robots.txt` pointing to the sitemap.
+- The IndexNow key file `4790e3784bdc45bf85e11ff304b3868f.txt` at the site
+  root, containing only `4790e3784bdc45bf85e11ff304b3868f`.
+- `npm run indexnow:submit` for submitting sitemap URLs to IndexNow endpoints
+  after a production deployment. Use `-- --dry-run` for validation and
+  `SITE_URL=https://...` when submitting a China or alternate host.
 
 ## CDN Versioning
 
@@ -93,7 +109,8 @@ When component code, product logos, or favicon targets change, update the query
 version in site integrations, for example:
 
 ```text
-re8ch-navigator.css?v=20260615-navigator-6
+re8ch-navigator.css?v=20260616-navigator-ui-indexnow-3
+re8ch-footer.js?v=20260616-footer-backlinks-1
 PRODUCTS/cluster/SVG/icon.svg?v=20260615-logo-fragments-2
 ```
 
@@ -105,6 +122,7 @@ old SVG/JS/CSS content alive.
 - Product logo comes from `brand-assets.re8ch.com/PRODUCTS/...`.
 - Navigator and footer are loaded from `dist/`.
 - Theme changes synchronize to `documentElement.dataset.theme` and the footer.
+- Language changes synchronize from navigator to footer.
 - Language menu uses text/script icons, never national flags.
 - Unsupported global languages are visible but muted unless
   `language-mode="available"` is used.

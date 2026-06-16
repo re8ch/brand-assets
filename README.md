@@ -65,7 +65,9 @@ and do not copy Apple symbol shapes.
 The reusable trust footer is a framework-agnostic Web Component. It renders a
 compressed Company Trust Mark Strip: product network scroll rail with a compact
 RE8CH mark head, looping company record/public profile rail, and legal/contact
-row.
+row. The RE8CH rail head is a crawlable link to `https://re8ch.com/`, and the
+contact row includes a low-key Founder Profile link to `https://2wood.cn/` for
+the company/personal-site backlink contract.
 
 ```html
 <link rel="stylesheet" href="https://brand-assets.re8ch.com/dist/re8ch-footer.css">
@@ -79,6 +81,8 @@ can use lightweight attributes for common page-level differences:
 ```html
 <re8ch-footer
   active-product="cluster"
+  locale="zh-CN"
+  language-mode="available"
   theme="light"
   product-ids="anysite,ledger,registry-image,cluster,observable,anycam,phonaid"
   record-ids="montana-sos,duns,icp,china-credit,linkedin,crunchbase,angellist"
@@ -97,11 +101,12 @@ Supported attributes:
 
 - `active-product` - highlights one product: `anysite`, `ledger`, `registry-image`, `cluster`, `observable`, `anycam`, or `phonaid`.
 - `theme` - `light` or `dark`.
+- `locale`, `language-options`, `language-mode` - language state mirrored from `<re8ch-navigator>`; product rail links and footer labels localize to the active locale.
 - `compact`, `variant`, `max-width` - visual density and layout tuning.
 - `brand-logo` - RE8CH mark shown at the start of the product rail.
 - `products-label`, `product-ids`, `record-ids`, `records-visible` - rail content and loop-window tuning.
 - `hide-products`, `hide-records` - optional section suppression.
-- `copyright`, `icp`, `icp-href`, `address`, `address-title`, `contact-email`, `career-email`, `contact-label`, `career-label` - legal/contact overrides.
+- `copyright`, `icp`, `icp-href`, `address`, `address-title`, `contact-email`, `career-email`, `contact-label`, `career-label` - legal/contact overrides. Keep the default Founder Profile link unless a product has a specific legal reason to suppress or replace it.
 
 ## CDN Navigator Component
 
@@ -128,9 +133,16 @@ Supported attributes:
 - `glass-opacity` - optional initial Liquid Glass opacity from `0.1` to `0.9`.
 
 The component stores `light`, `dark`, or local-time `auto` theme preference in
-`re8ch-product-theme`. Accessibility preferences, including Reduce Motion, High
+`re8ch-product-theme`. The theme switch renders as three icon buttons while
+keeping localized `aria-label`, `title`, and screen-reader text for dark, auto,
+and light modes. Accessibility preferences, including Reduce Motion, High
 Contrast, Larger Text, and Glass Opacity, are stored in `re8ch-accessibility`,
-then synchronized to `documentElement.dataset` and the shared footer.
+then synchronized to `documentElement.dataset` and the shared footer. Navigator
+UI chrome localizes from the same locale contract as product pages: menu,
+language, theme, accessibility, toggle labels, glass labels, and page-provided
+navigation/action labels all resolve against the active `locale`. Navigator
+renders also mirror `locale`, `language-options`, `language-mode`, and resolved
+theme onto every `<re8ch-footer>` on the page.
 
 For larger site-level changes, override the default data before loading the component:
 
