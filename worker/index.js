@@ -66,9 +66,7 @@ export default {
     }
 
     const key = objectKey(request);
-    const object = await env.BRAND_ASSETS.get(key, {
-      onlyIf: request.headers,
-    });
+    const object = await env.BRAND_ASSETS.get(key);
 
     if (!object) return notFound();
 
@@ -77,12 +75,9 @@ export default {
     headers.set('Content-Type', contentType(key, object));
     headers.set('Cache-Control', cacheControl(key));
     headers.set('ETag', object.httpEtag);
+    if (typeof object.size === 'number') headers.set('Content-Length', String(object.size));
     headers.set('X-Content-Type-Options', 'nosniff');
     for (const [name, value] of Object.entries(CORS_HEADERS)) headers.set(name, value);
-
-    if (object.body === null) {
-      return new Response(null, { status: 304, headers });
-    }
 
     if (request.method === 'HEAD') {
       return new Response(null, { headers });
