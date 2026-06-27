@@ -1,3 +1,7 @@
+(() => {
+if (window.__re8chProductSystemV1Loaded) return;
+window.__re8chProductSystemV1Loaded = true;
+
 const currentScript = document.currentScript;
 const scriptUrl = new URL(
   currentScript?.src ||
@@ -516,3 +520,4 @@ class Re8chProductFooter extends HTMLElement {
 if (!customElements.get('re8ch-product-hero')) customElements.define('re8ch-product-hero', Re8chProductHero);
 if (!customElements.get('re8ch-layer-stack')) customElements.define('re8ch-layer-stack', Re8chLayerStack);
 if (!customElements.get('re8ch-product-footer')) customElements.define('re8ch-product-footer', Re8chProductFooter);
+})();

@@ -70,9 +70,12 @@ function contentType(key) {
 }
 
 function cacheControl(key) {
-  return /\.(html?|json|xml|txt|md)$/i.test(key)
-    ? 'no-cache'
-    : 'public, max-age=31536000, immutable';
+  if (/\.(html?|json|xml|txt|md)$/i.test(key)) return 'no-cache';
+  if (/^(src|dist)\/re8ch-(navigator|footer)\.(js|css)$/i.test(key)) return 'public, max-age=0, must-revalidate';
+  if (/^UI\/re8ch-product-system\/v1\/re8ch-product-system\.(js|css)$/i.test(key)) return 'public, max-age=0, must-revalidate';
+  if (/^(SVG|PNG)\/logo\.(svg|png)$/i.test(key)) return 'public, max-age=0, must-revalidate';
+  if (/^PRODUCTS\/[^/]+\/(SVG|PNG)\/icon(?:-[^/]+)?\.(svg|png)$/i.test(key)) return 'public, max-age=0, must-revalidate';
+  return 'public, max-age=31536000, immutable';
 }
 
 function wait(ms) {

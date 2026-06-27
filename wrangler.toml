@@ -1,0 +1,13 @@
+name = "re8ch-brand-assets-cdn"
+main = "worker/index.js"
+compatibility_date = "2024-06-01"
+account_id = "6317b796fb47e67fadec3bc9a5ef0e8e"
+
+routes = [
+  { pattern = "brand-assets.re8ch.com/*", zone_name = "re8ch.com" }
+]
+
+[[r2_buckets]]
+binding = "BRAND_ASSETS"
+bucket_name = "brand-assets"
+
