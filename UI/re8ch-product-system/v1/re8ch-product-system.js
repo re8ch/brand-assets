@@ -1,9 +1,12 @@
 const currentScript = document.currentScript;
-const scriptUrl = new URL(currentScript?.src || import.meta.url);
+const scriptUrl = new URL(
+  currentScript?.src ||
+  document.querySelector('script[src*="/UI/re8ch-product-system/v1/re8ch-product-system.js"]')?.src ||
+  'https://brand-assets.re8ch.com/UI/re8ch-product-system/v1/re8ch-product-system.js'
+);
 const baseUrl = scriptUrl.href.replace(/\/UI\/re8ch-product-system\/v1\/re8ch-product-system\.js(?:\?.*)?$/, '');
 const componentBase = `${baseUrl}/UI/re8ch-product-system/v1`;
-const assetVersion = scriptUrl.search || '';
-const cssHref = `${componentBase}/re8ch-product-system.css${assetVersion}`;
+const cssHref = `${componentBase}/re8ch-product-system.css`;
 
 const colors = {
   registry: '#0a7fbe',
