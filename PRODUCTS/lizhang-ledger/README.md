@@ -4,9 +4,7 @@ Product logo assets for **理账 Ledger**.
 
 ## Design Direction
 
-These marks use an original RE8CH system-symbol language: rounded strokes,
-compact silhouettes, small-size legibility, and palette-aware variants. They are
-not Apple SF Symbols artwork and do not copy Apple symbol shapes.
+This logo uses the approved mini program icon without redesign. The primary PNG files are copied from the production mini program source, while SVG files use the matching production vector geometry.
 
 ## Files
 
@@ -14,10 +12,18 @@ not Apple SF Symbols artwork and do not copy Apple symbol shapes.
 - `SVG/icon-no-edge.svg` - color-accent product logo without black keyline.
 - `SVG/icon-gray.svg` - grayscale product logo.
 - `SVG/icon-invert.svg` - dark-surface product logo.
-- `PNG/icon.png` - 512 px PNG render of `SVG/icon.svg`.
-- `PNG/icon-no-edge.png` - 512 px PNG render of `SVG/icon-no-edge.svg`.
+- `PNG/icon.png` - 512 px PNG from canonical source `source/lizhang-ledger-icon-512.png`.
+- `PNG/icon-no-edge.png` - 512 px PNG from canonical source `source/lizhang-ledger-icon-512.png`.
 - `PNG/icon-gray.png` - 512 px PNG render of `SVG/icon-gray.svg`.
 - `PNG/icon-invert.png` - 512 px PNG render of `SVG/icon-invert.svg`.
+
+- `PNG/icon-1024.png` - copied canonical production asset.
+## Canonical Sources
+
+- `source/lizhang-ledger-icon.png` - canonical approved source asset.
+- `source/lizhang-ledger-icon-512.png` - canonical approved source asset.
+- `source/lizhang-ledger-icon.svg` - canonical approved source asset.
+
 
 ## Public URLs
 

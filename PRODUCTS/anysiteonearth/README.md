@@ -4,9 +4,7 @@ Product logo assets for **Any Site on Earth**.
 
 ## Design Direction
 
-These marks use an original RE8CH system-symbol language: rounded strokes,
-compact silhouettes, small-size legibility, and palette-aware variants. They are
-not Apple SF Symbols artwork and do not copy Apple symbol shapes.
+This logo uses the approved Anysite modular structure mark: stacked site blocks, dark architectural outlines, and light interior surfaces. The SVG is traced from the approved PNG source because no production SVG source exists.
 
 ## Files
 
@@ -18,14 +16,22 @@ not Apple SF Symbols artwork and do not copy Apple symbol shapes.
 - `SVG/icon-inverse.svg` - dark-surface product logo.
 - `SVG/icon-minimal-light.svg` - single-color light-surface product logo.
 - `SVG/icon-minimal-dark.svg` - single-color dark-surface product logo.
-- `PNG/icon.png` - 512 px PNG render of `SVG/icon.svg`.
-- `PNG/icon-no-edge.png` - 512 px PNG render of `SVG/icon-no-edge.svg`.
+- `PNG/icon.png` - 512 px PNG from canonical source `source/anysite-2.png`.
+- `PNG/icon-no-edge.png` - 512 px PNG from canonical source `source/anysite-2.png`.
 - `PNG/icon-gray.png` - 512 px PNG render of `SVG/icon-gray.svg`.
 - `PNG/icon-invert.png` - 512 px PNG render of `SVG/icon-invert.svg`.
-- `PNG/icon-flat.png` - 512 px PNG render of `SVG/icon-flat.svg`.
+- `PNG/icon-flat.png` - 512 px PNG from canonical source `source/anysite-2.png`.
 - `PNG/icon-inverse.png` - 512 px PNG render of `SVG/icon-inverse.svg`.
 - `PNG/icon-minimal-light.png` - 512 px PNG render of `SVG/icon-minimal-light.svg`.
 - `PNG/icon-minimal-dark.png` - 512 px PNG render of `SVG/icon-minimal-dark.svg`.
+
+- `PNG/icon-1024.png` - copied canonical production asset.
+## Canonical Sources
+
+- `source/anysite-1.png` - canonical approved source asset.
+- `source/anysite-2.png` - canonical approved source asset.
+- `source/anysiteonearth-icon.svg` - canonical approved source asset.
+
 
 ## Public URLs
 

@@ -4,9 +4,7 @@ Product logo assets for **Phonaid / 万能接线助手**.
 
 ## Design Direction
 
-These marks use an original RE8CH system-symbol language: rounded strokes,
-compact silhouettes, small-size legibility, and palette-aware variants. They are
-not Apple SF Symbols artwork and do not copy Apple symbol shapes.
+This logo is the approved Phonaid product mark: color document panels, two writing tools, a navy outline system, white filled hand surfaces, and a transparent outside background. The SVG keeps that composition rather than using the older microphone mark.
 
 ## Files
 
@@ -14,10 +12,15 @@ not Apple SF Symbols artwork and do not copy Apple symbol shapes.
 - `SVG/icon-no-edge.svg` - color-accent product logo without black keyline.
 - `SVG/icon-gray.svg` - grayscale product logo.
 - `SVG/icon-invert.svg` - dark-surface product logo.
-- `PNG/icon.png` - 512 px PNG render of `SVG/icon.svg`.
-- `PNG/icon-no-edge.png` - 512 px PNG render of `SVG/icon-no-edge.svg`.
+- `PNG/icon.png` - 512 px PNG from canonical source `source/phonaid-logo.png`.
+- `PNG/icon-no-edge.png` - 512 px PNG from canonical source `source/phonaid-logo.png`.
 - `PNG/icon-gray.png` - 512 px PNG render of `SVG/icon-gray.svg`.
 - `PNG/icon-invert.png` - 512 px PNG render of `SVG/icon-invert.svg`.
+## Canonical Sources
+
+- `source/phonaid-logo.png` - canonical approved source asset.
+- `source/phonaid-logo.svg` - canonical approved source asset.
+
 
 ## Public URLs
 

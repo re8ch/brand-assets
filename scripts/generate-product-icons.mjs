@@ -33,18 +33,42 @@ const products = [
   {
     slug: 'phonaid',
     name: 'Phonaid / 万能接线助手',
-    description: 'Original RE8CH system-symbol call assistant product mark.',
+    description: 'Canonical Phonaid document handoff mark vectorized from the approved phonaid-logo.png asset.',
+    designDirection: 'This logo is the approved Phonaid product mark: color document panels, two writing tools, a navy outline system, white filled hand surfaces, and a transparent outside background. The SVG keeps that composition rather than using the older microphone mark.',
     accent: COLORS.green,
     accent2: COLORS.yellow,
-    symbol: microphone,
+    svgSource: 'source/phonaid-logo.svg',
+    pngSourceByMode: {
+      primary: 'source/phonaid-logo.png',
+      'no-edge': 'source/phonaid-logo.png',
+    },
+    canonicalSources: [
+      'source/phonaid-logo.png',
+      'source/phonaid-logo.svg',
+    ],
   },
   {
     slug: 'anysiteonearth',
     name: 'Any Site on Earth',
-    description: 'Original RE8CH system-symbol location launch product mark.',
+    description: 'Canonical Anysite / Any Site on Earth modular site icon traced from the approved anysite-2.png source.',
+    designDirection: 'This logo uses the approved Anysite modular structure mark: stacked site blocks, dark architectural outlines, and light interior surfaces. The SVG is traced from the approved PNG source because no production SVG source exists.',
     accent: COLORS.blue,
     accent2: COLORS.green,
-    symbol: rocket,
+    svgSource: 'source/anysiteonearth-icon.svg',
+    tracedSvg: true,
+    pngSourceByMode: {
+      primary: 'source/anysite-2.png',
+      'no-edge': 'source/anysite-2.png',
+      flat: 'source/anysite-2.png',
+    },
+    canonicalSources: [
+      'source/anysite-1.png',
+      'source/anysite-2.png',
+      'source/anysiteonearth-icon.svg',
+    ],
+    copyFiles: [
+      ['source/anysite-2.png', 'PNG/icon-1024.png'],
+    ],
     extraVariants: [
       ['icon-flat.svg', 'flat'],
       ['icon-inverse.svg', 'inverse'],
@@ -55,10 +79,23 @@ const products = [
   {
     slug: 'lizhang-ledger',
     name: '理账 Ledger',
-    description: 'Original RE8CH system-symbol ledger product mark.',
+    description: 'Canonical 理账 Ledger app icon copied from the production mini program asset.',
+    designDirection: 'This logo uses the approved mini program icon without redesign. The primary PNG files are copied from the production mini program source, while SVG files use the matching production vector geometry.',
     accent: COLORS.blue,
     accent2: COLORS.yellow,
-    symbol: ledger,
+    svgSource: 'source/lizhang-ledger-icon.svg',
+    pngSourceByMode: {
+      primary: 'source/lizhang-ledger-icon-512.png',
+      'no-edge': 'source/lizhang-ledger-icon-512.png',
+    },
+    canonicalSources: [
+      'source/lizhang-ledger-icon.png',
+      'source/lizhang-ledger-icon-512.png',
+      'source/lizhang-ledger-icon.svg',
+    ],
+    copyFiles: [
+      ['source/lizhang-ledger-icon.png', 'PNG/icon-1024.png'],
+    ],
   },
   {
     slug: 'registry',
@@ -166,7 +203,20 @@ function palette(product, mode) {
   };
 }
 
-function svg({ product, mode }) {
+async function svg({ product, mode, base }) {
+  if (product.svgSource) {
+    const source = await fs.readFile(path.join(base, product.svgSource), 'utf8');
+    if (product.slug === 'lizhang-ledger') {
+      return ledgerSvgVariant(source, mode);
+    }
+
+    if (product.tracedSvg) {
+      return tracedSvgVariant(source, product, mode);
+    }
+
+    return source;
+  }
+
   const p = palette(product, mode);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
   <title id="title">${escapeXml(product.name)} Icon</title>
@@ -187,16 +237,6 @@ function camera(p) {
     <path d="M65 43H69" stroke="${p.ink}" stroke-width="7"/>`;
 }
 
-function microphone(p) {
-  return `<rect x="36" y="13" width="24" height="40" rx="12" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M25 43Q25 66 48 66Q71 66 71 43" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M48 66V80" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M34 80H62" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M20 35Q13 48 20 61" stroke="${p.accent}" stroke-width="7"/>
-    <path d="M76 35Q83 48 76 61" stroke="${p.accent2}" stroke-width="7"/>
-    <path d="M43 26H53" stroke="${p.soft}" stroke-width="6"/>`;
-}
-
 function rocket(p) {
   return `<path d="M48 10Q65 27 65 53Q65 67 56 78H40Q31 67 31 53Q31 27 48 10Z" stroke="${p.ink}" stroke-width="7"/>
     <circle cx="48" cy="45" r="8" stroke="${p.accent2}" stroke-width="7"/>
@@ -204,16 +244,6 @@ function rocket(p) {
     <path d="M64 58Q77 63 83 78Q70 77 59 68" stroke="${p.accent}" stroke-width="7"/>
     <path d="M43 78L48 89L53 78" stroke="${p.ink}" stroke-width="7"/>
     <path d="M17 82Q48 67 79 82" stroke="${p.soft}" stroke-width="6"/>`;
-}
-
-function ledger(p) {
-  return `<path d="M23 18H64Q74 18 74 28V78H34Q23 78 23 67Z" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M34 18V78" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M34 65H74" stroke="${p.ink}" stroke-width="7"/>
-    <path d="M45 36H61" stroke="${p.soft}" stroke-width="6"/>
-    <path d="M45 48H58" stroke="${p.soft}" stroke-width="6"/>
-    <path d="M55 55L62 62L76 44" stroke="${p.accent2}" stroke-width="7"/>
-    <path d="M24 31H33" stroke="${p.accent}" stroke-width="7"/>`;
 }
 
 const LOGO_REGION_PATHS = {
@@ -247,6 +277,64 @@ function observable(p) {
     </g>`;
 }
 
+function tracedSvgVariant(source, product, mode) {
+  const viewBox = source.match(/viewBox="([^"]+)"/)?.[1] || '0 0 512 512';
+  const inner = source
+    .replace(/^.*?<svg\b[^>]*>/s, '')
+    .replace(/<\/svg>\s*$/s, '');
+  const isGray = mode === 'gray' || mode === 'minimal-light';
+  const isInverted = mode === 'invert' || mode === 'inverse' || mode === 'minimal-dark';
+  const filter = isGray
+    ? `<filter id="variant-gray"><feColorMatrix type="saturate" values="0"/></filter>`
+    : isInverted
+      ? `<filter id="variant-invert"><feComponentTransfer><feFuncR type="table" tableValues="1 0"/><feFuncG type="table" tableValues="1 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer></filter>`
+      : '';
+  const filterRef = isGray
+    ? ' filter="url(#variant-gray)"'
+    : isInverted
+      ? ' filter="url(#variant-invert)"'
+      : '';
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">${escapeXml(product.name)} Icon</title>
+  <desc id="desc">${escapeXml(product.description)}</desc>
+  ${filter ? `<defs>${filter}</defs>` : ''}
+  <g${filterRef}>${inner}</g>
+</svg>
+`;
+}
+
+function ledgerSvgVariant(source, mode) {
+  if (mode === 'primary' || mode === 'no-edge') {
+    return source;
+  }
+
+  const replacements = mode === 'gray'
+    ? [
+        ['#020202', '#1f2937'],
+        ['#f8fafc', '#f8fafc'],
+        ['#2563eb', '#64748b'],
+        ['#ffffff', '#ffffff'],
+        ['#00b559', '#94a3b8'],
+        ['#f81018', '#475569'],
+        ['#ffd619', '#cbd5e1'],
+      ]
+    : [
+        ['#020202', '#f8fafc'],
+        ['#f8fafc', '#111820'],
+        ['#2563eb', '#2f7df6'],
+        ['#ffffff', '#111820'],
+        ['#00b559', '#00c266'],
+        ['#f81018', '#ff2633'],
+        ['#ffd619', '#ffd619'],
+      ];
+
+  return replacements.reduce(
+    (content, [from, to]) => content.replaceAll(from, to),
+    source,
+  );
+}
+
 function escapeXml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -257,7 +345,18 @@ function escapeXml(value) {
 
 function readme(product, variants) {
   const svgFiles = variants.map(([fileName]) => `- \`SVG/${fileName}\` - ${variantDescription(fileName)}.`).join('\n');
-  const pngFiles = variants.map(([fileName]) => `- \`PNG/${fileName.replace(/\.svg$/, '.png')}\` - 512 px PNG render of \`SVG/${fileName}\`.`).join('\n');
+  const pngFiles = variants.map(([fileName, mode]) => {
+    const pngFileName = fileName.replace(/\.svg$/, '.png');
+    const source = product.pngSourceByMode?.[mode];
+    return source
+      ? `- \`PNG/${pngFileName}\` - 512 px PNG from canonical source \`${source}\`.`
+      : `- \`PNG/${pngFileName}\` - 512 px PNG render of \`SVG/${fileName}\`.`;
+  }).join('\n');
+  const sourceFiles = (product.canonicalSources || []).map((fileName) => `- \`${fileName}\` - canonical approved source asset.`).join('\n');
+  const copiedFiles = (product.copyFiles || []).map(([, fileName]) => `- \`${fileName}\` - copied canonical production asset.`).join('\n');
+  const sourceSection = sourceFiles
+    ? `\n## Canonical Sources\n\n${sourceFiles}\n`
+    : '';
 
   return `# ${product.name} Icon
 
@@ -272,7 +371,7 @@ not Apple SF Symbols artwork and do not copy Apple symbol shapes.`}
 ## Files
 
 ${svgFiles}
-${pngFiles}
+${pngFiles}${copiedFiles ? `\n\n${copiedFiles}` : ''}${sourceSection}
 
 ## Public URLs
 
@@ -319,12 +418,31 @@ async function main() {
     await fs.mkdir(pngDir, { recursive: true });
 
     for (const [fileName, mode] of variants) {
-      const content = svg({ product, mode });
+      const content = await svg({ product, mode, base });
       await fs.writeFile(path.join(svgDir, fileName), content, 'utf8');
-      await sharp(Buffer.from(content))
-        .resize(512, 512)
-        .png()
-        .toFile(path.join(pngDir, fileName.replace(/\.svg$/, '.png')));
+      const pngSource = product.pngSourceByMode?.[mode];
+      const pngTarget = path.join(pngDir, fileName.replace(/\.svg$/, '.png'));
+      if (pngSource) {
+        const pngSourcePath = path.join(base, pngSource);
+        const metadata = await sharp(pngSourcePath).metadata();
+        if (metadata.width === 512 && metadata.height === 512) {
+          await fs.copyFile(pngSourcePath, pngTarget);
+        } else {
+          await sharp(pngSourcePath)
+            .resize(512, 512)
+            .png()
+            .toFile(pngTarget);
+        }
+      } else {
+        await sharp(Buffer.from(content))
+          .resize(512, 512)
+          .png()
+          .toFile(pngTarget);
+      }
+    }
+
+    for (const [source, target] of product.copyFiles || []) {
+      await fs.copyFile(path.join(base, source), path.join(base, target));
     }
 
     await fs.writeFile(path.join(base, 'README.md'), readme(product, variants), 'utf8');

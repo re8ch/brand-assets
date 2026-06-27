@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RE8CH Brand Assets Lab</title>
+    <meta name="description" content="RE8CH brand asset preview and motion feedback lab.">
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #111820;
+        --muted: #657286;
+        --line: #d6dde5;
+        --paper: #f6f8fb;
+        --panel: #ffffff;
+        --panel-2: #edf6f2;
+        --dark: #07111f;
+        --blue: #0a7fbe;
+        --green: #00a86b;
+        --yellow: #f4bd1a;
+        --red: #e9423f;
+        --violet: #7c5cff;
+        --shadow: 0 18px 48px rgb(17 24 32 / .12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          linear-gradient(90deg, rgb(10 127 190 / .08) 1px, transparent 1px) 0 0 / 42px 42px,
+          linear-gradient(rgb(0 168 107 / .07) 1px, transparent 1px) 0 0 / 42px 42px,
+          var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      img {
+        display: block;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .shell {
+        width: min(1440px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 18px 0 28px;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: center;
+        min-height: 58px;
+      }
+
+      .brand {
+        display: inline-grid;
+        grid-template-columns: 42px minmax(0, auto);
+        gap: 12px;
+        align-items: center;
+        min-width: 0;
+      }
+
+      .brand img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 18px;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .links {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: end;
+      }
+
+      .links a,
+      .ghost {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0 12px;
+        color: var(--ink);
+        background: rgb(255 255 255 / .78);
+        text-decoration: none;
+      }
+
+      .workbench {
+        display: grid;
+        grid-template-columns: minmax(300px, 360px) minmax(0, 1fr) minmax(300px, 360px);
+        gap: 14px;
+        align-items: start;
+        margin-top: 18px;
+      }
+
+      .panel,
+      .tile {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgb(255 255 255 / .9);
+        box-shadow: var(--shadow);
+      }
+
+      .panel {
+        padding: 14px;
+      }
+
+      .panel h2 {
+        margin: 0 0 12px;
+        font-size: 15px;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .field span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      select,
+      textarea,
+      input[type="range"] {
+        width: 100%;
+      }
+
+      select,
+      textarea {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #fff;
+      }
+
+      select {
+        min-height: 40px;
+        padding: 0 10px;
+      }
+
+      textarea {
+        min-height: 118px;
+        padding: 10px;
+        resize: vertical;
+      }
+
+      .segments {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .segments button,
+      .scorebar button,
+      .copybar button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .segments button[aria-pressed="true"] {
+        border-color: var(--blue);
+        background: #e6f5ff;
+      }
+
+      .stage-wrap {
+        display: grid;
+        gap: 12px;
+      }
+
+      .stage {
+        min-height: min(66vh, 720px);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(45deg, #d8dde4 25%, transparent 25%),
+          linear-gradient(-45deg, #d8dde4 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #d8dde4 75%),
+          linear-gradient(-45deg, transparent 75%, #d8dde4 75%);
+        background-color: #f2f5f8;
+        background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+        background-size: 36px 36px;
+        box-shadow: var(--shadow);
+      }
+
+      .stage[data-bg="light"] {
+        background: #f8fafc;
+      }
+
+      .stage[data-bg="dark"] {
+        background: radial-gradient(circle at 50% 42%, #112642, var(--dark) 58%);
+      }
+
+      .stage[data-bg="color"] {
+        background:
+          linear-gradient(135deg, rgb(10 127 190 / .18), rgb(0 168 107 / .14) 48%, rgb(244 189 26 / .16)),
+          #f8fafc;
+      }
+
+      .mark-frame {
+        display: grid;
+        place-items: center;
+        width: min(58vw, 480px);
+        aspect-ratio: 1;
+      }
+
+      .mark {
+        width: min(46vw, 360px);
+        max-width: 72%;
+        object-fit: contain;
+        transform-origin: 50% 58%;
+      }
+
+      .mark[data-motion="breathe"] {
+        animation: breathe 1800ms ease-in-out infinite;
+      }
+
+      .mark[data-motion="snap"] {
+        animation: snap 980ms cubic-bezier(.2, .9, .25, 1) infinite;
+      }
+
+      .mark[data-motion="orbit"] {
+        animation: orbit 2200ms cubic-bezier(.36, 0, .24, 1) infinite;
+      }
+
+      .mark[data-motion="handoff"] {
+        animation: handoff 1500ms cubic-bezier(.21, .85, .25, 1) infinite;
+      }
+
+      @keyframes breathe {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 14px 18px rgb(17 24 32 / .12)); }
+        50% { transform: scale(1.06); filter: drop-shadow(0 24px 30px rgb(10 127 190 / .2)); }
+      }
+
+      @keyframes snap {
+        0%, 100% { transform: translateY(0) scale(1); }
+        32% { transform: translateY(-12px) scale(1.08); }
+        52% { transform: translateY(3px) scale(.98); }
+      }
+
+      @keyframes orbit {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        35% { transform: rotate(-6deg) scale(1.05); }
+        70% { transform: rotate(5deg) scale(1.03); }
+      }
+
+      @keyframes handoff {
+        0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
+        30% { transform: translateX(-16px) rotate(-3deg) scale(1.03); }
+        62% { transform: translateX(16px) rotate(3deg) scale(1.05); }
+      }
+
+      .asset-strip {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .tile {
+        min-height: 94px;
+        display: grid;
+        gap: 7px;
+        place-items: center;
+        padding: 10px;
+      }
+
+      .tile img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      .tile span {
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .scorebar {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .scorebar button[data-active="true"] {
+        color: #fff;
+        border-color: var(--green);
+        background: var(--green);
+      }
+
+      .copybar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .copybar button:first-child {
+        border-color: var(--ink);
+        color: #fff;
+        background: var(--ink);
+      }
+
+      .meta {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .swatches i {
+        display: block;
+        height: 28px;
+        border-radius: 8px;
+        border: 1px solid rgb(17 24 32 / .16);
+      }
+
+      .history {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+        max-height: 220px;
+        overflow: auto;
+      }
+
+      .history div {
+        border-left: 3px solid var(--violet);
+        padding: 8px 10px;
+        background: #f7f4ff;
+        font-size: 12px;
+        color: #4c416f;
+      }
+
+      @media (max-width: 1100px) {
+        .workbench {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .stage {
+          min-height: 480px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          width: min(100vw - 20px, 720px);
+          padding-top: 10px;
+        }
+
+        .topbar {
+          grid-template-columns: 1fr;
+        }
+
+        .links {
+          justify-content: start;
+        }
+
+        .asset-strip {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .mark {
+          width: min(78vw, 320px);
+          max-width: 84%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .mark {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <img src="https://brand-assets.re8ch.com/SVG/logo.svg" alt="">
+          <div>
+            <strong>RE8CH Brand Assets Lab</strong>
+            <span>Icon, CDN, motion, feedback</span>
+          </div>
+        </div>
+        <nav class="links" aria-label="Asset links">
+          <a href="https://brand-assets.re8ch.com/manifest.json">Manifest</a>
+          <a href="https://brand-assets.re8ch.com/ANIME/">Motion</a>
+          <a href="https://brand-assets.re8ch.com/demo/">Footer</a>
+        </nav>
+      </header>
+
+      <main class="workbench">
+        <section class="panel" aria-label="Controls">
+          <h2>Asset</h2>
+          <label class="field">
+            <span>Product</span>
+            <select id="assetSelect"></select>
+          </label>
+          <label class="field">
+            <span>Variant</span>
+            <select id="variantSelect">
+              <option value="SVG/icon.svg">SVG primary</option>
+              <option value="SVG/icon-no-edge.svg">SVG no edge</option>
+              <option value="SVG/icon-gray.svg">SVG gray</option>
+              <option value="SVG/icon-invert.svg">SVG invert</option>
+              <option value="PNG/icon.png">PNG primary</option>
+            </select>
+          </label>
+          <div class="field">
+            <span>Background</span>
+            <div class="segments" data-group="bg">
+              <button type="button" data-value="grid" aria-pressed="true">Grid</button>
+              <button type="button" data-value="light" aria-pressed="false">Light</button>
+              <button type="button" data-value="dark" aria-pressed="false">Dark</button>
+              <button type="button" data-value="color" aria-pressed="false">Color</button>
+            </div>
+          </div>
+          <div class="field">
+            <span>Motion</span>
+            <div class="segments" data-group="motion">
+              <button type="button" data-value="still" aria-pressed="true">Still</button>
+              <button type="button" data-value="breathe" aria-pressed="false">Breathe</button>
+              <button type="button" data-value="snap" aria-pressed="false">Snap</button>
+              <button type="button" data-value="orbit" aria-pressed="false">Orbit</button>
+              <button type="button" data-value="handoff" aria-pressed="false">Handoff</button>
+            </div>
+          </div>
+          <div class="swatches" aria-label="RE8CH colors">
+            <i style="background:#111820"></i>
+            <i style="background:#0a7fbe"></i>
+            <i style="background:#00a86b"></i>
+            <i style="background:#f4bd1a"></i>
+            <i style="background:#e9423f"></i>
+          </div>
+        </section>
+
+        <section class="stage-wrap" aria-label="Preview">
+          <div class="stage" id="stage" data-bg="grid">
+            <div class="mark-frame">
+              <img class="mark" id="mark" alt="">
+            </div>
+          </div>
+          <div class="asset-strip" id="assetStrip" aria-label="Product icons"></div>
+        </section>
+
+        <section class="panel" aria-label="Feedback">
+          <h2>Motion Feedback</h2>
+          <div class="scorebar" id="scorebar">
+            <button type="button" data-score="works" data-active="true">Works</button>
+            <button type="button" data-score="tighten">Tighten</button>
+            <button type="button" data-score="redo">Redo</button>
+          </div>
+          <label class="field">
+            <span>Energy</span>
+            <input id="energy" type="range" min="1" max="5" value="3">
+          </label>
+          <label class="field">
+            <span>Clarity</span>
+            <input id="clarity" type="range" min="1" max="5" value="4">
+          </label>
+          <label class="field">
+            <span>Notes</span>
+            <textarea id="notes" placeholder="例如：Phonaid handoff 可以更快一点；Ledger 保持稳；Anysite 放大后不错。"></textarea>
+          </label>
+          <div class="copybar">
+            <button type="button" id="copyFeedback">Copy</button>
+            <button type="button" id="saveFeedback">Save</button>
+          </div>
+          <div class="meta">
+            <span id="assetUrl"></span>
+            <span id="status">Ready</span>
+          </div>
+          <div class="history" id="history"></div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const base = 'https://brand-assets.re8ch.com';
+      const version = '20260619-product-icons-6';
+      const assets = [
+        ['phonaid', 'Phonaid', 'PRODUCTS/phonaid'],
+        ['ledger', 'Ledger', 'PRODUCTS/lizhang-ledger'],
+        ['anysite', 'Anysite', 'PRODUCTS/anysiteonearth'],
+        ['anycam', 'Anycam', 'PRODUCTS/anycam'],
+        ['registry', 'Registry', 'PRODUCTS/registry'],
+        ['cluster', 'Cluster', 'PRODUCTS/cluster'],
+        ['observable', 'Observable', 'PRODUCTS/observable'],
+      ];
+
+      const state = {
+        asset: assets[0],
+        variant: 'SVG/icon.svg',
+        bg: 'grid',
+        motion: 'still',
+        score: 'works',
+      };
+
+      const el = {
+        assetSelect: document.querySelector('#assetSelect'),
+        variantSelect: document.querySelector('#variantSelect'),
+        stage: document.querySelector('#stage'),
+        mark: document.querySelector('#mark'),
+        strip: document.querySelector('#assetStrip'),
+        scorebar: document.querySelector('#scorebar'),
+        energy: document.querySelector('#energy'),
+        clarity: document.querySelector('#clarity'),
+        notes: document.querySelector('#notes'),
+        assetUrl: document.querySelector('#assetUrl'),
+        status: document.querySelector('#status'),
+        history: document.querySelector('#history'),
+      };
+
+      function urlFor(asset = state.asset, variant = state.variant) {
+        return `${base}/${asset[2]}/${variant}?v=${version}`;
+      }
+
+      function render() {
+        const url = urlFor();
+        el.stage.dataset.bg = state.bg;
+        el.mark.src = url;
+        el.mark.alt = `${state.asset[1]} ${state.variant}`;
+        el.mark.dataset.motion = state.motion;
+        el.assetUrl.textContent = url;
+      }
+
+      function setGroup(group, value) {
+        document.querySelectorAll(`[data-group="${group}"] button`).forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.value === value));
+        });
+        state[group] = value;
+        render();
+      }
+
+      function feedbackPayload() {
+        return {
+          asset: state.asset[1],
+          variant: state.variant,
+          motion: state.motion,
+          background: state.bg,
+          score: state.score,
+          energy: Number(el.energy.value),
+          clarity: Number(el.clarity.value),
+          notes: el.notes.value.trim(),
+          url: urlFor(),
+          capturedAt: new Date().toISOString(),
+        };
+      }
+
+      function loadHistory() {
+        const rows = JSON.parse(localStorage.getItem('re8ch-brand-feedback') || '[]').slice(-8).reverse();
+        el.history.innerHTML = rows.map((row) => {
+          const note = row.notes ? ` · ${row.notes}` : '';
+          return `<div>${row.asset} / ${row.motion} / ${row.score}${note}</div>`;
+        }).join('');
+      }
+
+      assets.forEach((asset) => {
+        const option = document.createElement('option');
+        option.value = asset[0];
+        option.textContent = asset[1];
+        el.assetSelect.append(option);
+      });
+
+      assets.forEach((asset) => {
+        const tile = document.createElement('button');
+        tile.className = 'tile';
+        tile.type = 'button';
+        tile.innerHTML = `<img src="${urlFor(asset, 'SVG/icon.svg')}" alt=""><span>${asset[1]}</span>`;
+        tile.addEventListener('click', () => {
+          state.asset = asset;
+          el.assetSelect.value = asset[0];
+          render();
+        });
+        el.strip.append(tile);
+      });
+
+      el.assetSelect.addEventListener('change', () => {
+        state.asset = assets.find((asset) => asset[0] === el.assetSelect.value) || assets[0];
+        render();
+      });
+
+      el.variantSelect.addEventListener('change', () => {
+        state.variant = el.variantSelect.value;
+        render();
+      });
+
+      document.querySelectorAll('[data-group] button').forEach((button) => {
+        button.addEventListener('click', () => setGroup(button.parentElement.dataset.group, button.dataset.value));
+      });
+
+      el.scorebar.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-score]');
+        if (!button) return;
+        state.score = button.dataset.score;
+        el.scorebar.querySelectorAll('button').forEach((item) => {
+          item.dataset.active = String(item === button);
+        });
+      });
+
+      document.querySelector('#copyFeedback').addEventListener('click', async () => {
+        const text = JSON.stringify(feedbackPayload(), null, 2);
+        await navigator.clipboard.writeText(text);
+        el.status.textContent = 'Copied feedback JSON';
+      });
+
+      document.querySelector('#saveFeedback').addEventListener('click', () => {
+        const rows = JSON.parse(localStorage.getItem('re8ch-brand-feedback') || '[]');
+        rows.push(feedbackPayload());
+        localStorage.setItem('re8ch-brand-feedback', JSON.stringify(rows.slice(-24)));
+        el.status.textContent = 'Saved locally';
+        loadHistory();
+      });
+
+      render();
+      loadHistory();
+    </script>
+  </body>
+</html>
