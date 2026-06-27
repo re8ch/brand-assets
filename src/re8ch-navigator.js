@@ -1,9 +1,10 @@
 (() => {
 const currentScript = document.currentScript;
-const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-navigator.js"]');
+const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-navigator.js"], script[src*="/dist/current/re8ch-navigator.js"]');
 const scriptUrl = new URL(scriptElement?.src || 'https://brand-assets.re8ch.com/dist/re8ch-navigator.js', document.baseURI);
-const ASSET_BASE = scriptUrl.href.replace(/\/dist\/re8ch-navigator\.js(?:\?.*)?$/, '');
-const CSS_HREF = `${ASSET_BASE}/dist/re8ch-navigator.css${scriptUrl.search || ''}`;
+const COMPONENT_BASE = scriptUrl.href.replace(/\/re8ch-navigator\.js(?:\?.*)?$/, '');
+const ASSET_BASE = COMPONENT_BASE.replace(/\/dist(?:\/current)?$/, '');
+const CSS_HREF = `${COMPONENT_BASE}/re8ch-navigator.css${scriptUrl.search || ''}`;
 const ASSET_QUERY = scriptUrl.search || '';
 
 const STORAGE_KEYS = {

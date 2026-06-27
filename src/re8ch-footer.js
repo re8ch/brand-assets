@@ -1,10 +1,10 @@
 (() => {
 const currentScript = document.currentScript;
-const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-footer.js"]');
+const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-footer.js"], script[src*="/dist/current/re8ch-footer.js"]');
 const scriptUrl = new URL(scriptElement?.src || 'https://brand-assets.re8ch.com/dist/re8ch-footer.js', document.baseURI);
 const componentBaseUrl = scriptUrl.href.replace(/\/re8ch-footer\.js(?:\?.*)?$/, '');
-const assetBaseUrl = componentBaseUrl.replace(/\/dist$/, '');
-const trustMarkBaseUrl = `${componentBaseUrl}/trust-marks`;
+const assetBaseUrl = componentBaseUrl.replace(/\/dist(?:\/current)?$/, '');
+const trustMarkBaseUrl = `${assetBaseUrl}/dist/trust-marks`;
 
 const RE8CH_FOOTER_CONFIG = {
   brand: {
