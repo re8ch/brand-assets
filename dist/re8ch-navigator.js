@@ -1,5 +1,7 @@
+(() => {
 const currentScript = document.currentScript;
-const scriptUrl = new URL(currentScript?.src || import.meta.url);
+const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-navigator.js"]');
+const scriptUrl = new URL(scriptElement?.src || 'https://brand-assets.re8ch.com/dist/re8ch-navigator.js', document.baseURI);
 const ASSET_BASE = scriptUrl.href.replace(/\/dist\/re8ch-navigator\.js(?:\?.*)?$/, '');
 const CSS_HREF = `${ASSET_BASE}/dist/re8ch-navigator.css${scriptUrl.search || ''}`;
 const ASSET_QUERY = scriptUrl.search || '';
@@ -7,10 +9,12 @@ const ASSET_QUERY = scriptUrl.search || '';
 const STORAGE_KEYS = {
   theme: 're8ch-product-theme',
   accessibility: 're8ch-accessibility',
+  authIdentity: 're8ch.auth.identity.v1',
 };
 
 const PRODUCT_CONFIG = {
   re8ch: { label: 'RE8CH', href: 'https://re8ch.com', icon: 'SVG/logo.svg', color: '#2563eb' },
+  compocv: { label: 'CompoCV', href: 'https://compocv.re8ch.com', icon: 'PRODUCTS/compocv/SVG/icon.svg', color: '#2563eb' },
   anysite: { label: 'AnySite', href: 'https://anysiteonearth.re8ch.com', icon: 'PRODUCTS/anysiteonearth/SVG/icon.svg', color: '#14b8c4' },
   ledger: { label: 'Ledger', href: 'https://ledger.re8ch.com', icon: 'PRODUCTS/lizhang-ledger/SVG/icon.svg', color: '#2563eb' },
   'registry-image': { label: 'Registry Image', href: 'https://image.re8ch.com', icon: 'PRODUCTS/registry/SVG/icon.svg', color: '#0a7fbe' },
@@ -284,6 +288,43 @@ function writeAccessibility(value) {
   localStorage.setItem(STORAGE_KEYS.accessibility, JSON.stringify(value));
 }
 
+function readAuthIdentity() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.authIdentity);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    const identity = cached?.identity;
+    if (!identity?.subject) return null;
+    const expiresAt = Date.parse(identity.expiresAt || cached.expiresAt || '');
+    const cachedAt = Date.parse(cached.cachedAt || '') || Number(cached.cachedAt) || Date.now();
+    const fallback = cachedAt + 15 * 60 * 1000;
+    const deadline = (Number.isFinite(expiresAt) ? expiresAt : fallback) - 30000;
+    if (Date.now() > deadline) return null;
+    return identity;
+  } catch {
+    return null;
+  }
+}
+
+function authLabel(identity) {
+  return identity?.name || identity?.preferredUsername || identity?.email || identity?.phone || 'Account';
+}
+
+function authReturnHref(href) {
+  try {
+    const url = new URL(href, document.baseURI);
+    return url.searchParams.get('return_to') || url.searchParams.get('returnTo') || href;
+  } catch {
+    return href || '#';
+  }
+}
+
+function isAuthAction(action, locale) {
+  const label = labelText(action.label, locale).trim().toLowerCase();
+  const href = String(action.href || '');
+  return href.includes('/auth/start') || ['sign in', 'log in', 'login', '登录', '登入'].includes(label);
+}
+
 class Re8chNavigator extends HTMLElement {
   static get observedAttributes() {
     return ['product', 'locale', 'theme', 'brand', 'home-href', 'links', 'language-options', 'language-mode', 'extra-actions', 'sticky', 'max-width', 'glass-opacity'];
@@ -300,11 +341,18 @@ class Re8chNavigator extends HTMLElement {
     this.autoThemeTimer = window.setInterval(() => {
       if (this.themePreference === 'auto') this.applyTheme('auto');
     }, 15 * 60 * 1000);
+    this.authChangeHandler = () => this.render();
+    window.addEventListener('re8ch-auth-change', this.authChangeHandler);
+    window.addEventListener('storage', this.authChangeHandler);
   }
 
   disconnectedCallback() {
     this.abortController?.abort();
     if (this.autoThemeTimer) window.clearInterval(this.autoThemeTimer);
+    if (this.authChangeHandler) {
+      window.removeEventListener('re8ch-auth-change', this.authChangeHandler);
+      window.removeEventListener('storage', this.authChangeHandler);
+    }
   }
 
   attributeChangedCallback() {
@@ -391,8 +439,12 @@ class Re8chNavigator extends HTMLElement {
   }
 
   renderAction(action, locale) {
-    const label = labelText(action.label, locale);
-    return `<a class="re8ch-nav__action" href="${escapeHtml(action.href || '#')}" rel="${escapeHtml(action.rel || 'noopener')}">${escapeHtml(label)}</a>`;
+    const identity = isAuthAction(action, locale) ? readAuthIdentity() : null;
+    const label = identity ? authLabel(identity) : labelText(action.label, locale);
+    const href = identity ? authReturnHref(action.href) : (action.href || '#');
+    const title = identity ? `Signed in as ${authLabel(identity)}` : label;
+    const authState = identity ? ' data-auth-state="signed-in"' : '';
+    return `<a class="re8ch-nav__action" href="${escapeHtml(href)}" rel="${escapeHtml(action.rel || 'noopener')}" title="${escapeHtml(title)}"${authState}>${escapeHtml(label)}</a>`;
   }
 
   renderLanguageMenu(languages, locale, ui) {
@@ -645,3 +697,6 @@ class Re8chNavigator extends HTMLElement {
 if (!customElements.get('re8ch-navigator')) {
   customElements.define('re8ch-navigator', Re8chNavigator);
 }
+
+window.Re8chNavigator = Re8chNavigator;
+})();

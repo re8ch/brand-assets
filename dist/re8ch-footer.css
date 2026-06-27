@@ -190,6 +190,13 @@ re8ch-footer *::after {
   color: var(--re8ch-footer-hover);
 }
 
+.re8ch-footer__product-link svg,
+.re8ch-footer__product-link img {
+  flex: 0 0 auto;
+  height: 27px;
+  width: 27px;
+}
+
 .re8ch-footer__product-link svg {
   color: var(--item-color);
   font-size: 27px;
@@ -197,9 +204,17 @@ re8ch-footer *::after {
   stroke-width: 2;
 }
 
+.re8ch-footer__product-link img {
+  object-fit: contain;
+  opacity: 0.9;
+}
+
 .re8ch-footer__product-link[data-active="true"] svg,
+.re8ch-footer__product-link[data-active="true"] img,
 .re8ch-footer__product-link:hover svg,
-.re8ch-footer__product-link:focus-visible svg {
+.re8ch-footer__product-link:hover img,
+.re8ch-footer__product-link:focus-visible svg,
+.re8ch-footer__product-link:focus-visible img {
   opacity: 1;
 }
 

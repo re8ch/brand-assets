@@ -1,6 +1,9 @@
+(() => {
 const currentScript = document.currentScript;
-const scriptUrl = new URL(currentScript?.src || import.meta.url, document.baseURI);
+const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-footer.js"]');
+const scriptUrl = new URL(scriptElement?.src || 'https://brand-assets.re8ch.com/dist/re8ch-footer.js', document.baseURI);
 const componentBaseUrl = scriptUrl.href.replace(/\/re8ch-footer\.js(?:\?.*)?$/, '');
+const assetBaseUrl = componentBaseUrl.replace(/\/dist$/, '');
 const trustMarkBaseUrl = `${componentBaseUrl}/trust-marks`;
 
 const RE8CH_FOOTER_CONFIG = {
@@ -18,13 +21,14 @@ const RE8CH_FOOTER_CONFIG = {
     recordsVisible: 8,
   },
   products: [
-    { id: 'anysite', label: 'AnySite', href: 'https://anysiteonearth.re8ch.com', icon: 'rocket', brandColor: '#14b8c4' },
-    { id: 'ledger', label: 'Ledger', href: 'https://ledger.re8ch.com', icon: 'ledger', brandColor: '#2563eb' },
-    { id: 'registry-image', label: 'Registry Image', href: 'https://image.re8ch.com', icon: 'registry', brandColor: '#0a7fbe' },
-    { id: 'cluster', label: 'Cluster', href: 'https://cluster.re8ch.com', icon: 'cluster', brandColor: '#00b559' },
-    { id: 'observable', label: 'Observable', href: 'https://observable.re8ch.com', icon: 'observable', brandColor: '#f81018' },
-    { id: 'anycam', label: 'Anycam', href: 'https://anycam.re8ch.com', icon: 'camera', brandColor: '#16a34a' },
-    { id: 'phonaid', label: 'Phonaid', href: 'https://phonaid.com', icon: 'phone', brandColor: '#8b5cf6' },
+    { id: 'compocv', label: 'CompoCV', href: 'https://compocv.re8ch.com', icon: 'PRODUCTS/compocv/SVG/icon.svg', brandColor: '#2563eb' },
+    { id: 'anycam', label: 'Anycam', href: 'https://anycam.re8ch.com', icon: 'PRODUCTS/anycam/SVG/icon.svg', brandColor: '#16a34a' },
+    { id: 'anysite', label: 'AnySite', href: 'https://anysiteonearth.re8ch.com', icon: 'PRODUCTS/anysiteonearth/SVG/icon.svg', brandColor: '#14b8c4' },
+    { id: 'cluster', label: 'Cluster', href: 'https://cluster.re8ch.com', icon: 'PRODUCTS/cluster/SVG/icon.svg', brandColor: '#00b559' },
+    { id: 'ledger', label: 'Ledger', href: 'https://ledger.re8ch.com', icon: 'PRODUCTS/lizhang-ledger/SVG/icon.svg', brandColor: '#2563eb' },
+    { id: 'observable', label: 'Observable', href: 'https://observable.re8ch.com', icon: 'PRODUCTS/observable/SVG/icon.svg', brandColor: '#f81018' },
+    { id: 'phonaid', label: 'Phonaid', href: 'https://phonaid.com', icon: 'PRODUCTS/phonaid/SVG/icon.svg', brandColor: '#8b5cf6' },
+    { id: 'registry-image', label: 'Registry Image', href: 'https://image.re8ch.com', icon: 'PRODUCTS/registry/SVG/icon.svg', brandColor: '#0a7fbe' },
   ],
   companyRecords: [
     {
@@ -204,8 +208,8 @@ const FOOTER_LOCALE_COPY = {
 };
 
 const PRODUCT_LABELS = {
-  'zh-CN': { anysite: 'AnySite 任意地点', ledger: '理账 Ledger', 'registry-image': 'Registry Image 镜像', cluster: 'Cluster 集群', observable: 'Observable 可观测', anycam: 'Anycam 任意相机', phonaid: 'Phonaid 万能接线助手' },
-  'zh-TW': { anysite: 'AnySite 任意地點', ledger: '理帳 Ledger', 'registry-image': 'Registry Image 映像', cluster: 'Cluster 叢集', observable: 'Observable 可觀測', anycam: 'Anycam 任意相機', phonaid: 'Phonaid 萬能接線助手' },
+  'zh-CN': { compocv: 'CompoCV', anysite: 'AnySite 任意地点', ledger: '理账 Ledger', 'registry-image': 'Registry Image 镜像', cluster: 'Cluster 集群', observable: 'Observable 可观测', anycam: 'Anycam 任意相机', phonaid: 'Phonaid 万能接线助手' },
+  'zh-TW': { compocv: 'CompoCV', anysite: 'AnySite 任意地點', ledger: '理帳 Ledger', 'registry-image': 'Registry Image 映像', cluster: 'Cluster 叢集', observable: 'Observable 可觀測', anycam: 'Anycam 任意相機', phonaid: 'Phonaid 萬能接線助手' },
 };
 
 const ICONS = {
@@ -215,8 +219,6 @@ const ICONS = {
   rocket: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.2 3.1 4.8 6.1 4.8 9 0 2.1-.8 3.9-2.4 5.5H9.6C8 15.9 7.2 14.1 7.2 12c0-2.9 1.6-5.9 4.8-9Z"/><path d="M7.5 13.4 4.5 17.5 8.9 16M16.5 13.4l3 4.1-4.4-1.5"/><circle cx="12" cy="10.4" r="1.9"/></svg>',
   ledger: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 4.5h9.8a2 2 0 0 1 2 2v13H8.8a2.4 2.4 0 0 1-2.4-2.4V4.5Z"/><path d="M9.2 4.5v15M9.2 16.5h9"/><path d="M12.3 9h3.4M12.3 12h2.8"/></svg>',
   registry: '<svg viewBox="222 220 650 640" aria-hidden="true"><path d="M291 777 L505 413 L571 532 L494 666 Z" fill="#ffd619" stroke="none"/><path d="M516 390 L582 275 L792 638 L657 638 Z" fill="#0a7fbe" stroke="none"/></svg>',
-  cluster: '<svg viewBox="222 383 801 473" aria-hidden="true"><path d="M291 777 L505 413 L571 532 L494 666 Z" fill="#ffd619" stroke="none"/><path d="M253 844 L574 657 L966 657 L1009 727 L943 834 Q940 844 927 845 L253 845 Z" fill="#00b559" stroke="none"/></svg>',
-  observable: '<svg viewBox="135 55 894 793" aria-hidden="true"><path d="M225 843 L156 727 L526 83 Q531 78 540 78 L632 78 Q639 78 644 88 L955 632 L813 632 L583 244 L252 795 Z" fill="#f81018" stroke="#020202" stroke-width="22" paint-order="stroke fill"/></svg>',
   camera: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8.7c0-1.4.8-2.2 2.2-2.2h2.7l1.4-2h3.4l1.4 2h2.7c1.4 0 2.2.8 2.2 2.2v8.1c0 1.4-.8 2.2-2.2 2.2H6.7c-1.4 0-2.2-.8-2.2-2.2V8.7Z"/><circle cx="12" cy="13" r="4"/><circle cx="12" cy="13" r="1.2"/></svg>',
   phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="3.5" width="7" height="11" rx="3.5"/><path d="M5.5 11.2c0 4 2.3 6.2 6.5 6.2s6.5-2.2 6.5-6.2M12 17.4v3.1M9 20.5h6"/><path d="M4 9.6c-1.3 1.9-1.3 4 0 5.9M20 9.6c1.3 1.9 1.3 4 0 5.9"/></svg>',
   building: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 18V9l6-4 6 4v9M9 18v-5M12 18v-5M15 18v-5M8 10h8"/></svg>',
@@ -270,6 +272,24 @@ function escapeHtml(value) {
 
 function icon(name) {
   return ICONS[name] || ICONS.mark;
+}
+
+function productIcon(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return icon('mark');
+  if (ICONS[raw]) return icon(raw);
+  if (/\.(svg|png|webp|jpe?g|gif)$/i.test(raw) || raw.includes('/')) {
+    const src = /^(https?:|data:|\/)/.test(raw) ? raw : `${assetBaseUrl}/${raw.replace(/^\/+/, '')}`;
+    return `<img class="re8ch-footer__product-icon" src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async">`;
+  }
+  return icon(raw);
+}
+
+function normalizeProductId(value) {
+  const key = String(value || '').trim().toLowerCase();
+  if (key === 'anysiteonearth' || key === 'earth') return 'anysite';
+  if (key === 'image' || key === 'registry') return 'registry-image';
+  return key;
 }
 
 function boolAttr(value) {
@@ -485,13 +505,13 @@ class Re8chFooter extends HTMLElement {
   }
 
   renderProduct(product, activeProduct, locale, copy) {
-    const isActive = product.id === activeProduct;
+    const isActive = normalizeProductId(product.id) === normalizeProductId(activeProduct);
     const style = product.brandColor ? ` style="--item-color: ${escapeHtml(product.brandColor)}"` : '';
     const label = localeProductLabel(product, locale);
     const aria = `${label} ${copy.productSuffix}${isActive ? `, ${copy.currentProduct}` : ''}`;
     return `
-      <a class="re8ch-footer__product-link" href="${escapeHtml(localizedHref(product.href, locale))}" data-active="${isActive ? 'true' : 'false'}" aria-label="${escapeHtml(aria)}" ${isActive ? 'aria-current="page"' : ''}${style}>
-        ${icon(product.icon)}
+      <a class="re8ch-footer__product-link" href="${escapeHtml(localizedHref(product.href, locale))}" data-product-id="${escapeHtml(product.id)}" data-active="${isActive ? 'true' : 'false'}" aria-label="${escapeHtml(aria)}" ${isActive ? 'aria-current="page"' : ''}${style}>
+        ${productIcon(product.icon)}
         <span>${escapeHtml(label)}</span>
       </a>`;
   }
@@ -729,9 +749,10 @@ class Re8chFooter extends HTMLElement {
 }
 
 window.RE8CH_FOOTER_DEFAULT_CONFIG = RE8CH_FOOTER_CONFIG;
+window.Re8chFooter = Re8chFooter;
 
 if (!customElements.get('re8ch-footer')) {
   customElements.define('re8ch-footer', Re8chFooter);
 }
 
-export { RE8CH_FOOTER_CONFIG, Re8chFooter };
+})();
