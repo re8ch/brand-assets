@@ -27,6 +27,7 @@ const RE8CH_FOOTER_CONFIG = {
     { id: 'cluster', label: 'Cluster', href: 'https://cluster.re8ch.com', icon: 'PRODUCTS/cluster/SVG/icon.svg', brandColor: '#00b559' },
     { id: 'ledger', label: 'Ledger', href: 'https://ledger.re8ch.com', icon: 'PRODUCTS/lizhang-ledger/SVG/icon.svg', brandColor: '#2563eb' },
     { id: 'observable', label: 'Observable', href: 'https://observable.re8ch.com', icon: 'PRODUCTS/observable/SVG/icon.svg', brandColor: '#f81018' },
+    { id: 'aesthete', label: 'Aesthete', href: 'https://aesthete.re8ch.com', icon: 'PRODUCTS/aesthete/SVG/icon.svg', brandColor: '#d6a23e' },
     { id: 'phonaid', label: 'Phonaid', href: 'https://phonaid.com', icon: 'PRODUCTS/phonaid/SVG/icon.svg', brandColor: '#8b5cf6' },
     { id: 'registry-image', label: 'Registry Image', href: 'https://image.re8ch.com', icon: 'PRODUCTS/registry/SVG/icon.svg', brandColor: '#0a7fbe' },
   ],

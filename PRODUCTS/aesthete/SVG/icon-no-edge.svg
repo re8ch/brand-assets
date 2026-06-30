@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">Aesthete Icon No Edge</title>
+  <desc id="desc">A color-accent Greek aesthetic column and face scan product mark for Aesthete.</desc>
+  <rect x="14" y="14" width="68" height="68" rx="18" fill="#fffaf1"/>
+  <path d="M25 29h46M30 22h36M30 36h36" fill="none" stroke="#b7791f" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M34 37v31M62 37v31" fill="none" stroke="#d6a23e" stroke-width="7" stroke-linecap="round"/>
+  <path d="M42 39c-6 5.7-8.5 13.5-7.2 23.3 1.3 9.6 6.2 14.4 13.2 14.4s11.9-4.8 13.2-14.4C62.5 52.5 60 44.7 54 39" fill="#f4e5c6" stroke="#b7791f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M38 55c4.4-3.6 8.1-5.4 11-5.4s6.6 1.8 11 5.4" fill="none" stroke="#2fb7a4" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M31 68h34M27 75h42" fill="none" stroke="#b7791f" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M69 34c5.4 3.7 8.1 8.4 8.1 14.1S74.4 58.8 69 62.5" fill="none" stroke="#2fb7a4" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20 43c3.3-5.5 7.9-9.1 13.6-10.8" fill="none" stroke="#d6a23e" stroke-width="5" stroke-linecap="round"/>
+</svg>
