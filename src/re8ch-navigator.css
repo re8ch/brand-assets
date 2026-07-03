@@ -151,6 +151,14 @@ select {
   margin-left: auto;
 }
 
+.re8ch-nav__quick-actions {
+  align-items: center;
+  display: none;
+  gap: 6px;
+  margin-left: auto;
+  min-width: 0;
+}
+
 .re8ch-nav__link {
   color: var(--re8ch-nav-muted);
   font-size: 13px;
@@ -215,22 +223,31 @@ select {
 
 .re8ch-nav__language-icon {
   align-items: center;
-  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-  border-radius: 7px;
   display: inline-flex;
   font-size: 11px;
   font-weight: 850;
-  height: 24px;
+  height: 20px;
   justify-content: center;
   letter-spacing: 0;
-  min-width: 24px;
-  padding: 0 4px;
+  line-height: 1;
+  min-width: 20px;
+  padding: 0;
 }
 
 .re8ch-nav__icon-button,
 .re8ch-nav__language-button {
   height: 36px;
+  min-width: 36px;
+}
+
+.re8ch-nav__icon-button {
   width: 36px;
+}
+
+.re8ch-nav__language-button {
+  border-radius: 999px;
+  padding: 0 10px;
+  width: auto;
 }
 
 .re8ch-nav__icon-button svg {
@@ -622,14 +639,19 @@ label:focus-within {
 
 @media (max-width: 860px) {
   .re8ch-nav__inner {
+    gap: 8px;
     flex-wrap: wrap;
     min-height: 64px;
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .re8ch-nav__brand strong {
     font-size: 15px;
-    max-width: min(58vw, 360px);
+    max-width: min(34vw, 220px);
+  }
+
+  .re8ch-nav__quick-actions {
+    display: inline-flex;
   }
 
   .re8ch-nav__menu {
@@ -646,13 +668,13 @@ label:focus-within {
     box-shadow: var(--re8ch-nav-shadow);
     display: none;
     flex: 1 0 100%;
-    margin-bottom: 12px;
-    padding: 12px;
+    margin-bottom: 10px;
+    padding: 10px;
   }
 
   .re8ch-nav__panel[data-open] {
     display: grid;
-    gap: 12px;
+    gap: 10px;
   }
 
   .re8ch-nav__links {
@@ -664,7 +686,8 @@ label:focus-within {
 
   .re8ch-nav__link {
     border-radius: 8px;
-    padding: 9px 10px;
+    font-size: 12px;
+    padding: 8px 9px;
   }
 
   .re8ch-nav__link:hover,
@@ -675,6 +698,38 @@ label:focus-within {
   .re8ch-nav__actions {
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+
+  .re8ch-nav__panel .re8ch-nav__action,
+  .re8ch-nav__panel .re8ch-nav__menu-wrap--language {
+    display: none;
+  }
+
+  .re8ch-nav__action {
+    font-size: 12px;
+    min-height: 34px;
+    padding: 0 10px;
+  }
+
+  .re8ch-nav__quick-auth {
+    max-width: 96px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .re8ch-nav__icon-button,
+  .re8ch-nav__menu {
+    height: 34px;
+    width: 34px;
+  }
+
+  .re8ch-nav__language-button {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    height: 34px;
+    min-width: 34px;
+    padding: 0 6px;
   }
 
   .re8ch-nav__popover {

@@ -11,6 +11,8 @@ const STORAGE_KEYS = {
   theme: 're8ch-product-theme',
   accessibility: 're8ch-accessibility',
   authIdentity: 're8ch.auth.identity.v1',
+  localeChoice: 're8ch-locale-choice',
+  localeManual: 're8ch-locale-manual',
 };
 
 const PRODUCT_CONFIG = {
@@ -394,6 +396,8 @@ class Re8chNavigator extends HTMLElement {
     const maxWidth = this.getAttribute('max-width') || '1240px';
     const activeColor = product.color || '#2563eb';
     const iconHref = product.icon?.startsWith('http') ? product.icon : `${ASSET_BASE}/${product.icon}${ASSET_QUERY}`;
+    const resolvedLanguages = resolveLanguages(languageCatalog, languages, locale, languageMode);
+    const quickActions = extraActions.filter((action) => isAuthAction(action, locale));
 
     this.setAttribute('data-product', productId);
     this.setAttribute('data-sticky', sticky);
@@ -411,6 +415,10 @@ class Re8chNavigator extends HTMLElement {
             <span class="re8ch-nav__mark"><img src="${escapeHtml(iconHref)}" alt="" decoding="async"></span>
             <strong>${escapeHtml(brand)}</strong>
           </a>
+          <div class="re8ch-nav__quick-actions" aria-label="${escapeHtml(ui.accessibilitySettings)}">
+            ${quickActions.map((action) => this.renderAction(action, locale, 're8ch-nav__action re8ch-nav__quick-auth')).join('')}
+            ${this.renderLanguageMenu(resolvedLanguages, locale, ui, 'language-quick', 're8ch-nav__menu-wrap--quick-language')}
+          </div>
           <button class="re8ch-nav__menu" type="button" aria-expanded="false" aria-controls="re8ch-nav-panel">
             <span></span><span></span><span></span>
             <span class="re8ch-nav__sr">${escapeHtml(ui.menu)}</span>
@@ -421,7 +429,7 @@ class Re8chNavigator extends HTMLElement {
             </div>
             <div class="re8ch-nav__actions">
               ${extraActions.map((action) => this.renderAction(action, locale)).join('')}
-              ${this.renderLanguageMenu(resolveLanguages(languageCatalog, languages, locale, languageMode), locale, ui)}
+              ${this.renderLanguageMenu(resolvedLanguages, locale, ui)}
               ${this.renderThemeButton(ui)}
               ${this.renderAccessibilityMenu(ui)}
             </div>
@@ -440,16 +448,16 @@ class Re8chNavigator extends HTMLElement {
     return `<a class="re8ch-nav__link" href="${escapeHtml(link.href || '#')}"${current}>${escapeHtml(label)}</a>`;
   }
 
-  renderAction(action, locale) {
+  renderAction(action, locale, className = 're8ch-nav__action') {
     const identity = isAuthAction(action, locale) ? readAuthIdentity() : null;
     const label = identity ? authLabel(identity) : labelText(action.label, locale);
     const href = identity ? authReturnHref(action.href) : (action.href || '#');
     const title = identity ? `Signed in as ${authLabel(identity)}` : label;
     const authState = identity ? ' data-auth-state="signed-in"' : '';
-    return `<a class="re8ch-nav__action" href="${escapeHtml(href)}" rel="${escapeHtml(action.rel || 'noopener')}" title="${escapeHtml(title)}"${authState}>${escapeHtml(label)}</a>`;
+    return `<a class="${escapeHtml(className)}" href="${escapeHtml(href)}" rel="${escapeHtml(action.rel || 'noopener')}" title="${escapeHtml(title)}"${authState}>${escapeHtml(label)}</a>`;
   }
 
-  renderLanguageMenu(languages, locale, ui) {
+  renderLanguageMenu(languages, locale, ui, menuName = 'language', extraClassName = '') {
     const normalized = localeKey(locale);
     const active = languages.find((language) => {
       const keys = [language.locale, language.value, ...(language.aliases || [])].map(localeKey);
@@ -471,12 +479,12 @@ class Re8chNavigator extends HTMLElement {
         </button>`;
     }).join('');
     return `
-      <div class="re8ch-nav__menu-wrap">
-        <button class="re8ch-nav__language-button" type="button" data-re8ch-menu-button="language" aria-expanded="false" aria-label="${escapeHtml(ui.language)}" title="${escapeHtml(ui.language)}">
+      <div class="re8ch-nav__menu-wrap re8ch-nav__menu-wrap--language ${escapeHtml(extraClassName)}">
+        <button class="re8ch-nav__language-button" type="button" data-re8ch-menu-button="${escapeHtml(menuName)}" aria-expanded="false" aria-label="${escapeHtml(ui.language)}" title="${escapeHtml(ui.language)}">
           <span class="re8ch-nav__language-icon" aria-hidden="true">${escapeHtml(activeLabel)}</span>
           <span class="re8ch-nav__sr">${escapeHtml(ui.language)}</span>
         </button>
-        <div class="re8ch-nav__popover re8ch-nav__language-menu" data-re8ch-menu="language">
+        <div class="re8ch-nav__popover re8ch-nav__language-menu" data-re8ch-menu="${escapeHtml(menuName)}">
           ${items}
         </div>
       </div>`;
@@ -550,6 +558,11 @@ class Re8chNavigator extends HTMLElement {
       button.addEventListener('click', () => {
         if (button.getAttribute('aria-disabled') === 'true') return;
         const href = button.dataset.href;
+        try {
+          localStorage.setItem(STORAGE_KEYS.localeChoice, button.dataset.languageOption || '');
+          localStorage.setItem(STORAGE_KEYS.localeManual, '1');
+          document.cookie = `${STORAGE_KEYS.localeChoice}=${encodeURIComponent(button.dataset.languageOption || '')}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
+        } catch {}
         document.querySelectorAll('re8ch-footer').forEach((footer) => footer.setAttribute('locale', button.dataset.languageOption));
         if (href) window.location.href = href;
         this.dispatchEvent(new CustomEvent('re8ch-language-change', { bubbles: true, detail: { locale: button.dataset.languageOption } }));

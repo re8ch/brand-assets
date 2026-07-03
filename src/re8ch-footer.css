@@ -603,12 +603,12 @@ re8ch-footer[data-compact="true"] .re8ch-footer {
 
 @media (max-width: 760px) {
   .re8ch-footer {
-    padding: 22px 20px 10px;
+    padding: 20px 14px 10px;
   }
 
   .re8ch-footer__rail-shell,
   .re8ch-footer__bottom {
-    margin-top: 16px;
+    margin-top: 12px;
     padding-top: 0;
   }
 
@@ -618,52 +618,80 @@ re8ch-footer[data-compact="true"] .re8ch-footer {
   }
 
   .re8ch-footer__rail-viewport {
-    margin-inline: -20px;
-    padding-inline: 20px;
+    margin-inline: -14px;
+    padding-inline: 14px;
   }
 
   .re8ch-footer__rail-shell--records .re8ch-footer__rail-viewport {
-    padding-inline: 20px;
+    overflow-x: auto;
+    padding-inline: 14px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
   }
 
   .re8ch-footer__rail-label {
-    font-size: 14px;
-    min-height: 48px;
-    padding-right: 18px;
+    font-size: 12px;
+    gap: 7px;
+    min-height: 42px;
+    padding: 0 14px 0 4px;
+  }
+
+  .re8ch-footer__rail-label img {
+    height: 20px;
+    width: 20px;
   }
 
   .re8ch-footer__product-link {
-    font-size: 14px;
-    min-height: 50px;
+    font-size: 12px;
+    gap: 7px;
+    min-height: 42px;
     min-width: auto;
-    padding: 5px 20px 10px;
+    padding: 4px 13px 8px;
+  }
+
+  .re8ch-footer__product-link svg,
+  .re8ch-footer__product-link img {
+    height: 20px;
+    width: 20px;
   }
 
   .re8ch-footer__product-link svg {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .re8ch-footer__rail-shell--records .re8ch-footer__rail-track {
-    min-height: 56px;
+    min-height: 44px;
+    min-width: max-content;
+    transform: none !important;
+    width: auto;
+    will-change: auto;
   }
 
   .re8ch-footer__trust-mark {
-    min-height: 52px;
-    padding-inline: 18px;
+    flex: 0 0 auto;
+    gap: 7px;
+    min-height: 44px;
+    min-width: 118px;
+    padding: 4px 12px;
   }
 
   .re8ch-footer__trust-logo {
-    height: 32px;
-    width: 32px;
+    height: 22px;
+    width: 22px;
   }
 
   .re8ch-footer__trust-logo img {
-    max-height: 32px;
+    max-height: 22px;
+    max-width: 30px;
+  }
+
+  .re8ch-footer__trust-fallback svg {
+    font-size: 20px;
   }
 
   .re8ch-footer__trust-mark > strong {
-    font-size: 12px;
-    max-width: 106px;
+    font-size: 11px;
+    max-width: 78px;
   }
 
   .re8ch-footer__rail-button {
@@ -671,8 +699,7 @@ re8ch-footer[data-compact="true"] .re8ch-footer {
   }
 
   .re8ch-footer__rail-fade {
-    top: 22px;
-    width: 48px;
+    display: none;
   }
 
   .re8ch-footer__bottom {

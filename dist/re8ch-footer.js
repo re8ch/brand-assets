@@ -5,6 +5,7 @@ const scriptUrl = new URL(scriptElement?.src || 'https://brand-assets.re8ch.com/
 const componentBaseUrl = scriptUrl.href.replace(/\/re8ch-footer\.js(?:\?.*)?$/, '');
 const assetBaseUrl = componentBaseUrl.replace(/\/dist(?:\/current)?$/, '');
 const trustMarkBaseUrl = `${assetBaseUrl}/dist/trust-marks`;
+const assetQuery = scriptUrl.search || '';
 
 const RE8CH_FOOTER_CONFIG = {
   brand: {
@@ -280,7 +281,7 @@ function productIcon(value) {
   if (!raw) return icon('mark');
   if (ICONS[raw]) return icon(raw);
   if (/\.(svg|png|webp|jpe?g|gif)$/i.test(raw) || raw.includes('/')) {
-    const src = /^(https?:|data:|\/)/.test(raw) ? raw : `${assetBaseUrl}/${raw.replace(/^\/+/, '')}`;
+    const src = /^(https?:|data:|\/)/.test(raw) ? raw : `${assetBaseUrl}/${raw.replace(/^\/+/, '')}${assetQuery}`;
     return `<img class="re8ch-footer__product-icon" src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async">`;
   }
   return icon(raw);
@@ -335,7 +336,7 @@ function localizedHref(href, locale) {
 function assetUrl(value) {
   if (!value) return '';
   if (/^(https?:|data:|\/)/.test(value)) return value;
-  return `${trustMarkBaseUrl}/${value}`;
+  return `${trustMarkBaseUrl}/${value}${assetQuery}`;
 }
 
 function setContact(contacts, id, label, hrefPrefix = '') {
@@ -598,6 +599,8 @@ class Re8chFooter extends HTMLElement {
   }
 
   handleLoopRailWheel(event, rail) {
+    if (this.isCompactRail(rail)) return;
+
     const horizontal = Math.abs(event.deltaX) >= Math.abs(event.deltaY);
     const delta = horizontal ? event.deltaX : (event.shiftKey ? event.deltaY : 0);
     if (!delta) return;
@@ -613,6 +616,8 @@ class Re8chFooter extends HTMLElement {
   }
 
   moveLoopRail(rail, direction) {
+    if (this.isCompactRail(rail)) return;
+
     const track = rail.querySelector('.re8ch-footer__rail-track');
     const count = Number(rail.dataset.loopCount) || 0;
     if (!track || count < 2 || rail.dataset.animating === 'true') return;
@@ -722,6 +727,13 @@ class Re8chFooter extends HTMLElement {
     if (rail.dataset.loopRail === 'true') {
       const viewport = rail.querySelector('[data-scroll-viewport]');
       const count = Number(rail.dataset.loopCount) || 0;
+      if (this.isCompactRail(rail)) {
+        const maxScroll = viewport ? viewport.scrollWidth - viewport.clientWidth : 0;
+        rail.dataset.canLeft = viewport && viewport.scrollLeft > 2 ? 'true' : 'false';
+        rail.dataset.canRight = viewport && viewport.scrollLeft < maxScroll - 2 ? 'true' : 'false';
+        rail.dataset.overflow = maxScroll > 2 ? 'true' : 'false';
+        return;
+      }
       if (viewport) {
         const visible = Math.min(
           Number(rail.style.getPropertyValue('--record-visible-count')) || 8,
@@ -746,6 +758,10 @@ class Re8chFooter extends HTMLElement {
     rail.dataset.canLeft = canLeft ? 'true' : 'false';
     rail.dataset.canRight = canRight ? 'true' : 'false';
     rail.dataset.overflow = maxScroll > 2 ? 'true' : 'false';
+  }
+
+  isCompactRail(rail) {
+    return rail?.dataset.loopRail === 'true' && window.matchMedia('(max-width: 760px)').matches;
   }
 }
 
