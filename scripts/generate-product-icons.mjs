@@ -7,6 +7,7 @@ import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const root = path.dirname(path.dirname(__filename));
+const requestedProduct = process.argv.find((arg) => arg.startsWith('--product='))?.slice('--product='.length);
 
 const COLORS = {
   ink: '#111820',
@@ -409,7 +410,15 @@ function variantDescription(fileName) {
 }
 
 async function main() {
-  for (const product of products) {
+  const selectedProducts = requestedProduct
+    ? products.filter((product) => product.slug === requestedProduct)
+    : products;
+
+  if (requestedProduct && selectedProducts.length === 0) {
+    throw new Error(`Unknown product slug: ${requestedProduct}`);
+  }
+
+  for (const product of selectedProducts) {
     const variants = [...baseVariants, ...(product.extraVariants || [])];
     const base = path.join(root, 'PRODUCTS', product.slug);
     const svgDir = path.join(base, 'SVG');
