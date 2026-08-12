@@ -469,7 +469,7 @@ re8ch-footer[data-theme="dark"] .re8ch-footer__rail-fade--right {
 }
 
 .re8ch-footer__copyright,
-.re8ch-footer__icp,
+.re8ch-footer__filings a,
 .re8ch-footer__contact-row a,
 .re8ch-footer__contact-row > span {
   color: var(--re8ch-footer-ink);
@@ -523,8 +523,8 @@ re8ch-footer[data-theme="dark"] .re8ch-footer__rail-fade--right {
 
 .re8ch-footer__contact-row a:hover,
 .re8ch-footer__contact-row a:focus-visible,
-.re8ch-footer__icp:hover,
-.re8ch-footer__icp:focus-visible {
+.re8ch-footer__filings a:hover,
+.re8ch-footer__filings a:focus-visible {
   color: var(--re8ch-footer-hover);
   outline: none;
 }
@@ -541,10 +541,27 @@ re8ch-footer[data-theme="dark"] .re8ch-footer__rail-fade--right {
   white-space: nowrap;
 }
 
-.re8ch-footer__icp {
-  color: var(--re8ch-footer-ink);
+.re8ch-footer__filings {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   justify-self: end;
+}
+
+.re8ch-footer__filings a {
+  align-items: center;
+  color: var(--re8ch-footer-ink);
+  display: inline-flex;
+  gap: 7px;
   white-space: nowrap;
+}
+
+.re8ch-footer__filings img {
+  display: block;
+  height: 18px;
+  object-fit: contain;
+  width: 18px;
 }
 
 re8ch-footer[data-theme="dark"] .re8ch-footer__trust-logo img {
@@ -596,7 +613,8 @@ re8ch-footer[data-compact="true"] .re8ch-footer {
     padding-left: 0;
   }
 
-  .re8ch-footer__icp {
+  .re8ch-footer__filings {
+    align-items: flex-start;
     justify-self: start;
   }
 }

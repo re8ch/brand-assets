@@ -15,6 +15,11 @@ on the outbound public-record links for verification.
   - https://www.dnb.com/en-us/about/brand.html
   - https://dunsregistered.com/Product.aspx
 - `miit-favicon.ico` - MIIT official site favicon used as a small ICP/MIIT visual cue.
+- `national-emblem.png` - national emblem cropped from the user-provided
+  Henan government wordmark and used beside the ICP filing link.
+- `mps.png` - official public-security filing mark downloaded from the National
+  Internet Security Management Service Platform:
+  - https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png
 - `icp.svg` - neutral ICP certificate fallback. Prefer official MIIT link text over copying unstable government artwork:
   - https://www.miit.gov.cn
   - https://beian.miit.gov.cn
