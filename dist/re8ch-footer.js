@@ -25,7 +25,7 @@ const RE8CH_FOOTER_CONFIG = {
     { id: 'compocv', label: 'CompoCV', href: 'https://compocv.re8ch.com', icon: 'PRODUCTS/compocv/SVG/icon.svg', brandColor: '#2563eb' },
     { id: 'anycam', label: 'Anycam', href: 'https://anycam.re8ch.com', icon: 'PRODUCTS/anycam/SVG/icon.svg', brandColor: '#16a34a' },
     { id: 'anysite', label: 'AnySite', href: 'https://anysiteonearth.re8ch.com', icon: 'PRODUCTS/anysiteonearth/SVG/icon.svg', brandColor: '#14b8c4' },
-    { id: 'cluster', label: 'Cluster', href: 'https://cluster.re8ch.com', icon: 'PRODUCTS/cluster/SVG/icon.svg', brandColor: '#00b559' },
+    { id: 'cluster', label: 'Cluster', href: 'https://cluster.re8ch.com', icon: 'PRODUCTS/cluster/SVG/icon-no-edge.svg', brandColor: '#00b559' },
     { id: 'ledger', label: 'Ledger', href: 'https://ledger.re8ch.com', icon: 'PRODUCTS/lizhang-ledger/SVG/icon.svg', brandColor: '#2563eb' },
     { id: 'observable', label: 'Observable', href: 'https://observable.re8ch.com', icon: 'PRODUCTS/observable/SVG/icon.svg', brandColor: '#f81018' },
     { id: 'aesthete', label: 'Aesthete', href: 'https://aesthete.re8ch.com', icon: 'PRODUCTS/aesthete/SVG/icon.svg', brandColor: '#d6a23e' },
@@ -62,9 +62,20 @@ const RE8CH_FOOTER_CONFIG = {
       detail: 'ICP备案号: 湘ICP备2025130798号-4。请在工信部备案管理系统自行搜索核验。',
       action: 'View Filing',
       href: 'https://beian.miit.gov.cn',
-      logo: 'miit-favicon.ico',
+      logo: 'national-emblem.png',
       icon: 'certificate',
       brandColor: '#2563eb',
+    },
+    {
+      id: 'mps',
+      name: '公安备案',
+      description: '湘公网安备43138202000213号',
+      detail: '公安备案号: 湘公网安备43138202000213号。可前往全国互联网安全管理服务平台核验。',
+      action: 'View Filing',
+      href: 'https://beian.mps.gov.cn/#/query/webSearch?code=43138202000213',
+      logo: 'mps.png',
+      icon: 'shield',
+      brandColor: '#c81e1e',
     },
     {
       id: 'china-credit',
@@ -142,6 +153,10 @@ const RE8CH_FOOTER_CONFIG = {
     copyright: '© 2026 锐奇智能 / Re8ch / 锐奇软件开发工作室 / Reachieve LLC. All rights reserved.',
     icp: '湘ICP备2025130798号-4',
     icpHref: 'https://beian.miit.gov.cn',
+    icpLogo: 'national-emblem.png',
+    mps: '湘公网安备43138202000213号',
+    mpsHref: 'https://beian.mps.gov.cn/#/query/webSearch?code=43138202000213',
+    mpsLogo: 'mps.png',
     address: 'Where We Are',
     addressTitle: '湖南省娄底市涟源市杨市镇锐奇软件开发工作室',
   },
@@ -260,7 +275,26 @@ function structuredCloneSafe(value) {
 }
 
 function baseConfig() {
-  return mergeConfig(RE8CH_FOOTER_CONFIG, window.RE8CH_FOOTER_CONFIG);
+  const data = structuredCloneSafe(RE8CH_FOOTER_CONFIG);
+  const isPhonaid = /(^|\.)phonaid\.com$/i.test(window.location.hostname);
+  const filing = isPhonaid
+    ? { icp: '湘ICP备2025130798号-2', mps: '湘公网安备43138202000214号', code: '43138202000214' }
+    : { icp: '湘ICP备2025130798号-4', mps: '湘公网安备43138202000213号', code: '43138202000213' };
+
+  data.legal.icp = filing.icp;
+  data.legal.mps = filing.mps;
+  data.legal.mpsHref = `https://beian.mps.gov.cn/#/query/webSearch?code=${filing.code}`;
+
+  data.companyRecords = data.companyRecords.map((record) => {
+    if (record.id === 'icp') {
+      return { ...record, description: filing.icp, detail: `ICP备案号: ${filing.icp}。请在工信部备案管理系统自行搜索核验。` };
+    }
+    if (record.id === 'mps') {
+      return { ...record, description: filing.mps, detail: `公安备案号: ${filing.mps}。可前往全国互联网安全管理服务平台核验。`, href: data.legal.mpsHref };
+    }
+    return record;
+  });
+  return mergeConfig(data, window.RE8CH_FOOTER_CONFIG);
 }
 
 function escapeHtml(value) {
@@ -377,6 +411,8 @@ class Re8chFooter extends HTMLElement {
     'copyright',
     'icp',
     'icp-href',
+    'mps',
+    'mps-href',
     'address',
     'address-title',
     'contact-email',
@@ -417,6 +453,8 @@ class Re8chFooter extends HTMLElement {
       ['copyright', data.legal, 'copyright'],
       ['icp', data.legal, 'icp'],
       ['icp-href', data.legal, 'icpHref'],
+      ['mps', data.legal, 'mps'],
+      ['mps-href', data.legal, 'mpsHref'],
       ['address', data.legal, 'address'],
       ['address-title', data.legal, 'addressTitle'],
     ];
@@ -572,7 +610,10 @@ class Re8chFooter extends HTMLElement {
           `).join('')}
           <span title="${escapeHtml(legal.addressTitle || legal.address)}">${icon('location')}<span>${escapeHtml(legal.address)}</span></span>
         </nav>
-        <a class="re8ch-footer__icp" href="${escapeHtml(legal.icpHref)}" rel="noopener" target="_blank">${escapeHtml(legal.icp)}</a>
+        <nav class="re8ch-footer__filings" aria-label="网站备案信息">
+          <a href="${escapeHtml(legal.icpHref)}" rel="noopener" target="_blank"><img src="${escapeHtml(assetUrl(legal.icpLogo))}" alt=""><span>${escapeHtml(legal.icp)}</span></a>
+          <a href="${escapeHtml(legal.mpsHref)}" rel="noopener" target="_blank"><img src="${escapeHtml(assetUrl(legal.mpsLogo))}" alt=""><span>${escapeHtml(legal.mps)}</span></a>
+        </nav>
       </div>`;
   }
 
