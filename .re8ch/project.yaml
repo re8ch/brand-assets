@@ -1,0 +1,22 @@
+apiVersion: governance.re8ch.com/v1alpha1
+kind: ProjectBinding
+metadata:
+  name: brand-assets
+spec:
+  parent:
+    catalog: platform
+    repository: git@gitlab.com:reachievellc/service-backend.git
+    catalogPath: catalogs/platform/modules/brand-assets
+    submodulePath: catalogs/platform/modules/brand-assets/source
+  identity:
+    maintainerAddress: brand-assets-maintain@phonaid.com
+    accountClass: project-maintainer
+    googleWorkspacePolicy: eligible
+  workspace:
+    name: brand-assets-maintain
+    oneActivePerAccount: true
+    branchPrefix: workspace/brand-assets-maintain/
+  contract:
+    transport: branch-pull-request
+    completion: pull-request-closed
+    evidenceAuthority: kubernetes
