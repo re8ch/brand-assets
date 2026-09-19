@@ -17,6 +17,8 @@ Use the graphic logo mark with one of the following brand names:
 
 - `re8ch-logo-motion.js` - Web Component definition for `<re8ch-logo-motion>`.
 - `re8ch-logo-motion.css` - Motion, sizing, theme, and reduced-motion styles.
+- `re8ch-cluster-motion.js` - Web Component definition for `<re8ch-cluster-motion>`.
+- `re8ch-cluster-motion.css` - Cluster status motion, themes, sizing, and reduced-motion styles.
 - `index.html` - Local preview and usage examples.
 - `README.md` - Integration notes.
 
@@ -73,6 +75,22 @@ logo.size = "lg";
 ## Accessibility
 
 The component renders an inline SVG with `role="img"` and an `aria-label`. It respects `prefers-reduced-motion: reduce` by disabling persistent loop animations and shortening one-shot animations.
+
+## Cluster Motion
+
+```html
+<script src="./re8ch-cluster-motion.js"></script>
+
+<re8ch-cluster-motion
+  theme="color"
+  motion="pulse"
+  loop
+  size="lg"
+  label="RE8CH Cluster status">
+</re8ch-cluster-motion>
+```
+
+`<re8ch-cluster-motion>` supports `color`, `gray`, `invert`, and `no-edge` themes; `idle`, `enter`, `pulse`, `success`, `error`, and `reveal` motions; and the same `sm`, `md`, `lg`, and `xl` sizes. The `loop` attribute is accepted only for `idle` and `pulse`. Its JavaScript API is `play()`, `pause()`, `resume()`, and `restart()`.
 
 ## Preview
 
