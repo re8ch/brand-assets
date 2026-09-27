@@ -6,6 +6,7 @@ const COMPONENT_BASE = scriptUrl.href.replace(/\/re8ch-navigator\.js(?:\?.*)?$/,
 const ASSET_BASE = COMPONENT_BASE.replace(/\/dist(?:\/current)?$/, '');
 const CSS_HREF = `${COMPONENT_BASE}/re8ch-navigator.css${scriptUrl.search || ''}`;
 const ASSET_QUERY = scriptUrl.search || '';
+const USER_HUB_URL = 'https://auth.re8ch.com/';
 
 const STORAGE_KEYS = {
   theme: 're8ch-product-theme',
@@ -314,15 +315,6 @@ function authLabel(identity) {
   return identity?.name || identity?.preferredUsername || identity?.email || identity?.phone || 'Account';
 }
 
-function authReturnHref(href) {
-  try {
-    const url = new URL(href, document.baseURI);
-    return url.searchParams.get('return_to') || url.searchParams.get('returnTo') || href;
-  } catch {
-    return href || '#';
-  }
-}
-
 function isAuthAction(action, locale) {
   const label = labelText(action.label, locale).trim().toLowerCase();
   const href = String(action.href || '');
@@ -398,6 +390,9 @@ class Re8chNavigator extends HTMLElement {
     const iconHref = product.icon?.startsWith('http') ? product.icon : `${ASSET_BASE}/${product.icon}${ASSET_QUERY}`;
     const resolvedLanguages = resolveLanguages(languageCatalog, languages, locale, languageMode);
     const quickActions = extraActions.filter((action) => isAuthAction(action, locale));
+    const identity = readAuthIdentity();
+    const accountAction = identity && !quickActions.length ? this.renderUserHubAction(identity) : '';
+    const quickAccountAction = identity && !quickActions.length ? this.renderUserHubAction(identity, 're8ch-nav__action re8ch-nav__quick-auth') : '';
 
     this.setAttribute('data-product', productId);
     this.setAttribute('data-sticky', sticky);
@@ -417,6 +412,7 @@ class Re8chNavigator extends HTMLElement {
           </a>
           <div class="re8ch-nav__quick-actions" aria-label="${escapeHtml(ui.accessibilitySettings)}">
             ${quickActions.map((action) => this.renderAction(action, locale, 're8ch-nav__action re8ch-nav__quick-auth')).join('')}
+            ${quickAccountAction}
             ${this.renderLanguageMenu(resolvedLanguages, locale, ui, 'language-quick', 're8ch-nav__menu-wrap--quick-language')}
           </div>
           <button class="re8ch-nav__menu" type="button" aria-expanded="false" aria-controls="re8ch-nav-panel">
@@ -429,6 +425,7 @@ class Re8chNavigator extends HTMLElement {
             </div>
             <div class="re8ch-nav__actions">
               ${extraActions.map((action) => this.renderAction(action, locale)).join('')}
+              ${accountAction}
               ${this.renderLanguageMenu(resolvedLanguages, locale, ui)}
               ${this.renderThemeButton(ui)}
               ${this.renderAccessibilityMenu(ui)}
@@ -451,10 +448,15 @@ class Re8chNavigator extends HTMLElement {
   renderAction(action, locale, className = 're8ch-nav__action') {
     const identity = isAuthAction(action, locale) ? readAuthIdentity() : null;
     const label = identity ? authLabel(identity) : labelText(action.label, locale);
-    const href = identity ? authReturnHref(action.href) : (action.href || '#');
+    const href = identity ? USER_HUB_URL : (action.href || '#');
     const title = identity ? `Signed in as ${authLabel(identity)}` : label;
     const authState = identity ? ' data-auth-state="signed-in"' : '';
     return `<a class="${escapeHtml(className)}" href="${escapeHtml(href)}" rel="${escapeHtml(action.rel || 'noopener')}" title="${escapeHtml(title)}"${authState}>${escapeHtml(label)}</a>`;
+  }
+
+  renderUserHubAction(identity, className = 're8ch-nav__action') {
+    const label = authLabel(identity);
+    return `<a class="${escapeHtml(className)}" href="${USER_HUB_URL}" rel="noopener" title="${escapeHtml(`User Hub · ${label}`)}" data-auth-state="signed-in">${escapeHtml(label)}</a>`;
   }
 
   renderLanguageMenu(languages, locale, ui, menuName = 'language', extraClassName = '') {
