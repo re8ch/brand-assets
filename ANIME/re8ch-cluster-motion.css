@@ -1,0 +1,125 @@
+:host {
+  --cluster-size: 144px;
+  --cluster-edge: #07111f;
+  --cluster-top: #2563eb;
+  --cluster-right: #00b559;
+  --cluster-left: #ffd619;
+  --cluster-core: #f81018;
+  --cluster-ease: cubic-bezier(.22, 1, .36, 1);
+  --cluster-spring: cubic-bezier(.18, .89, .32, 1.18);
+  --cluster-iteration: 1;
+  --cluster-shadow: drop-shadow(0 3px 3px rgb(2 6 23 / .18));
+  display: inline-block;
+  inline-size: var(--cluster-size);
+  block-size: var(--cluster-size);
+  line-height: 0;
+  contain: layout style paint;
+}
+
+:host([size="sm"]) { --cluster-size: 64px; }
+:host([size="md"]) { --cluster-size: 144px; }
+:host([size="lg"]) { --cluster-size: 240px; }
+:host([size="xl"]) { --cluster-size: 360px; }
+:host([hidden]) { display: none; }
+:host([loop]) { --cluster-iteration: infinite; }
+
+.stage,
+.icon { inline-size: 100%; block-size: 100%; }
+.stage { display: grid; place-items: center; perspective: 420px; }
+.icon { overflow: visible; filter: var(--cluster-shadow); }
+.mark, .face, .links, .nodes { transform-box: fill-box; transform-origin: center; }
+.face, .links { stroke: var(--cluster-edge); }
+.face-top { fill: var(--cluster-top); }
+.face-right { fill: var(--cluster-right); }
+.face-left { fill: var(--cluster-left); }
+.face-core { fill: var(--cluster-core); }
+.nodes { fill: var(--cluster-edge); opacity: 0; }
+
+:host([theme="gray"]) {
+  --cluster-edge: #18181b;
+  --cluster-top: #737373;
+  --cluster-right: #a3a3a3;
+  --cluster-left: #d4d4d4;
+  --cluster-core: #525252;
+}
+
+:host([theme="invert"]) {
+  --cluster-edge: #f8fafc;
+  --cluster-top: #60a5fa;
+  --cluster-right: #34d399;
+  --cluster-left: #fde047;
+  --cluster-core: #fb7185;
+  --cluster-shadow: drop-shadow(0 5px 5px rgb(0 0 0 / .3));
+}
+
+:host([theme="no-edge"]) {
+  --cluster-edge: transparent;
+  --cluster-shadow: none;
+}
+
+:host([paused]) *,
+:host(.is-paused) * { animation-play-state: paused !important; }
+
+:host([motion="idle"]) .mark {
+  animation: cluster-idle 3600ms ease-in-out var(--cluster-iteration);
+}
+:host([motion="idle"]) .nodes {
+  animation: cluster-nodes 3600ms ease-in-out var(--cluster-iteration);
+}
+
+:host([motion="enter"]) .mark { animation: cluster-enter 760ms var(--cluster-spring) both; }
+:host([motion="enter"]) .face-top { animation: cluster-enter-top 620ms var(--cluster-ease) both; }
+:host([motion="enter"]) .face-left { animation: cluster-enter-left 620ms var(--cluster-ease) 90ms both; }
+:host([motion="enter"]) .face-right { animation: cluster-enter-right 620ms var(--cluster-ease) 150ms both; }
+:host([motion="enter"]) .face-core { animation: cluster-core-in 520ms var(--cluster-spring) 240ms both; }
+:host([motion="enter"]) .links { animation: cluster-link-in 500ms ease-out 250ms both; }
+
+:host([motion="pulse"]) .face-core { animation: cluster-pulse-core 1500ms ease-in-out var(--cluster-iteration); }
+:host([motion="pulse"]) .links { animation: cluster-pulse-link 1500ms ease-in-out var(--cluster-iteration); }
+:host([motion="pulse"]) .nodes { animation: cluster-pulse-node 1500ms ease-in-out var(--cluster-iteration); }
+
+:host([motion="success"]) .mark { animation: cluster-success 920ms var(--cluster-ease) both; }
+:host([motion="success"]) .face { animation: cluster-success-face 920ms var(--cluster-ease) both; }
+:host([motion="success"]) .nodes { animation: cluster-success-node 920ms ease-out both; }
+
+:host([motion="error"]) .mark { animation: cluster-error 680ms ease-in-out both; }
+:host([motion="error"]) .face { animation: cluster-error-face 680ms ease-in-out both; }
+:host([motion="error"]) .face-core { animation: cluster-error-core 680ms ease-in-out both; }
+
+:host([motion="reveal"]) .mark { animation: cluster-reveal 1050ms var(--cluster-ease) both; }
+:host([motion="reveal"]) .links { animation: cluster-link-in 520ms ease-out 430ms both; }
+:host([motion="reveal"]) .nodes { animation: cluster-reveal-node 900ms ease-out 300ms both; }
+
+@keyframes cluster-idle {
+  0%, 100% { transform: translateY(0) rotateX(0); }
+  50% { transform: translateY(-3px) rotateX(2deg); }
+}
+@keyframes cluster-nodes { 0%, 100% { opacity: .15; } 50% { opacity: .75; } }
+@keyframes cluster-enter { from { opacity: 0; transform: translateY(9px) scale(.84); } to { opacity: 1; transform: none; } }
+@keyframes cluster-enter-top { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
+@keyframes cluster-enter-left { from { opacity: 0; transform: translate(-14px, 10px); } to { opacity: 1; transform: none; } }
+@keyframes cluster-enter-right { from { opacity: 0; transform: translate(14px, 10px); } to { opacity: 1; transform: none; } }
+@keyframes cluster-core-in { from { opacity: 0; transform: scale(.2) rotate(16deg); } to { opacity: 1; transform: none; } }
+@keyframes cluster-link-in { from { opacity: 0; stroke-dasharray: 1 160; } to { opacity: 1; stroke-dasharray: 160 0; } }
+@keyframes cluster-pulse-core { 0%, 100% { transform: scale(1); filter: brightness(1); } 45% { transform: scale(1.15); filter: brightness(1.2); } }
+@keyframes cluster-pulse-link { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes cluster-pulse-node { 0%, 100% { opacity: 0; transform: scale(.6); } 50% { opacity: .9; transform: scale(1.25); } }
+@keyframes cluster-success { 0%, 100% { transform: none; } 45% { transform: translateY(-3px) scale(1.04); } }
+@keyframes cluster-success-face { 0%, 100% { filter: none; } 45% { fill: #00b559; filter: brightness(1.15); } }
+@keyframes cluster-success-node { 0% { opacity: 0; transform: scale(.4); } 45% { opacity: 1; transform: scale(1.45); } 100% { opacity: 0; transform: scale(1); } }
+@keyframes cluster-error { 0%, 100% { transform: none; } 18%, 54% { transform: translateX(-4px); } 36%, 72% { transform: translateX(4px); } }
+@keyframes cluster-error-face { 0%, 100% { filter: none; } 45% { filter: grayscale(.9) brightness(.8); } }
+@keyframes cluster-error-core { 0%, 100% { fill: var(--cluster-core); } 30%, 65% { fill: #ef4444; filter: brightness(1.35); } }
+@keyframes cluster-reveal { 0% { opacity: 0; clip-path: inset(100% 0 0); transform: translateY(10px); } 100% { opacity: 1; clip-path: inset(0); transform: none; } }
+@keyframes cluster-reveal-node { 0% { opacity: 0; transform: scale(.2); } 55% { opacity: 1; transform: scale(1.3); } 100% { opacity: 0; transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  :host([motion]) *,
+  :host([loop]) * {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  :host([motion="idle"]) .nodes,
+  :host([motion="pulse"]) .nodes { opacity: 0; }
+}
