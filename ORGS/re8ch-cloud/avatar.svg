@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">RE8CH Cloud organization avatar</title>
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <circle cx="256" cy="256" r="188" fill="#102c43"/>
+  <path d="M256 106 386 181 256 256 126 181Z" fill="#2563eb" stroke="#f8fafc" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M126 181 256 256 256 406 126 331Z" fill="#ffd619" stroke="#f8fafc" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M386 181 256 256 256 406 386 331Z" fill="#00b559" stroke="#f8fafc" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M199 223 256 190 313 223 256 256Z" fill="#f81018" stroke="#07111f" stroke-width="9" stroke-linejoin="round"/>
+  <circle cx="126" cy="181" r="11" fill="#fff"/><circle cx="386" cy="181" r="11" fill="#fff"/><circle cx="256" cy="406" r="11" fill="#fff"/>
+</svg>
