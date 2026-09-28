@@ -228,6 +228,13 @@ async function syncR2(files) {
     }));
   }
 
+  // S3 credentials can upload objects but cannot administer bucket CORS.
+  // Keep the existing CORS policy and continue to COS when the separate
+  // Cloudflare API token is not configured.
+  if (!process.env.R2_CLOUDFLARE_API_TOKEN && !process.env.CLOUDFLARE_API_TOKEN) {
+    console.warn(`Skipping R2 CORS update for ${r2Bucket}: no Cloudflare API token configured.`);
+    return;
+  }
   console.log(`${dryRun ? 'Would set' : 'Setting'} R2 CORS for ${r2Bucket}`);
   if (!dryRun) {
     const wranglerEnv = { ...process.env };
