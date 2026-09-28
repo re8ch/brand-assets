@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="motor-muscle-lab organization avatar">
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <path d="M125 300c53-27 71-93 130-93s76 66 132 93" fill="none" stroke="#f81018" stroke-width="35" stroke-linecap="round"/><path d="M127 319h260" stroke="white" stroke-width="17" stroke-linecap="round"/><circle cx="155" cy="343" r="31" fill="#2563eb"/><circle cx="357" cy="343" r="31" fill="#00b559"/><path d="m243 132 35 46-35 44" fill="none" stroke="#ffd619" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="256" cy="256" r="207" fill="none" stroke="#ffd619" stroke-width="11" stroke-dasharray="20 15"/><circle cx="380" cy="135" r="30" fill="#ffd619" stroke="white" stroke-width="7"/>
+</svg>

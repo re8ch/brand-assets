@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="anycam-app organization avatar">
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <circle cx="256" cy="256" r="176" fill="#f8fafc"/><g transform="translate(106 106) scale(3.125)"><ns0:g xmlns:ns0="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <ns0:path d="M17 36.5Q17 29 24.5 29H34L40 21H56L62 29H71.5Q79 29 79 36.5V69Q79 76 72 76H24Q17 76 17 69Z" stroke="#111820" stroke-width="7" />
+    <ns0:path d="M33 29H63" stroke="rgba(17,24,32,.16)" stroke-width="7" />
+    <ns0:circle cx="48" cy="55" r="18" stroke="#111820" stroke-width="7" />
+    <ns0:circle cx="48" cy="55" r="7" stroke="#2287c9" stroke-width="7" />
+    <ns0:path d="M27 43H34" stroke="#ffd619" stroke-width="7" />
+    <ns0:path d="M65 43H69" stroke="#111820" stroke-width="7" />
+  </ns0:g>
+</g>
+  
+</svg>
