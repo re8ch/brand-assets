@@ -469,7 +469,7 @@ class Re8chNavigator extends HTMLElement {
     const items = languages.map((language) => {
       const keys = [language.locale, language.value, ...(language.aliases || [])].map(localeKey);
       const selected = language.selected || keys.includes(normalized);
-      const disabled = !language.enabled || !language.href;
+      const disabled = !language.enabled;
       return `
         <button class="re8ch-nav__language-option" type="button"
           data-language-option="${escapeHtml(language.locale || language.value || '')}"
@@ -565,6 +565,9 @@ class Re8chNavigator extends HTMLElement {
           localStorage.setItem(STORAGE_KEYS.localeManual, '1');
           document.cookie = `${STORAGE_KEYS.localeChoice}=${encodeURIComponent(button.dataset.languageOption || '')}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
         } catch {}
+        this.setAttribute('locale', button.dataset.languageOption);
+        document.documentElement.lang = button.dataset.languageOption;
+        document.documentElement.dataset.locale = button.dataset.languageOption;
         document.querySelectorAll('re8ch-footer').forEach((footer) => footer.setAttribute('locale', button.dataset.languageOption));
         if (href) window.location.href = href;
         this.dispatchEvent(new CustomEvent('re8ch-language-change', { bubbles: true, detail: { locale: button.dataset.languageOption } }));
@@ -646,6 +649,9 @@ class Re8chNavigator extends HTMLElement {
     this.themePreference = resolveThemePreference(preference);
     const resolved = resolveTheme(this.themePreference);
     if (persist) localStorage.setItem(STORAGE_KEYS.theme, this.themePreference);
+    // Keep the declarative attribute in sync so a later rerender/reconnect does
+    // not restore the original theme supplied by the embedding page.
+    if (this.getAttribute('theme') !== this.themePreference) this.setAttribute('theme', this.themePreference);
     document.documentElement.dataset.theme = resolved;
     document.documentElement.dataset.themePreference = this.themePreference;
     this.setAttribute('data-theme', resolved);
