@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="rover-apps organization avatar">
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <circle cx="256" cy="256" r="145" fill="none" stroke="#2563eb" stroke-width="22"/><path d="m256 122 65 133-65 135-65-135Z" fill="#00b559" stroke="white" stroke-width="14" stroke-linejoin="round"/><circle cx="256" cy="256" r="30" fill="#ffd619"/><path d="M256 83v36m0 274v36M83 256h36m274 0h36" stroke="#f81018" stroke-width="18" stroke-linecap="round"/>
+  
+</svg>

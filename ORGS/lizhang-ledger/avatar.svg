@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="lizhang-ledger organization avatar">
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <circle cx="256" cy="256" r="176" fill="#f8fafc"/><g transform="translate(106 106) scale(3.125)"><ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M18 20Q18 14 24 14H66Q78 14 78 26V80H31Q18 80 18 67Z" fill="#020202" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M26 22H65Q70 22 70 27V63H34Q26 63 26 55Z" fill="#f8fafc" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M25 21H65Q71 21 71 27V36H25Z" fill="#2563eb" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M25 36H71V63H34Q25 63 25 54Z" fill="#ffffff" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M28 70Q28 65 34 65H78V80H34Q28 80 28 74Z" fill="#00b559" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M18 22Q18 15 25 15H33V80H31Q18 80 18 67Z" fill="#f81018" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M33 65H78V72H35Q31 72 31 75Q31 78 35 78H78V80H31Q25 80 25 73Q25 65 33 65Z" fill="#020202" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M43 45H58M43 53H55" stroke="#020202" stroke-width="5" stroke-linecap="round" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M58 50L64 56L76 42" fill="none" stroke="#ffd619" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <ns0:path xmlns:ns0="http://www.w3.org/2000/svg" d="M58 50L64 56L76 42" fill="none" stroke="#020202" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".18" />
+</g>
+  
+</svg>

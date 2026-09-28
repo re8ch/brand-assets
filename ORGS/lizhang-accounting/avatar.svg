@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="lizhang-accounting organization avatar">
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <rect x="119" y="118" width="274" height="276" rx="32" fill="#0a7fbe" stroke="white" stroke-width="16"/><path d="M175 186h163M175 244h163M175 302h93" stroke="white" stroke-width="19" stroke-linecap="round"/><path d="m282 313 27 27 45-53" fill="none" stroke="#ffd619" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="256" cy="256" r="207" fill="none" stroke="#ffd619" stroke-width="11" stroke-dasharray="20 15"/><circle cx="380" cy="135" r="30" fill="#ffd619" stroke="white" stroke-width="7"/>
+</svg>

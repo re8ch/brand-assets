@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="thinking-machine-labs organization avatar">
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <rect x="139" y="139" width="234" height="234" rx="34" fill="#8b5cf6" stroke="white" stroke-width="17"/><path d="M194 222c0-45 61-61 80-20 39-25 76 23 44 54 26 36-4 78-47 61-25 29-76 10-76-30-34-13-33-52-1-65Z" fill="#07111f" stroke="#ffd619" stroke-width="13" stroke-linejoin="round"/><path d="M256 208v97m-43-53h86" stroke="#00b559" stroke-width="11"/><path d="M256 104v35m0 234v35M104 256h35m234 0h35" stroke="#2563eb" stroke-width="15" stroke-linecap="round"/>
+  
+</svg>
