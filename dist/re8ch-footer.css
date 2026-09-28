@@ -229,7 +229,7 @@ re8ch-footer *::after {
 .re8ch-footer__trust-mark {
   --item-color: var(--re8ch-footer-hover);
   align-items: center;
-  border-left: 1px solid var(--re8ch-footer-hairline);
+  border-left: 0;
   border-bottom: 0;
   border-right: 0;
   border-top: 0;
@@ -243,7 +243,7 @@ re8ch-footer *::after {
   min-height: 54px;
   min-width: 0;
   opacity: 0.66;
-  padding: 4px 24px;
+  padding: 4px 16px;
   position: relative;
   text-align: left;
   transform: translateY(0);
@@ -252,7 +252,7 @@ re8ch-footer *::after {
 
 .re8ch-footer__trust-mark:hover,
 .re8ch-footer__trust-mark:focus-visible {
-  background: color-mix(in srgb, var(--item-color) 4%, transparent);
+  background: transparent;
   color: var(--item-color);
   opacity: 1;
   outline: none;
@@ -260,7 +260,8 @@ re8ch-footer *::after {
 }
 
 .re8ch-footer__trust-mark:focus-visible {
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--item-color) 28%, transparent);
+  outline: 2px solid var(--item-color);
+  outline-offset: -2px;
 }
 
 .re8ch-footer__trust-logo {
