@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">RE8CH Observability organization avatar</title>
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <circle cx="256" cy="256" r="153" fill="none" stroke="#213c56" stroke-width="14"/>
+  <path d="M256 103a153 153 0 0 1 153 153" fill="none" stroke="#f81018" stroke-width="25" stroke-linecap="round"/>
+  <path d="M256 409a153 153 0 0 1-153-153" fill="none" stroke="#0a7fbe" stroke-width="25" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="91" fill="#102c43" stroke="#fff" stroke-width="12"/>
+  <path d="M110 264h75l37-57 38 104 34-68 27 21h81" fill="none" stroke="#ffd619" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="409" cy="256" r="15" fill="#f81018"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">RE8CH AI organization avatar</title>
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <path d="M256 100 290 222 412 256 290 290 256 412 222 290 100 256 222 222Z" fill="#8b5cf6" stroke="#fff" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M256 178 272 240 334 256 272 272 256 334 240 272 178 256 240 240Z" fill="#ffd619"/>
+  <circle cx="119" cy="119" r="21" fill="#00b559"/><circle cx="393" cy="119" r="21" fill="#0a7fbe"/>
+  <circle cx="119" cy="393" r="21" fill="#f81018"/><circle cx="393" cy="393" r="21" fill="#00b559"/>
+  <path d="M134 134 188 188m190-54-54 54M134 378l54-54m190 54-54-54" stroke="#fff" stroke-width="11" stroke-linecap="round"/>
+</svg>
