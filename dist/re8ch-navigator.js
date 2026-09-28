@@ -173,7 +173,7 @@ function localeKey(value) {
 }
 
 function languageValue(language) {
-  return language?.locale || language?.value || language?.label || '';
+  return typeof language === 'string' ? language : (language?.locale || language?.value || language?.label || '');
 }
 
 function languageMatches(catalogLanguage, supportedLanguage) {
@@ -189,7 +189,7 @@ function resolveLanguages(catalog, supported, locale, mode) {
     const catalogLanguage = catalog.find((item) => languageMatches(item, language));
     return {
       ...(catalogLanguage || {}),
-      ...language,
+      ...(typeof language === 'string' ? {} : language),
       locale: languageValue(language),
       enabled: true,
     };
