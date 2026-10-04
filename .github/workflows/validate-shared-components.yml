@@ -1,0 +1,28 @@
+name: Validate shared components
+on:
+  pull_request:
+    paths:
+      - 'src/re8ch-*'
+      - 'dist/**'
+      - 'tests/shared-components.test.mjs'
+      - '.github/workflows/validate-shared-components.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/re8ch-*'
+      - 'dist/**'
+      - 'tests/shared-components.test.mjs'
+      - '.github/workflows/validate-shared-components.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --check src/re8ch-navigator.js
+      - run: node --check src/re8ch-footer.js
+      - run: node --test tests/shared-components.test.mjs

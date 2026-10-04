@@ -530,66 +530,6 @@ select {
   font-weight: 820;
 }
 
-.re8ch-nav__popover .re8ch-nav__opacity-dial {
-  --re8ch-nav-dial-angle: 306deg;
-  align-items: center;
-  appearance: none;
-  background:
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--re8ch-nav-panel) 72%, transparent) 0 47%, transparent 48%),
-    conic-gradient(from -90deg, var(--re8ch-nav-accent) 0 var(--re8ch-nav-dial-angle), rgb(148 163 184 / 0.2) var(--re8ch-nav-dial-angle) 360deg);
-  border: 1px solid color-mix(in srgb, var(--re8ch-nav-accent) 20%, var(--re8ch-nav-line));
-  border-radius: 999px;
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--re8ch-nav-glass-edge) 60%, transparent),
-    0 10px 22px rgb(15 23 42 / 0.1);
-  color: var(--re8ch-nav-ink);
-  cursor: grab;
-  display: grid;
-  height: 70px;
-  justify-items: center;
-  padding: 0;
-  position: relative;
-  width: 70px;
-}
-
-.re8ch-nav__popover .re8ch-nav__opacity-dial:active {
-  cursor: grabbing;
-}
-
-.re8ch-nav__popover .re8ch-nav__dial-face {
-  align-items: center;
-  background:
-    radial-gradient(circle at 35% 28%, rgb(255 255 255 / 0.72), transparent 30%),
-    var(--re8ch-nav-panel);
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--re8ch-nav-line) 72%, transparent);
-  display: grid;
-  font-size: 12px;
-  font-weight: 800;
-  height: 50px;
-  justify-items: center;
-  position: relative;
-  width: 50px;
-}
-
-.re8ch-nav__popover .re8ch-nav__dial-face::before {
-  content: var(--re8ch-nav-dial-percent, "78%");
-}
-
-.re8ch-nav__popover .re8ch-nav__dial-face i {
-  background: var(--re8ch-nav-accent);
-  border: 2px solid var(--re8ch-nav-panel);
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgb(15 23 42 / 0.22);
-  height: 12px;
-  left: 50%;
-  position: absolute;
-  top: 0;
-  transform: rotate(var(--re8ch-nav-dial-angle)) translateY(-8px);
-  transform-origin: 50% 35px;
-  width: 12px;
-}
-
 .re8ch-nav__sr {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -740,3 +680,33 @@ label:focus-within {
     min-width: min(320px, calc(100vw - 34px));
   }
 }
+
+/* Quiet, consistent controls with a clear selected state. */
+.re8ch-nav__language-button,
+.re8ch-nav__icon-button { border: 1px solid var(--re8ch-nav-line); border-radius: 12px; height: 40px; }
+.re8ch-nav__icon-button { width: 40px; }
+.re8ch-nav__language-button { gap: 8px; padding: 0 12px; }
+.re8ch-nav__language-button svg { width: 18px; height: 18px; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.re8ch-nav__language-button svg:last-child { width: 12px; transform: rotate(0); transition: transform 180ms ease; }
+.re8ch-nav__language-button[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+.re8ch-nav__locale-label { font-size: 12px; font-weight: 600; }
+.re8ch-nav__theme-control { background: color-mix(in srgb, var(--re8ch-nav-ink) 4%, transparent); border: 1px solid var(--re8ch-nav-line); border-radius: 13px; height: 40px; width: 112px; gap: 2px; padding: 3px; }
+.re8ch-nav__theme-zone { height: 32px; border-radius: 9px; }
+.re8ch-nav__theme-icon svg { stroke-width: 2; }
+.re8ch-nav__theme-zone[aria-current="true"] { background: rgb(var(--re8ch-nav-panel-rgb)); border-color: var(--re8ch-nav-line); color: var(--re8ch-nav-ink); box-shadow: 0 1px 3px #00000012; }
+.re8ch-nav__language-menu { padding: 8px; border-radius: 16px; }
+.re8ch-nav__language-option { padding: 10px 12px !important; border-radius: 10px !important; }
+.re8ch-nav__language-option[aria-current="true"] { background: var(--re8ch-nav-hover); }
+.re8ch-nav__accessibility-menu { width: 260px; max-width: calc(100vw - 32px); padding: 16px; gap: 16px; border-radius: 16px; }
+.re8ch-nav__a11y-toggles label { height: 36px; }
+.re8ch-nav__a11y-toggles label:has(input:focus-visible) { outline: 2px solid var(--re8ch-nav-accent); outline-offset: 2px; }
+.re8ch-nav__dial-label { display: grid; gap: 10px; padding: 0; }
+.re8ch-nav__dial-label > span { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.re8ch-nav__dial-label output { font-variant-numeric: tabular-nums; color: var(--re8ch-nav-muted); }
+.re8ch-nav__opacity-slider { width: 100%; height: 28px; margin: 0; cursor: pointer; accent-color: var(--re8ch-nav-accent); }
+.re8ch-nav__opacity-slider:focus-visible { outline: 2px solid var(--re8ch-nav-accent); outline-offset: 4px; border-radius: 6px; }
+.re8ch-nav__opacity-slider:disabled { cursor: not-allowed; opacity: .5; }
+@media (max-width: 400px) { .re8ch-nav__locale-label, .re8ch-nav__language-button svg:last-child { display: none; } .re8ch-nav__language-button { padding: 0 10px; } }
+
+.re8ch-nav__popover { visibility: hidden; background: rgb(var(--re8ch-nav-panel-rgb) / .97); }
+.re8ch-nav__popover[data-open] { visibility: visible; }

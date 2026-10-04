@@ -427,6 +427,8 @@ class Re8chFooter extends HTMLElement {
   }
 
   disconnectedCallback() {
+    cancelAnimationFrame(this.marqueeFrame);
+    this.tooltipAbort?.abort();
     window.removeEventListener('resize', this.handleViewportChange);
   }
 
@@ -560,6 +562,7 @@ class Re8chFooter extends HTMLElement {
     const items = records.map((record) => this.renderCompanyRecord(record)).join('');
     return `
       <section class="re8ch-footer__records-section" aria-label="${escapeHtml(copy.recordsLabel)}">
+        <div class="re8ch-footer__records-heading"><span>${escapeHtml(copy.recordsLabel)}</span><button type="button" data-marquee-pause aria-pressed="false" aria-label="${this.getAttribute('locale')?.startsWith('zh') ? '暂停自动滚动' : 'Pause automatic scrolling'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg></button></div>
         ${this.renderScrollRail('records', copy.recordsLabel, items, { loop: true, count: records.length, visible: recordsVisible }, copy)}
       </section>`;
   }
@@ -568,7 +571,7 @@ class Re8chFooter extends HTMLElement {
     const style = record.brandColor ? ` style="--item-color: ${escapeHtml(record.brandColor)}"` : '';
     const aria = `${record.name}. ${record.description}. ${record.detail || record.action}`;
     return `
-      <button class="re8ch-footer__trust-mark" type="button" aria-label="${escapeHtml(aria)}" aria-haspopup="dialog"${style}
+      <button class="re8ch-footer__trust-mark" type="button" aria-label="${escapeHtml(aria)}" aria-haspopup="dialog" aria-expanded="false"${style}
         data-record-name="${escapeHtml(record.name)}"
         data-record-description="${escapeHtml(record.description)}"
         data-record-detail="${escapeHtml(record.detail || record.description)}"
@@ -618,6 +621,38 @@ class Re8chFooter extends HTMLElement {
   }
 
   setupScrollRails() {
+    cancelAnimationFrame(this.marqueeFrame);
+    let previous = 0;
+    const tick = (now) => {
+      const elapsed = Math.min(now - (previous || now), 64);
+      previous = now;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.re8chReduceMotion === 'true';
+      const rail = this.querySelector('[data-loop-rail]');
+      const tooltip = this.querySelector('[data-record-tooltip]');
+      if (rail && !reduced && !document.hidden && !this.isCompactRail(rail) &&
+          !this.matches(':hover, :focus-within') && tooltip?.hidden && rail.dataset.animating !== 'true' && rail.dataset.paused !== 'true') {
+        const track = rail.querySelector('.re8ch-footer__rail-track');
+        const width = track.firstElementChild?.getBoundingClientRect().width || 0;
+        if (width && track.children.length > Number(rail.style.getPropertyValue('--record-visible-count'))) {
+          rail.marqueeOffset = (rail.marqueeOffset || 0) + elapsed * 0.012;
+          if (rail.marqueeOffset >= width) {
+            track.appendChild(track.firstElementChild);
+            rail.marqueeOffset -= width;
+          }
+          track.style.transition = 'none';
+          track.style.transform = `translateX(${-rail.marqueeOffset}px)`;
+        }
+      }
+      this.marqueeFrame = requestAnimationFrame(tick);
+    };
+    this.marqueeFrame = requestAnimationFrame(tick);
+    this.querySelector('[data-marquee-pause]')?.addEventListener('click', (event) => {
+      const button = event.currentTarget;
+      const rail = this.querySelector('[data-loop-rail]');
+      const paused = rail.dataset.paused !== 'true';
+      rail.dataset.paused = String(paused);
+      button.setAttribute('aria-pressed', String(paused));
+    });
     this.querySelectorAll('[data-scroll-rail]').forEach((rail) => {
       const viewport = rail.querySelector('[data-scroll-viewport]');
       if (!viewport) return;
@@ -667,6 +702,7 @@ class Re8chFooter extends HTMLElement {
     if (!item) return;
 
     const distance = item.getBoundingClientRect().width;
+    rail.marqueeOffset = 0;
     rail.dataset.animating = 'true';
     track.style.transition = 'none';
 
@@ -702,6 +738,25 @@ class Re8chFooter extends HTMLElement {
     const tooltip = this.querySelector('[data-record-tooltip]');
     if (!tooltip) return;
 
+    this.tooltipAbort?.abort();
+    this.tooltipAbort = new AbortController();
+    const { signal } = this.tooltipAbort;
+    const dismiss = () => {
+      tooltip.hidden = true;
+      this.querySelectorAll('[data-record-name]').forEach((mark) => mark.setAttribute('aria-expanded', 'false'));
+    };
+    window.addEventListener('scroll', dismiss, { passive: true, capture: true, signal });
+    window.addEventListener('resize', dismiss, { signal });
+    document.addEventListener('pointerdown', (event) => { if (!this.contains(event.target)) dismiss(); }, { signal });
+    this.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') { const trigger = this.recordTrigger; dismiss(); trigger?.focus({ preventScroll: true }); dismiss(); }
+      if (event.key === 'Tab' && event.shiftKey && tooltip.contains(event.target)) {
+        event.preventDefault(); this.recordTrigger?.focus({ preventScroll: true });
+      }
+      if (event.key === 'Tab' && !event.shiftKey && event.target.matches('[data-record-name]') && !tooltip.hidden) {
+        event.preventDefault(); tooltip.querySelector('a')?.focus();
+      }
+    }, { signal });
     let hideTimer;
     const clearHide = () => {
       if (hideTimer) window.clearTimeout(hideTimer);
@@ -710,9 +765,9 @@ class Re8chFooter extends HTMLElement {
     const scheduleHide = () => {
       clearHide();
       hideTimer = window.setTimeout(() => {
-        tooltip.hidden = true;
+        dismiss();
         tooltip.dataset.open = 'false';
-      }, 140);
+      }, 240);
     };
 
     tooltip.addEventListener('mouseenter', clearHide);
@@ -721,7 +776,7 @@ class Re8chFooter extends HTMLElement {
     tooltip.addEventListener('focusout', scheduleHide);
 
     this.querySelectorAll('.re8ch-footer__trust-mark').forEach((mark) => {
-      const show = () => this.showRecordTooltip(mark, tooltip);
+      const show = () => { clearHide(); this.showRecordTooltip(mark, tooltip); };
       mark.addEventListener('mouseenter', show);
       mark.addEventListener('focusin', show);
       mark.addEventListener('mouseleave', scheduleHide);
@@ -731,6 +786,8 @@ class Re8chFooter extends HTMLElement {
   }
 
   showRecordTooltip(mark, tooltip) {
+    this.recordTrigger = mark;
+    this.querySelectorAll('[data-record-name]').forEach((item) => item.setAttribute('aria-expanded', String(item === mark)));
     const name = mark.dataset.recordName || '';
     const description = mark.dataset.recordDescription || '';
     const detail = mark.dataset.recordDetail || '';
@@ -742,6 +799,8 @@ class Re8chFooter extends HTMLElement {
       <small>${escapeHtml(description)}</small>
       <p>${escapeHtml(detail)}</p>
       <a href="${escapeHtml(href)}" rel="noopener" target="_blank">${escapeHtml(action)} <span aria-hidden="true">→</span></a>`;
+    tooltip.setAttribute('role', 'dialog');
+    tooltip.setAttribute('aria-label', name);
     tooltip.hidden = false;
     tooltip.dataset.open = 'true';
 
@@ -782,7 +841,7 @@ class Re8chFooter extends HTMLElement {
           count || 8,
         );
         rail.style.setProperty('--record-visible-count', String(Math.max(1, visible)));
-        viewport.scrollLeft = 0;
+        if (!rail.matches(':focus-within')) viewport.scrollLeft = 0;
       }
       rail.dataset.canLeft = count > 1 ? 'true' : 'false';
       rail.dataset.canRight = count > 1 ? 'true' : 'false';

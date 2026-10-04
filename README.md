@@ -245,3 +245,24 @@ Tencent:
 1. Bind `zh-brand-assets.re8ch.com` to the COS bucket/CDN origin `brandassets-1301339749.cos.ap-guangzhou.myqcloud.com`.
 2. Enable HTTPS certificate for `zh-brand-assets.re8ch.com`.
 3. Purge CDN after large asset replacements when needed.
+
+### Shared controls and records motion
+
+Navigator controls use bundled Lucide SVGs (license included in the JavaScript).
+The glass slider supports 10–90% opacity in 1% increments and defaults to 78%
+when no attribute or saved preference exists. High Contrast locks the effective
+value to 90%; disabling it restores the saved setting. Popover surfaces remain
+legible independently of navigation glass opacity.
+
+The footer record rail moves at 12 pixels per second on desktop. Hovering or
+focusing the footer, opening a record card, or pressing the pause control stops
+it. Both OS reduced-motion preferences and the navigator's Reduce Motion option
+stop automatic motion. Mobile retains native horizontal swiping and tap-to-open
+record cards. Cards support Tab into their link, Shift+Tab back to the trigger,
+and Escape to dismiss; scrolling or resizing dismisses a card that would lose
+its anchor.
+
+Run `node --test tests/shared-components.test.mjs` to check opacity boundaries,
+marquee movement/pause behavior, and parity of `src`, `dist`, and `dist/current`.
+Preview both components with `python3 -m http.server 4198` and open
+`http://localhost:4198/demo/index.html`.
