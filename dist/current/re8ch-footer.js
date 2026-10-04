@@ -234,7 +234,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cluster",
       "ledger": "Ledger",
       "observable": "Observability",
-      "aesthete": "Anatomy",
+      "aesthete": "Makeup simulation",
       "phonaid": "Call assistant",
       "registry-image": "Image registry"
     },
@@ -267,7 +267,7 @@ const FOOTER_CONTENT = {
       "cluster": "集群",
       "ledger": "账本",
       "observable": "可观测",
-      "aesthete": "解剖学",
+      "aesthete": "妆效模拟",
       "phonaid": "通话助手",
       "registry-image": "镜像仓库"
     },
@@ -300,7 +300,7 @@ const FOOTER_CONTENT = {
       "cluster": "叢集",
       "ledger": "帳本",
       "observable": "可觀測",
-      "aesthete": "解剖學",
+      "aesthete": "妝效模擬",
       "phonaid": "通話助理",
       "registry-image": "映像倉庫"
     },
@@ -333,7 +333,7 @@ const FOOTER_CONTENT = {
       "cluster": "Clúster",
       "ledger": "Libro contable",
       "observable": "Observabilidad",
-      "aesthete": "Anatomía",
+      "aesthete": "Simulación de maquillaje",
       "phonaid": "Asistente de llamadas",
       "registry-image": "Registro de imágenes"
     },
@@ -366,7 +366,7 @@ const FOOTER_CONTENT = {
       "cluster": "عنقود",
       "ledger": "دفتر حسابات",
       "observable": "قابلية الرصد",
-      "aesthete": "علم التشريح",
+      "aesthete": "محاكاة المكياج",
       "phonaid": "مساعد المكالمات",
       "registry-image": "سجل الصور"
     },
@@ -399,7 +399,7 @@ const FOOTER_CONTENT = {
       "cluster": "क्लस्टर",
       "ledger": "खाता बही",
       "observable": "अवलोकनीयता",
-      "aesthete": "शरीर रचना",
+      "aesthete": "मेकअप सिमुलेशन",
       "phonaid": "कॉल सहायक",
       "registry-image": "इमेज रजिस्ट्री"
     },
@@ -432,7 +432,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cluster",
       "ledger": "Livro contábil",
       "observable": "Observabilidade",
-      "aesthete": "Anatomia",
+      "aesthete": "Simulação de maquiagem",
       "phonaid": "Assistente de chamadas",
       "registry-image": "Registro de imagens"
     },
@@ -465,7 +465,7 @@ const FOOTER_CONTENT = {
       "cluster": "ক্লাস্টার",
       "ledger": "হিসাবের খাতা",
       "observable": "পর্যবেক্ষণযোগ্যতা",
-      "aesthete": "শারীরস্থান",
+      "aesthete": "মেকআপ সিমুলেশন",
       "phonaid": "কল সহকারী",
       "registry-image": "ইমেজ রেজিস্ট্রি"
     },
@@ -498,7 +498,7 @@ const FOOTER_CONTENT = {
       "cluster": "Кластер",
       "ledger": "Бухгалтерская книга",
       "observable": "Наблюдаемость",
-      "aesthete": "Анатомия",
+      "aesthete": "Симуляция макияжа",
       "phonaid": "Помощник звонков",
       "registry-image": "Реестр образов"
     },
@@ -531,7 +531,7 @@ const FOOTER_CONTENT = {
       "cluster": "クラスター",
       "ledger": "会計帳簿",
       "observable": "可観測性",
-      "aesthete": "解剖学",
+      "aesthete": "メイクシミュレーション",
       "phonaid": "通話アシスタント",
       "registry-image": "イメージレジストリ"
     },
@@ -564,7 +564,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cluster",
       "ledger": "Grand livre",
       "observable": "Observabilité",
-      "aesthete": "Anatomie",
+      "aesthete": "Simulation de maquillage",
       "phonaid": "Assistant d’appels",
       "registry-image": "Registre d’images"
     },
@@ -597,7 +597,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cluster",
       "ledger": "Hauptbuch",
       "observable": "Beobachtbarkeit",
-      "aesthete": "Anatomie",
+      "aesthete": "Make-up-Simulation",
       "phonaid": "Anrufassistent",
       "registry-image": "Image-Registry"
     },
@@ -630,7 +630,7 @@ const FOOTER_CONTENT = {
       "cluster": "클러스터",
       "ledger": "회계 장부",
       "observable": "관측 가능성",
-      "aesthete": "해부학",
+      "aesthete": "메이크업 시뮬레이션",
       "phonaid": "통화 도우미",
       "registry-image": "이미지 레지스트리"
     },
@@ -663,7 +663,7 @@ const FOOTER_CONTENT = {
       "cluster": "Klaster",
       "ledger": "Buku besar",
       "observable": "Observabilitas",
-      "aesthete": "Anatomi",
+      "aesthete": "Simulasi riasan",
       "phonaid": "Asisten panggilan",
       "registry-image": "Registri citra"
     },
@@ -696,7 +696,7 @@ const FOOTER_CONTENT = {
       "cluster": "Küme",
       "ledger": "Muhasebe defteri",
       "observable": "Gözlemlenebilirlik",
-      "aesthete": "Anatomi",
+      "aesthete": "Makyaj simülasyonu",
       "phonaid": "Arama asistanı",
       "registry-image": "İmaj kayıt deposu"
     },
@@ -729,7 +729,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cụm",
       "ledger": "Sổ kế toán",
       "observable": "Khả năng quan sát",
-      "aesthete": "Giải phẫu",
+      "aesthete": "Mô phỏng trang điểm",
       "phonaid": "Trợ lý cuộc gọi",
       "registry-image": "Kho ảnh"
     },
@@ -762,7 +762,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cluster",
       "ledger": "Libro contabile",
       "observable": "Osservabilità",
-      "aesthete": "Anatomia",
+      "aesthete": "Simulazione del trucco",
       "phonaid": "Assistente chiamate",
       "registry-image": "Registro immagini"
     },
@@ -795,7 +795,7 @@ const FOOTER_CONTENT = {
       "cluster": "خوشه",
       "ledger": "دفتر حساب",
       "observable": "مشاهده‌پذیری",
-      "aesthete": "کالبدشناسی",
+      "aesthete": "شبیه‌سازی آرایش",
       "phonaid": "دستیار تماس",
       "registry-image": "مخزن تصاویر"
     },
@@ -828,7 +828,7 @@ const FOOTER_CONTENT = {
       "cluster": "کلسٹر",
       "ledger": "حساب کی کتاب",
       "observable": "مشاہدہ پذیری",
-      "aesthete": "علم تشریح",
+      "aesthete": "میک اپ سمولیشن",
       "phonaid": "کال معاون",
       "registry-image": "امیج رجسٹری"
     },
@@ -861,7 +861,7 @@ const FOOTER_CONTENT = {
       "cluster": "คลัสเตอร์",
       "ledger": "สมุดบัญชี",
       "observable": "การสังเกตการณ์",
-      "aesthete": "กายวิภาค",
+      "aesthete": "การจำลองการแต่งหน้า",
       "phonaid": "ผู้ช่วยโทรศัพท์",
       "registry-image": "คลังอิมเมจ"
     },
@@ -894,7 +894,7 @@ const FOOTER_CONTENT = {
       "cluster": "Klaster",
       "ledger": "Księga rachunkowa",
       "observable": "Obserwowalność",
-      "aesthete": "Anatomia",
+      "aesthete": "Symulacja makijażu",
       "phonaid": "Asystent połączeń",
       "registry-image": "Rejestr obrazów"
     },
@@ -927,7 +927,7 @@ const FOOTER_CONTENT = {
       "cluster": "Cluster",
       "ledger": "Grootboek",
       "observable": "Observeerbaarheid",
-      "aesthete": "Anatomie",
+      "aesthete": "Make-upsimulatie",
       "phonaid": "Belassistent",
       "registry-image": "Imageregister"
     },
@@ -960,7 +960,7 @@ const FOOTER_CONTENT = {
       "cluster": "Kundi",
       "ledger": "Daftari la hesabu",
       "observable": "Uangalizi",
-      "aesthete": "Anatomia",
+      "aesthete": "Uigaji wa vipodozi",
       "phonaid": "Msaidizi wa simu",
       "registry-image": "Sajili ya picha"
     },
@@ -993,7 +993,7 @@ const FOOTER_CONTENT = {
       "cluster": "Kluster",
       "ledger": "Lejar",
       "observable": "Kebolehcerapan",
-      "aesthete": "Anatomi",
+      "aesthete": "Simulasi solekan",
       "phonaid": "Pembantu panggilan",
       "registry-image": "Daftar imej"
     },
@@ -1026,7 +1026,7 @@ const FOOTER_CONTENT = {
       "cluster": "Kumpol",
       "ledger": "Libro ng kuwenta",
       "observable": "Pagmamasid",
-      "aesthete": "Anatomiya",
+      "aesthete": "Simulasyon ng makeup",
       "phonaid": "Katulong sa tawag",
       "registry-image": "Rehistro ng imahe"
     },
@@ -1059,7 +1059,7 @@ const FOOTER_CONTENT = {
       "cluster": "Кластер",
       "ledger": "Бухгалтерська книга",
       "observable": "Спостережуваність",
-      "aesthete": "Анатомія",
+      "aesthete": "Симуляція макіяжу",
       "phonaid": "Помічник дзвінків",
       "registry-image": "Реєстр образів"
     },
@@ -1092,7 +1092,7 @@ const FOOTER_CONTENT = {
       "cluster": "אשכול",
       "ledger": "ספר חשבונות",
       "observable": "יכולת תצפית",
-      "aesthete": "אנטומיה",
+      "aesthete": "הדמיית איפור",
       "phonaid": "עוזר שיחות",
       "registry-image": "מאגר תמונות"
     },

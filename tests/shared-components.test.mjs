@@ -109,3 +109,29 @@ test('all 27 locales cover every product, brand and record detail', () => {
     assert.equal(config.companyRecords.find(record => record.id === 'duns').description, '12-474-2472');
   }
 });
+
+test('navigator ignores pre-connect upgrade reactions and preserves controls on theme changes', () => {
+  const { Class, context } = load('navigator');
+  const nav = new Class();
+  nav.isConnected = true;
+  nav.render = () => { throw new Error('unexpected render'); };
+  assert.doesNotThrow(() => nav.attributeChangedCallback('locale', null, 'en'));
+  nav.accessibility = { highContrast: false, glassOpacity: .78 };
+  nav.themePreference = 'auto';
+  const attrs = new Map();
+  nav.getAttribute = key => attrs.get(key) || null;
+  nav.setAttribute = (key, value) => {
+    const old = nav.getAttribute(key); attrs.set(key, value);
+    if (key === 'theme') nav.attributeChangedCallback(key, old, value);
+  };
+  nav.syncControlState = () => {};
+  nav.syncFooters = () => {};
+  context.CustomEvent = class {};
+  context.window.dispatchEvent = () => {};
+  nav.applyTheme('dark', true);
+  assert.equal(attrs.get('theme'), 'dark');
+  assert.equal(context.document.documentElement.dataset.theme, 'dark');
+  nav.setAttribute('theme', 'light');
+  assert.equal(nav.themePreference, 'light');
+  assert.equal(context.document.documentElement.dataset.theme, 'light');
+});
