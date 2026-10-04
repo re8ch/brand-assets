@@ -18,7 +18,8 @@ Use the graphic logo mark with one of the following brand names:
 - `SVG/` - transparent RE8CH trademark SVG logo variants.
 - `SVG/ledger-ui/` - ledger-specific mini program UI icons for account books, entries, documents, reconciliation, reports, profile, and empty states.
 - `PNG/` - transparent RE8CH trademark PNG logo variants.
-- `ANIME/` - reusable web animation assets built around `<re8ch-logo-motion>`.
+- `ANIME/` - reusable web animation assets built around `<re8ch-logo-motion>` plus the standalone Penrose color cycle.
+- `SVG/penrose/` - 24 programmable Penrose colorways, with three visible brand colors and a fourth hidden-face glow.
 - `PRODUCTS/` - dedicated product logo directory. Product logos live here instead of beside the RE8CH trademark files.
 - `ORGS/` - editable SVG and 512 px PNG avatars for GitHub organizations in the RE8CH enterprise.
 - `UI/` - reusable CDN web components for product pages and shared product UI.

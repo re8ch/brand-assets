@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 896 820" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Penrose 24-color cycle</title>
+  <desc id="desc">Three visible color faces and a fourth color glowing from hidden inner faces along all three sides and their extensions. The center remains transparent.</desc>
+  <defs>
+    <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="12"/></filter>
+    <style>
+      .face { stroke: #050505; stroke-width: 2; stroke-linejoin: round; }
+      
+      .cycle-left { animation: left-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-right { animation: right-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-base { animation: base-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-glow { animation: glow-stroke-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      @keyframes left-fill-cycle { 0.0000% { fill: #F81018; } 4.1667% { fill: #F81018; } 8.3333% { fill: #F81018; } 12.5000% { fill: #F81018; } 16.6667% { fill: #F81018; } 20.8333% { fill: #F81018; } 25.0000% { fill: #00B559; } 29.1667% { fill: #00B559; } 33.3333% { fill: #00B559; } 37.5000% { fill: #00B559; } 41.6667% { fill: #00B559; } 45.8333% { fill: #00B559; } 50.0000% { fill: #FFD619; } 54.1667% { fill: #FFD619; } 58.3333% { fill: #FFD619; } 62.5000% { fill: #FFD619; } 66.6667% { fill: #FFD619; } 70.8333% { fill: #FFD619; } 75.0000% { fill: #0A7FBE; } 79.1667% { fill: #0A7FBE; } 83.3333% { fill: #0A7FBE; } 87.5000% { fill: #0A7FBE; } 91.6667% { fill: #0A7FBE; } 95.8333% { fill: #0A7FBE; } 100% { fill: #F81018; } }
+      @keyframes right-fill-cycle { 0.0000% { fill: #00B559; } 4.1667% { fill: #00B559; } 8.3333% { fill: #FFD619; } 12.5000% { fill: #FFD619; } 16.6667% { fill: #0A7FBE; } 20.8333% { fill: #0A7FBE; } 25.0000% { fill: #F81018; } 29.1667% { fill: #F81018; } 33.3333% { fill: #FFD619; } 37.5000% { fill: #FFD619; } 41.6667% { fill: #0A7FBE; } 45.8333% { fill: #0A7FBE; } 50.0000% { fill: #F81018; } 54.1667% { fill: #F81018; } 58.3333% { fill: #00B559; } 62.5000% { fill: #00B559; } 66.6667% { fill: #0A7FBE; } 70.8333% { fill: #0A7FBE; } 75.0000% { fill: #F81018; } 79.1667% { fill: #F81018; } 83.3333% { fill: #00B559; } 87.5000% { fill: #00B559; } 91.6667% { fill: #FFD619; } 95.8333% { fill: #FFD619; } 100% { fill: #00B559; } }
+      @keyframes base-fill-cycle { 0.0000% { fill: #FFD619; } 4.1667% { fill: #0A7FBE; } 8.3333% { fill: #00B559; } 12.5000% { fill: #0A7FBE; } 16.6667% { fill: #00B559; } 20.8333% { fill: #FFD619; } 25.0000% { fill: #FFD619; } 29.1667% { fill: #0A7FBE; } 33.3333% { fill: #F81018; } 37.5000% { fill: #0A7FBE; } 41.6667% { fill: #F81018; } 45.8333% { fill: #FFD619; } 50.0000% { fill: #00B559; } 54.1667% { fill: #0A7FBE; } 58.3333% { fill: #F81018; } 62.5000% { fill: #0A7FBE; } 66.6667% { fill: #F81018; } 70.8333% { fill: #00B559; } 75.0000% { fill: #00B559; } 79.1667% { fill: #FFD619; } 83.3333% { fill: #F81018; } 87.5000% { fill: #FFD619; } 91.6667% { fill: #F81018; } 95.8333% { fill: #00B559; } 100% { fill: #FFD619; } }
+      @keyframes glow-stroke-cycle { 0.0000% { stroke: #0A7FBE; } 4.1667% { stroke: #FFD619; } 8.3333% { stroke: #0A7FBE; } 12.5000% { stroke: #00B559; } 16.6667% { stroke: #FFD619; } 20.8333% { stroke: #00B559; } 25.0000% { stroke: #0A7FBE; } 29.1667% { stroke: #FFD619; } 33.3333% { stroke: #0A7FBE; } 37.5000% { stroke: #F81018; } 41.6667% { stroke: #FFD619; } 45.8333% { stroke: #F81018; } 50.0000% { stroke: #0A7FBE; } 54.1667% { stroke: #00B559; } 58.3333% { stroke: #0A7FBE; } 62.5000% { stroke: #F81018; } 66.6667% { stroke: #00B559; } 70.8333% { stroke: #F81018; } 75.0000% { stroke: #FFD619; } 79.1667% { stroke: #00B559; } 83.3333% { stroke: #FFD619; } 87.5000% { stroke: #F81018; } 91.6667% { stroke: #00B559; } 95.8333% { stroke: #F81018; } 100% { stroke: #0A7FBE; } }
+      @media (prefers-reduced-motion: reduce) {
+        .cycle-left, .cycle-right, .cycle-base, .cycle-glow { animation: none; }
+      }
+    </style>
+  </defs>
+  <path id="left" class="face cycle-left" fill="#F81018" d="M 383 50 L 681 569 L 540 569 L 377 288 L 78 805 L 17 684 Z"/>
+  <path id="right" class="face cycle-right" fill="#00B559" d="M 383 50 L 515 50 L 880 684 L 292 684 L 356 569 L 682 569 Z"/>
+  <path id="base" class="face cycle-base" fill="#FFD619" d="M 377 288 L 448 410 L 292 684 L 880 684 L 819 806 L 78 806 Z"/>
+  <!-- Light leaks from all three hidden inner faces and continues along each edge extension. -->
+  <g id="hidden-face-glow" class="cycle-glow" fill="none" stroke="#0A7FBE" stroke-linecap="round" stroke-width="7" stroke-opacity="0.40" filter="url(#soft-glow)">
+    <path d="M 448 410 L 292 684"/>
+    <path d="M 377 288 L 540 569"/>
+    <path d="M 356 569 L 682 569"/>
+  </g>
+</svg>

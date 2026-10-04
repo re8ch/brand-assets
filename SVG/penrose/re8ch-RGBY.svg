@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 896 820" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Penrose RGBY</title>
+  <desc id="desc">Three visible color faces and a fourth color glowing from hidden inner faces along all three sides and their extensions. The center remains transparent.</desc>
+  <defs>
+    <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="12"/></filter>
+    <style>
+      .face { stroke: #050505; stroke-width: 2; stroke-linejoin: round; }
+      
+    </style>
+  </defs>
+  <path id="left" class="face cycle-left" fill="#F81018" d="M 383 50 L 681 569 L 540 569 L 377 288 L 78 805 L 17 684 Z"/>
+  <path id="right" class="face cycle-right" fill="#00B559" d="M 383 50 L 515 50 L 880 684 L 292 684 L 356 569 L 682 569 Z"/>
+  <path id="base" class="face cycle-base" fill="#0A7FBE" d="M 377 288 L 448 410 L 292 684 L 880 684 L 819 806 L 78 806 Z"/>
+  <!-- Light leaks from all three hidden inner faces and continues along each edge extension. -->
+  <g id="hidden-face-glow" class="cycle-glow" fill="none" stroke="#FFD619" stroke-linecap="round" stroke-width="7" stroke-opacity="0.40" filter="url(#soft-glow)">
+    <path d="M 448 410 L 292 684"/>
+    <path d="M 377 288 L 540 569"/>
+    <path d="M 356 569 L 682 569"/>
+  </g>
+</svg>
