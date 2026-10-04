@@ -1,3 +1,49 @@
+/* Lucide icons — https://lucide.dev
+ISC License
+
+Copyright (c) 2026 Lucide Icons and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+---
+
+The following Lucide icons are derived from the Feather project:
+
+airplay, alert-circle, alert-octagon, alert-triangle, aperture, arrow-down-circle, arrow-down-left, arrow-down-right, arrow-down, arrow-left-circle, arrow-left, arrow-right-circle, arrow-right, arrow-up-circle, arrow-up-left, arrow-up-right, arrow-up, at-sign, calendar, cast, check, chevron-down, chevron-left, chevron-right, chevron-up, chevrons-down, chevrons-left, chevrons-right, chevrons-up, circle, clipboard, clock, code, columns, command, compass, corner-down-left, corner-down-right, corner-left-down, corner-left-up, corner-right-down, corner-right-up, corner-up-left, corner-up-right, crosshair, database, divide-circle, divide-square, dollar-sign, download, external-link, feather, frown, hash, headphones, help-circle, info, italic, key, layout, life-buoy, link-2, link, loader, lock, log-in, log-out, maximize, meh, minimize, minimize-2, minus-circle, minus-square, minus, monitor, moon, more-horizontal, more-vertical, move, music, navigation-2, navigation, octagon, pause-circle, percent, plus-circle, plus-square, plus, power, radio, rss, search, server, share, shopping-bag, sidebar, smartphone, smile, square, table-2, tablet, target, terminal, trash-2, trash, triangle, tv, type, upload, x-circle, x-octagon, x-square, x, zoom-in, zoom-out
+
+The MIT License (MIT) (for the icons listed above)
+
+Copyright (c) 2013-present Cole Bemis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 (() => {
 const currentScript = document.currentScript;
 const scriptElement = currentScript || document.querySelector('script[src*="/dist/re8ch-navigator.js"], script[src*="/dist/current/re8ch-navigator.js"]');
@@ -86,7 +132,7 @@ const GLOBAL_LANGUAGE_CATALOG = [
 const DEFAULT_GLASS_OPACITY = 0.78;
 const GLASS_OPACITY_MIN = 0.1;
 const GLASS_OPACITY_MAX = 0.9;
-const GLASS_OPACITY_STEP = 0.05;
+const GLASS_OPACITY_STEP = 0.01;
 
 const NAVIGATOR_UI_COPY = {
   en: {
@@ -161,19 +207,17 @@ function snapNumber(value, step) {
 }
 
 function clampGlassOpacity(value, fallback = DEFAULT_GLASS_OPACITY) {
+  if (value == null || value === '') return fallback;
   return clampNumber(snapNumber(Number(value), GLASS_OPACITY_STEP), GLASS_OPACITY_MIN, GLASS_OPACITY_MAX, fallback);
 }
 
-function glassOpacityProgress(value) {
-  return (clampGlassOpacity(value) - GLASS_OPACITY_MIN) / (GLASS_OPACITY_MAX - GLASS_OPACITY_MIN);
-}
 
 function localeKey(value) {
   return String(value || '').trim().replaceAll('_', '-').toLowerCase();
 }
 
 function languageValue(language) {
-  return language?.locale || language?.value || language?.label || '';
+  return typeof language === 'string' ? language : (language?.locale || language?.value || language?.label || '');
 }
 
 function languageMatches(catalogLanguage, supportedLanguage) {
@@ -189,7 +233,7 @@ function resolveLanguages(catalog, supported, locale, mode) {
     const catalogLanguage = catalog.find((item) => languageMatches(item, language));
     return {
       ...(catalogLanguage || {}),
-      ...language,
+      ...(typeof language === 'string' ? {} : language),
       locale: languageValue(language),
       enabled: true,
     };
@@ -465,11 +509,11 @@ class Re8chNavigator extends HTMLElement {
       const keys = [language.locale, language.value, ...(language.aliases || [])].map(localeKey);
       return keys.includes(normalized);
     }) || languages.find((language) => language.enabled) || languages[0];
-    const activeLabel = active?.scriptIcon || active?.nativeLabel || active?.label || locale || 'Lang';
+    const activeLabel = (active?.locale || active?.value || locale || 'en').split('-')[0].toUpperCase();
     const items = languages.map((language) => {
       const keys = [language.locale, language.value, ...(language.aliases || [])].map(localeKey);
       const selected = language.selected || keys.includes(normalized);
-      const disabled = !language.enabled || !language.href;
+      const disabled = !language.enabled;
       return `
         <button class="re8ch-nav__language-option" type="button"
           data-language-option="${escapeHtml(language.locale || language.value || '')}"
@@ -483,7 +527,7 @@ class Re8chNavigator extends HTMLElement {
     return `
       <div class="re8ch-nav__menu-wrap re8ch-nav__menu-wrap--language ${escapeHtml(extraClassName)}">
         <button class="re8ch-nav__language-button" type="button" data-re8ch-menu-button="${escapeHtml(menuName)}" aria-expanded="false" aria-label="${escapeHtml(ui.language)}" title="${escapeHtml(ui.language)}">
-          <span class="re8ch-nav__language-icon" aria-hidden="true">${escapeHtml(activeLabel)}</span>
+          ${this.icon("languages")}<span class="re8ch-nav__locale-label" aria-hidden="true">${escapeHtml(activeLabel)}</span>${this.icon("chevron")}
           <span class="re8ch-nav__sr">${escapeHtml(ui.language)}</span>
         </button>
         <div class="re8ch-nav__popover re8ch-nav__language-menu" data-re8ch-menu="${escapeHtml(menuName)}">
@@ -515,35 +559,26 @@ class Re8chNavigator extends HTMLElement {
           </div>
           <div class="re8ch-nav__dial-label">
             <span><strong>${escapeHtml(ui.glass)}</strong><output data-glass-output>78%</output></span>
-            <button class="re8ch-nav__opacity-dial" type="button" data-accessibility-dial="glassOpacity"
-              role="slider" aria-label="${escapeHtml(ui.glassOpacity)}" aria-valuemin="10" aria-valuemax="90" aria-valuenow="78">
-              <span class="re8ch-nav__dial-face" aria-hidden="true"><i></i></span>
-            </button>
+            <input class="re8ch-nav__opacity-slider" type="range" min="10" max="90" step="1" value="78"
+              data-accessibility-range="glassOpacity" aria-label="${escapeHtml(ui.glassOpacity)}">
+
           </div>
         </div>
       </div>`;
   }
 
   icon(name) {
-    if (name === 'accessibility') {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="4" r="2"></circle><path d="M5 8h14"></path><path d="M12 8v12"></path><path d="m8 20 4-8 4 8"></path></svg>';
-    }
-    if (name === 'motion') {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h8"></path><path d="m10 8 4 4-4 4"></path><path d="M17 5v14"></path></svg>';
-    }
-    if (name === 'contrast') {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 4v16"></path></svg>';
-    }
-    if (name === 'moon') {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M20 14.2A7.2 7.2 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2Z"></path></svg>';
-    }
-    if (name === 'auto') {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="7"></circle><path d="M12 5v7l4 2"></path><path d="M4.8 4.8 6.2 6.2"></path><path d="M17.8 17.8l1.4 1.4"></path></svg>';
-    }
-    if (name === 'sun') {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="M5.6 5.6 7 7"></path><path d="M17 17l1.4 1.4"></path><path d="M3 12h2"></path><path d="M19 12h2"></path><path d="M5.6 18.4 7 17"></path><path d="M17 7l1.4-1.4"></path><circle cx="12" cy="12" r="4"></circle></svg>';
-    }
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="m4.22 4.22 1.42 1.42"></path><path d="m18.36 18.36 1.42 1.42"></path><path d="M3 12h2"></path><path d="M19 12h2"></path><path d="m4.22 19.78 1.42-1.42"></path><path d="m18.36 5.64 1.42-1.42"></path><circle cx="12" cy="12" r="4"></circle></svg>';
+    const icons = {
+      "languages": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <path d=\"m5 8 6 6\" /> <path d=\"m4 14 6-6 2-3\" /> <path d=\"M2 5h12\" /> <path d=\"M7 2h1\" /> <path d=\"m22 22-5-10-5 10\" /> <path d=\"M14 18h6\" /> </svg> ",
+      "chevron": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <path d=\"m6 9 6 6 6-6\" /> </svg> ",
+      "accessibility": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <circle cx=\"16\" cy=\"4\" r=\"1\" /> <path d=\"m18 19 1-7-6 1\" /> <path d=\"m5 8 3-3 5.5 3-2.36 3.5\" /> <path d=\"M4.24 14.5a5 5 0 0 0 6.88 6\" /> <path d=\"M13.76 17.5a5 5 0 0 0-6.88-6\" /> </svg> ",
+      "motion": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <rect x=\"14\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\" /> <rect x=\"5\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\" /> </svg> ",
+      "contrast": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 18a6 6 0 0 0 0-12v12z\" /> </svg> ",
+      "moon": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <path d=\"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401\" /> </svg> ",
+      "auto": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 6v6h4\" /> </svg> ",
+      "sun": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" > <circle cx=\"12\" cy=\"12\" r=\"4\" /> <path d=\"M12 2v2\" /> <path d=\"M12 20v2\" /> <path d=\"m4.93 4.93 1.41 1.41\" /> <path d=\"m17.66 17.66 1.41 1.41\" /> <path d=\"M2 12h2\" /> <path d=\"M20 12h2\" /> <path d=\"m6.34 17.66-1.41 1.41\" /> <path d=\"m19.07 4.93-1.41 1.41\" /> </svg> "
+};
+    return icons[name] || icons.sun;
   }
 
   bindEvents() {
@@ -565,6 +600,9 @@ class Re8chNavigator extends HTMLElement {
           localStorage.setItem(STORAGE_KEYS.localeManual, '1');
           document.cookie = `${STORAGE_KEYS.localeChoice}=${encodeURIComponent(button.dataset.languageOption || '')}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
         } catch {}
+        this.setAttribute('locale', button.dataset.languageOption);
+        document.documentElement.lang = button.dataset.languageOption;
+        document.documentElement.dataset.locale = button.dataset.languageOption;
         document.querySelectorAll('re8ch-footer').forEach((footer) => footer.setAttribute('locale', button.dataset.languageOption));
         if (href) window.location.href = href;
         this.dispatchEvent(new CustomEvent('re8ch-language-change', { bubbles: true, detail: { locale: button.dataset.languageOption } }));
@@ -597,35 +635,8 @@ class Re8chNavigator extends HTMLElement {
       }, { signal });
     });
 
-    this.shadowRoot.querySelectorAll('[data-accessibility-dial]').forEach((dial) => {
-      const setFromEvent = (event) => {
-        this.setGlassOpacity(this.opacityFromPointer(event, dial));
-      };
-      dial.addEventListener('pointerdown', (event) => {
-        event.preventDefault();
-        dial.setPointerCapture?.(event.pointerId);
-        setFromEvent(event);
-        const move = (moveEvent) => setFromEvent(moveEvent);
-        const up = (upEvent) => {
-          dial.releasePointerCapture?.(upEvent.pointerId);
-          window.removeEventListener('pointermove', move);
-          window.removeEventListener('pointerup', up);
-        };
-        window.addEventListener('pointermove', move, { signal });
-        window.addEventListener('pointerup', up, { signal, once: true });
-      }, { signal });
-      dial.addEventListener('keydown', (event) => {
-        const current = this.accessibility[dial.dataset.accessibilityDial] || DEFAULT_GLASS_OPACITY;
-        let next = current;
-        if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next += GLASS_OPACITY_STEP;
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next -= GLASS_OPACITY_STEP;
-        if (event.key === 'Home') next = GLASS_OPACITY_MIN;
-        if (event.key === 'End') next = GLASS_OPACITY_MAX;
-        if (next !== current) {
-          event.preventDefault();
-          this.setGlassOpacity(next);
-        }
-      }, { signal });
+    this.shadowRoot.querySelectorAll('[data-accessibility-range]').forEach((input) => {
+      input.addEventListener('input', () => this.setGlassOpacity(Number(input.value) / 100), { signal });
     });
 
     this.shadowRoot.addEventListener('keydown', (event) => {
@@ -646,6 +657,9 @@ class Re8chNavigator extends HTMLElement {
     this.themePreference = resolveThemePreference(preference);
     const resolved = resolveTheme(this.themePreference);
     if (persist) localStorage.setItem(STORAGE_KEYS.theme, this.themePreference);
+    // Keep the declarative attribute in sync so a later rerender/reconnect does
+    // not restore the original theme supplied by the embedding page.
+    if (this.getAttribute('theme') !== this.themePreference) this.setAttribute('theme', this.themePreference);
     document.documentElement.dataset.theme = resolved;
     document.documentElement.dataset.themePreference = this.themePreference;
     this.setAttribute('data-theme', resolved);
@@ -676,13 +690,6 @@ class Re8chNavigator extends HTMLElement {
     window.dispatchEvent(new CustomEvent('re8ch-accessibility-change', { detail: { ...this.accessibility, glassOpacity: opacity } }));
   }
 
-  opacityFromPointer(event, element) {
-    const rect = element.getBoundingClientRect();
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
-    const angle = (Math.atan2(y, x) * 180 / Math.PI + 450) % 360;
-    return clampGlassOpacity(GLASS_OPACITY_MIN + (angle / 360) * (GLASS_OPACITY_MAX - GLASS_OPACITY_MIN));
-  }
 
   setGlassOpacity(value) {
     this.accessibility.glassOpacity = clampGlassOpacity(value);
@@ -693,20 +700,20 @@ class Re8chNavigator extends HTMLElement {
   syncControlState() {
     if (!this.shadowRoot) return;
     this.shadowRoot.querySelectorAll('[data-theme-option]').forEach((button) => {
-      button.toggleAttribute('aria-current', button.dataset.themeOption === this.themePreference);
+      button.setAttribute('aria-current', String(button.dataset.themeOption === this.themePreference));
+      button.setAttribute('aria-pressed', String(button.dataset.themeOption === this.themePreference));
     });
     this.shadowRoot.querySelectorAll('[data-accessibility-option]').forEach((input) => {
       input.checked = Boolean(this.accessibility?.[input.dataset.accessibilityOption]);
     });
-    this.shadowRoot.querySelectorAll('[data-accessibility-dial]').forEach((dial) => {
-      const value = this.accessibility?.[dial.dataset.accessibilityDial] || DEFAULT_GLASS_OPACITY;
-      const percent = Math.round(value * 100);
-      dial.setAttribute('aria-valuenow', String(percent));
-      dial.style.setProperty('--re8ch-nav-dial-angle', `${glassOpacityProgress(value) * 360}deg`);
-      dial.style.setProperty('--re8ch-nav-dial-percent', `${percent}%`);
+    this.shadowRoot.querySelectorAll('[data-accessibility-range]').forEach((input) => {
+      const value = this.accessibility.highContrast ? GLASS_OPACITY_MAX : this.accessibility.glassOpacity;
+      input.value = String(Math.round(value * 100));
+      input.disabled = this.accessibility.highContrast;
+      input.setAttribute('aria-valuetext', `${input.value}%`);
     });
     this.shadowRoot.querySelectorAll('[data-glass-output]').forEach((output) => {
-      output.textContent = `${Math.round((this.accessibility?.glassOpacity || DEFAULT_GLASS_OPACITY) * 100)}%`;
+      output.textContent = `${Math.round((this.accessibility.highContrast ? GLASS_OPACITY_MAX : (this.accessibility?.glassOpacity || DEFAULT_GLASS_OPACITY)) * 100)}%`;
     });
   }
 }
