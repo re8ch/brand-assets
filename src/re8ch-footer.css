@@ -796,3 +796,30 @@ re8ch-footer[data-compact="true"] .re8ch-footer { padding-top: 10px; padding-bot
   .re8ch-footer__bottom { gap: 6px; }
   .re8ch-footer__contact-row { gap: 6px 12px; }
 }
+
+/* Natural-width containers: controls and motion only when content overflows. */
+.re8ch-footer__rail-shell { direction: ltr; }
+.re8ch-footer__rail-viewport,
+.re8ch-footer__rail-shell--records .re8ch-footer__rail-viewport { overflow-x: auto; scroll-behavior: auto; scroll-snap-type: none; margin-inline: 0; padding: 2px 0; }
+.re8ch-footer__rail-track,
+.re8ch-footer__rail-shell--records .re8ch-footer__rail-track { width: max-content; min-width: 0; min-height: 24px; transform: none; will-change: auto; }
+.re8ch-footer__records-section .re8ch-footer__rail-shell { margin-right: 0; }
+.re8ch-footer__rail-label, .re8ch-footer__product-link { min-height: 26px; gap: 4px; padding: 2px 8px; font-size: 10px; }
+.re8ch-footer__rail-label img, .re8ch-footer__product-link img, .re8ch-footer__product-link svg,
+.re8ch-footer__trust-logo { width: 10px; height: 10px; }
+.re8ch-footer__trust-logo img { max-width: 12px; max-height: 10px; }
+.re8ch-footer__trust-fallback svg { font-size: 10px; }
+.re8ch-footer__trust-mark { flex: 0 0 auto; min-width: 0; min-height: 24px; gap: 4px; padding: 2px 8px; }
+.re8ch-footer__trust-mark > strong { display: block; max-width: none; white-space: nowrap; font-size: 10px; }
+.re8ch-footer__rail-shell[data-overflow="true"] { padding-right: 26px; }
+.re8ch-footer__marquee-toggle { top: 2px; z-index: 4; }
+.re8ch-footer__rail-shell .re8ch-footer__rail-button { top: 2px; height: 24px; width: 18px; }
+.re8ch-footer__rail-shell .re8ch-footer__rail-button--right { right: 26px; }
+.re8ch-footer__rail-shell .re8ch-footer__rail-button--left { left: 0; }
+.re8ch-footer__rail-shell .re8ch-footer__rail-fade { top: 0; width: 18px; }
+.re8ch-footer__rail-shell .re8ch-footer__rail-fade--right { right: 26px; }
+.re8ch-footer__rail-shell [hidden] { display: none !important; }
+@media (max-width: 760px) {
+  .re8ch-footer__marquee-toggle { display: grid; }
+  .re8ch-footer__rail-shell .re8ch-footer__rail-button { display: inline-flex; }
+}

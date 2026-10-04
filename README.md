@@ -65,7 +65,7 @@ and do not copy Apple symbol shapes.
 
 The reusable trust footer is a framework-agnostic Web Component. It renders a
 compressed Company Trust Mark Strip: product network scroll rail with a compact
-RE8CH mark head, looping company record/public profile rail, and legal/contact
+RE8CH mark head, overflow-aware company record/public profile container, and legal/contact
 row. The RE8CH rail head is a crawlable link to `https://re8ch.com/`, and the
 contact row includes a low-key Founder Profile link to `https://2wood.cn/` for
 the company/personal-site backlink contract.
@@ -105,7 +105,7 @@ Supported attributes:
 - `locale`, `language-options`, `language-mode` - language state mirrored from `<re8ch-navigator>`; product rail links and footer labels localize to the active locale.
 - `compact`, `variant`, `max-width` - visual density and layout tuning.
 - `brand-logo` - RE8CH mark shown at the start of the product rail.
-- `products-label`, `product-ids`, `record-ids`, `records-visible` - rail content and loop-window tuning.
+- `products-label`, `product-ids`, `record-ids`, `records-visible` - container content; `records-visible` is retained for compatibility but natural content width determines overflow.
 - `hide-products`, `hide-records` - optional section suppression.
 - `copyright`, `icp`, `icp-href`, `address`, `address-title`, `contact-email`, `career-email`, `contact-label`, `career-label` - legal/contact overrides. Keep the default Founder Profile link unless a product has a specific legal reason to suppress or replace it.
 
@@ -254,15 +254,27 @@ when no attribute or saved preference exists. High Contrast locks the effective
 value to 90%; disabling it restores the saved setting. Popover surfaces remain
 legible independently of navigation glass opacity.
 
-The footer record rail moves at 12 pixels per second on desktop. Hovering or
-focusing the footer, opening a record card, or pressing the pause control stops
-it. Both OS reduced-motion preferences and the navigator's Reduce Motion option
-stop automatic motion. Mobile retains native horizontal swiping and tap-to-open
-record cards. Cards support Tab into their link, Shift+Tab back to the trigger,
-and Escape to dismiss; scrolling or resizing dismisses a card that would lose
-its anchor.
+Footer brand/product/record icons are 10px (half the previous 20px size).
+Both rows use their natural content width. When everything fits, they are still,
+with no scroll controls or animation frame loop. ResizeObserver checks again
+when container/content dimensions change, including after locale switches.
+Only overflowing rows automatically scroll at 12px/s, reversing gently at each
+end. Arrows scroll within finite bounds; items are never duplicated or reordered.
+Hover, focus, open detail cards, manual pause, hidden tabs and reduced motion all
+pause automatic movement. Touch/wheel input has a three-second grace period.
+
+All 27 supported locales include the brand label, descriptions for all nine
+products, names for registries, descriptions for all ten records and detail-card
+actions. Official trademarks and registration identifiers are preserved. Custom
+brand names, product labels/descriptions and record name/description/detail/action
+fields may be locale-keyed objects with an English fallback. Cards support Tab
+into their link, Shift+Tab back to the trigger, and Escape to dismiss.
 
 Run `node --test tests/shared-components.test.mjs` to check opacity boundaries,
-marquee movement/pause behavior, and parity of `src`, `dist`, and `dist/current`.
+conditional scrolling and resize behavior, all 27 locale inventories, and parity
+of `src`, `dist`, and `dist/current`.
 Preview both components with `python3 -m http.server 4198` and open
 `http://localhost:4198/demo/index.html`.
+
+The redesign demo language menu exposes all 27 locales. Use
+`demo/redesign.html?locale=ar&few=1` to inspect a short localized list.
