@@ -562,7 +562,7 @@ class Re8chFooter extends HTMLElement {
     const items = records.map((record) => this.renderCompanyRecord(record)).join('');
     return `
       <section class="re8ch-footer__records-section" aria-label="${escapeHtml(copy.recordsLabel)}">
-        <div class="re8ch-footer__records-heading"><span>${escapeHtml(copy.recordsLabel)}</span><button type="button" data-marquee-pause aria-pressed="false" aria-label="${this.getAttribute('locale')?.startsWith('zh') ? '暂停自动滚动' : 'Pause automatic scrolling'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg></button></div>
+        <button class="re8ch-footer__marquee-toggle" type="button" data-marquee-pause aria-pressed="false" aria-label="${this.getAttribute('locale')?.startsWith('zh') ? '暂停自动滚动' : 'Pause automatic scrolling'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg></button>
         ${this.renderScrollRail('records', copy.recordsLabel, items, { loop: true, count: records.length, visible: recordsVisible }, copy)}
       </section>`;
   }
