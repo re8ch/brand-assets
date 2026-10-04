@@ -395,8 +395,14 @@ class Re8chNavigator extends HTMLElement {
     }
   }
 
-  attributeChangedCallback() {
-    if (this.isConnected) this.render();
+  attributeChangedCallback(name, oldValue, newValue) {
+    // Upgrade callbacks run before connectedCallback, even for connected HTML.
+    if (!this.isConnected || !this.accessibility || oldValue === newValue) return;
+    if (name === 'theme') {
+      if (this.themePreference !== resolveThemePreference(newValue)) this.applyTheme(newValue);
+      return;
+    }
+    this.render();
   }
 
   get data() {
@@ -446,8 +452,7 @@ class Re8chNavigator extends HTMLElement {
     this.abortController?.abort();
     this.abortController = new AbortController();
 
-    this.shadowRoot.innerHTML = `
-      <link rel="stylesheet" href="${escapeHtml(CSS_HREF)}">
+    const markup = `
       <nav class="re8ch-nav" aria-label="${escapeHtml(brand)}">
         <div class="re8ch-nav__inner">
           <a class="re8ch-nav__brand" href="${escapeHtml(homeHref)}" aria-label="${escapeHtml(brand)}">
@@ -478,6 +483,10 @@ class Re8chNavigator extends HTMLElement {
         </div>
       </nav>`;
 
+    // Keep the loaded stylesheet attached when updating locale or account UI.
+    const existingNav = this.shadowRoot.querySelector('nav');
+    if (existingNav) existingNav.outerHTML = markup;
+    else this.shadowRoot.innerHTML = `<link rel="stylesheet" href="${escapeHtml(CSS_HREF)}">${markup}`;
     this.bindEvents();
     this.syncControlState();
     this.syncFooters();
