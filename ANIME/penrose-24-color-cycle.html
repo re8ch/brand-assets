@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RE8CH Penrose · 24 色循环</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #0d111b; color: #f3f5f8; }
+    main { max-width: 1280px; margin: auto; padding: 32px 20px 70px; }
+    h1 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 42px); }
+    p { color: #acb8ce; line-height: 1.6; }
+    .hero { display: grid; grid-template-columns: minmax(280px, 560px) 1fr; gap: 28px; align-items: center; margin: 24px 0 36px; }
+    .stage, .card { background: #171e2b; border: 1px solid #2a3447; border-radius: 18px; }
+    .stage { padding: 24px; }
+    .stage img { display: block; width: 100%; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .card { padding: 10px; }
+    .card img { width: 100%; display: block; }
+    .card span { display: block; padding: 0 8px 7px; font: 600 13px ui-monospace, monospace; }
+    @media (max-width: 750px) { .hero { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>RE8CH Penrose · 24 色循环</h1>
+  <p>左梁、右梁、底梁依次显示三色；第四种颜色沿被遮挡的三条内侧延展边发光。动画每 72 秒完成 24 组配色，系统设置减少动态效果时停在首帧。</p>
+  <div class="hero">
+    <div class="stage"><img src="./penrose-24-color-cycle.svg" alt="RE8CH 不可能三角 24 组配色循环动画"></div>
+    <div><h2>配色顺序</h2><p>文件名中的四个字母依次是左梁、右梁、底梁、光晕。R 红、G 绿、Y 黄、B 蓝。下面的 SVG 均可独立使用和编辑。</p></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+<script>
+  const colors = ['R', 'G', 'Y', 'B'];
+  const permutations = (items) => items.length ? items.flatMap((item, index) => permutations(items.filter((_, i) => i !== index)).map((tail) => [item, ...tail])) : [[]];
+  const grid = document.querySelector('#grid');
+  for (const parts of permutations(colors)) {
+    const code = parts.join('');
+    const figure = document.createElement('div');
+    figure.className = 'card';
+    const image = document.createElement('img');
+    image.src = `../SVG/penrose/re8ch-${code}.svg`;
+    image.alt = `${code} 配色`;
+    const label = document.createElement('span');
+    label.textContent = code;
+    figure.append(image, label);
+    grid.append(figure);
+  }
+</script>
+</body>
+</html>

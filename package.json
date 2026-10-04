@@ -11,7 +11,8 @@
     "sync:dry-run": "node scripts/sync-brand-assets.mjs --target=all --dry-run",
     "icons:products": "node scripts/generate-product-icons.mjs",
     "site:dev": "python3 -m http.server 4188 --directory site",
-    "site:deploy": "wrangler pages deploy site --project-name=re8ch-brand-assets --branch=main --commit-dirty=true"
+    "site:deploy": "wrangler pages deploy site --project-name=re8ch-brand-assets --branch=main --commit-dirty=true",
+    "logos:penrose": "node scripts/generate-penrose-colorways.mjs"
   },
   "repository": {
     "type": "git",

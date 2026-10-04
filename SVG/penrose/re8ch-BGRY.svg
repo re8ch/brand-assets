@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 896 820" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Penrose BGRY</title>
+  <desc id="desc">Three visible color faces and a fourth color glowing from hidden inner faces along all three sides and their extensions. The center remains transparent.</desc>
+  <defs>
+    <clipPath id="inner-void"><path d="M 448 410 L 540 569 L 356 569 Z"/></clipPath>
+    <filter id="soft-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="edge-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2"/></filter>
+    <style>
+      .face { stroke: #050505; stroke-width: 2; stroke-linejoin: round; }
+      
+    </style>
+  </defs>
+  <!-- The three hidden inner faces illuminate the void's edges; no center fill. -->
+  <g id="inner-edge-glow" class="cycle-glow" clip-path="url(#inner-void)" fill="none" stroke="#FFD619" stroke-linecap="round">
+    <g stroke-width="10" stroke-opacity="0.55" filter="url(#soft-glow)">
+      <path d="M 448 410 L 356 569"/><path d="M 448 410 L 540 569"/><path d="M 356 569 L 540 569"/>
+    </g>
+    <g stroke-width="3" stroke-opacity="0.45" filter="url(#edge-glow)">
+      <path d="M 448 410 L 356 569"/><path d="M 448 410 L 540 569"/><path d="M 356 569 L 540 569"/>
+    </g>
+  </g>
+  <path id="left" class="face cycle-left" fill="#0A7FBE" d="M 383 50 L 681 569 L 540 569 L 377 288 L 78 805 L 17 684 Z"/>
+  <path id="right" class="face cycle-right" fill="#00B559" d="M 383 50 L 515 50 L 880 684 L 292 684 L 356 569 L 682 569 Z"/>
+  <path id="base" class="face cycle-base" fill="#F81018" d="M 377 288 L 448 410 L 292 684 L 880 684 L 819 806 L 78 806 Z"/>
+  <!-- Each glow line continues beyond one corner on the corresponding inner edge. -->
+  <g id="extended-edge-glow" class="cycle-glow" fill="none" stroke="#FFD619" stroke-linecap="round">
+    <g stroke-width="15" stroke-opacity="0.70" filter="url(#soft-glow)">
+      <path d="M 356 569 L 292 684"/><path d="M 377 288 L 448 410"/><path d="M 540 569 L 682 569"/>
+    </g>
+    <g stroke-width="3" stroke-opacity="0.52" filter="url(#edge-glow)">
+      <path d="M 356 569 L 292 684"/><path d="M 377 288 L 448 410"/><path d="M 540 569 L 682 569"/>
+    </g>
+  </g>
+</svg>

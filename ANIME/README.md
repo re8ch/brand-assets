@@ -19,6 +19,8 @@ Use the graphic logo mark with one of the following brand names:
 - `re8ch-logo-motion.css` - Motion, sizing, theme, and reduced-motion styles.
 - `index.html` - Local preview and usage examples.
 - `README.md` - Integration notes.
+- `penrose-24-color-cycle.svg` - standalone SVG that smoothly loops through all 24 color assignments in 72 seconds.
+- `penrose-24-color-cycle.html` - preview with the animation and all static variants.
 
 ## Quick Start
 
