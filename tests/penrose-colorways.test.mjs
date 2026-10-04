@@ -18,22 +18,22 @@ test('all 24 color assignments exist exactly once and match generated SVGs', () 
   }
 });
 
-test('glow follows three inner edges and three extensions without a center fill', () => {
+test('glow follows all three extended inner edges without a center fill', () => {
   const svg = renderSvg(colorways[0]);
-  assert.match(svg, /id="inner-edge-glow"/);
-  assert.match(svg, /id="extended-edge-glow"/);
-  for (const line of ['M 448 410 L 356 569', 'M 448 410 L 540 569', 'M 356 569 L 540 569', 'M 356 569 L 292 684', 'M 377 288 L 448 410', 'M 540 569 L 682 569']) {
+  assert.match(svg, /id="hidden-face-glow"/);
+  for (const line of ['M 448 410 L 292 684', 'M 377 288 L 540 569', 'M 356 569 L 682 569']) {
     assert.ok(svg.includes(line), line);
   }
-  assert.doesNotMatch(svg, /<circle/);
+  assert.doesNotMatch(svg, /<circle|linearGradient|radialGradient/);
 });
 
 test('animated SVG cycles the same 24 assignments and honors reduced motion', () => {
   const file = fs.readFileSync(path.join(root, 'ANIME', 'penrose-24-color-cycle.svg'), 'utf8');
   assert.equal(file, renderSvg(colorways[0], true));
   for (const slot of ['left', 'right', 'base', 'glow']) {
-    assert.match(file, new RegExp(`@keyframes ${slot}-cycle`));
+    assert.match(file, new RegExp(`@keyframes ${slot}-${slot === 'glow' ? 'stroke' : 'fill'}-cycle`));
   }
   assert.match(file, /prefers-reduced-motion: reduce/);
-  assert.match(file, /72s linear infinite/);
+  assert.match(file, /72s ease-in-out infinite/);
+  assert.doesNotMatch(file, /0\.68/);
 });
