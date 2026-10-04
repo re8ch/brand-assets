@@ -13,7 +13,13 @@
     .hero { display: grid; grid-template-columns: minmax(280px, 560px) 1fr; gap: 28px; align-items: center; margin: 24px 0 36px; }
     .stage, .card { background: #171e2b; border: 1px solid #2a3447; border-radius: 18px; }
     .stage { padding: 24px; }
-    .stage img { display: block; width: 100%; }
+    .stage svg { display: block; width: 100%; }
+    .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 18px 0; }
+    .controls label { font-weight: 600; }
+    .controls input { width: min(310px, 65vw); accent-color: #0a7fbe; }
+    .controls output { min-width: 105px; font-variant-numeric: tabular-nums; }
+    .controls button { color: #f3f5f8; background: #26354c; border: 1px solid #53647c; border-radius: 8px; padding: 8px 14px; font: inherit; cursor: pointer; }
+    .controls button:focus-visible, .controls input:focus-visible { outline: 2px solid #ffd619; outline-offset: 3px; }
     .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
     .card { padding: 10px; }
     .card img { width: 100%; display: block; }
@@ -24,14 +30,81 @@
 <body>
 <main>
   <h1>RE8CH Penrose · 24 色循环</h1>
-  <p>左梁、右梁、底梁依次显示三色；第四种颜色沿被遮挡的三条内侧延展边发光。动画每 72 秒完成 24 组配色，系统设置减少动态效果时停在首帧。</p>
+  <p>左梁、右梁、底梁依次显示三色；第四种颜色沿被遮挡的三条内侧延展边发光。默认每 72 秒完成 24 组配色，可在下方调节速度。系统设置减少动态效果时停在首帧。</p>
   <div class="hero">
-    <div class="stage"><img src="./penrose-24-color-cycle.svg" alt="RE8CH 不可能三角 24 组配色循环动画"></div>
+    <div class="stage">
+      <!-- PENROSE_INLINE_START -->
+<svg id="penrose-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 896 820" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH Penrose 24-color cycle</title>
+  <desc id="desc">Three visible color faces and a fourth color glowing from hidden inner faces along all three sides and their extensions. The center remains transparent.</desc>
+  <defs>
+    <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="12"/></filter>
+    <style>
+      .face { stroke: #050505; stroke-width: 2; stroke-linejoin: round; }
+
+      .cycle-left { animation: left-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-right { animation: right-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-base { animation: base-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-glow { animation: glow-stroke-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      @keyframes left-fill-cycle { 0.0000% { fill: #F81018; } 4.1667% { fill: #F81018; } 8.3333% { fill: #F81018; } 12.5000% { fill: #F81018; } 16.6667% { fill: #F81018; } 20.8333% { fill: #F81018; } 25.0000% { fill: #00B559; } 29.1667% { fill: #00B559; } 33.3333% { fill: #00B559; } 37.5000% { fill: #00B559; } 41.6667% { fill: #00B559; } 45.8333% { fill: #00B559; } 50.0000% { fill: #FFD619; } 54.1667% { fill: #FFD619; } 58.3333% { fill: #FFD619; } 62.5000% { fill: #FFD619; } 66.6667% { fill: #FFD619; } 70.8333% { fill: #FFD619; } 75.0000% { fill: #0A7FBE; } 79.1667% { fill: #0A7FBE; } 83.3333% { fill: #0A7FBE; } 87.5000% { fill: #0A7FBE; } 91.6667% { fill: #0A7FBE; } 95.8333% { fill: #0A7FBE; } 100% { fill: #F81018; } }
+      @keyframes right-fill-cycle { 0.0000% { fill: #00B559; } 4.1667% { fill: #00B559; } 8.3333% { fill: #FFD619; } 12.5000% { fill: #FFD619; } 16.6667% { fill: #0A7FBE; } 20.8333% { fill: #0A7FBE; } 25.0000% { fill: #F81018; } 29.1667% { fill: #F81018; } 33.3333% { fill: #FFD619; } 37.5000% { fill: #FFD619; } 41.6667% { fill: #0A7FBE; } 45.8333% { fill: #0A7FBE; } 50.0000% { fill: #F81018; } 54.1667% { fill: #F81018; } 58.3333% { fill: #00B559; } 62.5000% { fill: #00B559; } 66.6667% { fill: #0A7FBE; } 70.8333% { fill: #0A7FBE; } 75.0000% { fill: #F81018; } 79.1667% { fill: #F81018; } 83.3333% { fill: #00B559; } 87.5000% { fill: #00B559; } 91.6667% { fill: #FFD619; } 95.8333% { fill: #FFD619; } 100% { fill: #00B559; } }
+      @keyframes base-fill-cycle { 0.0000% { fill: #FFD619; } 4.1667% { fill: #0A7FBE; } 8.3333% { fill: #00B559; } 12.5000% { fill: #0A7FBE; } 16.6667% { fill: #00B559; } 20.8333% { fill: #FFD619; } 25.0000% { fill: #FFD619; } 29.1667% { fill: #0A7FBE; } 33.3333% { fill: #F81018; } 37.5000% { fill: #0A7FBE; } 41.6667% { fill: #F81018; } 45.8333% { fill: #FFD619; } 50.0000% { fill: #00B559; } 54.1667% { fill: #0A7FBE; } 58.3333% { fill: #F81018; } 62.5000% { fill: #0A7FBE; } 66.6667% { fill: #F81018; } 70.8333% { fill: #00B559; } 75.0000% { fill: #00B559; } 79.1667% { fill: #FFD619; } 83.3333% { fill: #F81018; } 87.5000% { fill: #FFD619; } 91.6667% { fill: #F81018; } 95.8333% { fill: #00B559; } 100% { fill: #FFD619; } }
+      @keyframes glow-stroke-cycle { 0.0000% { stroke: #0A7FBE; } 4.1667% { stroke: #FFD619; } 8.3333% { stroke: #0A7FBE; } 12.5000% { stroke: #00B559; } 16.6667% { stroke: #FFD619; } 20.8333% { stroke: #00B559; } 25.0000% { stroke: #0A7FBE; } 29.1667% { stroke: #FFD619; } 33.3333% { stroke: #0A7FBE; } 37.5000% { stroke: #F81018; } 41.6667% { stroke: #FFD619; } 45.8333% { stroke: #F81018; } 50.0000% { stroke: #0A7FBE; } 54.1667% { stroke: #00B559; } 58.3333% { stroke: #0A7FBE; } 62.5000% { stroke: #F81018; } 66.6667% { stroke: #00B559; } 70.8333% { stroke: #F81018; } 75.0000% { stroke: #FFD619; } 79.1667% { stroke: #00B559; } 83.3333% { stroke: #FFD619; } 87.5000% { stroke: #F81018; } 91.6667% { stroke: #00B559; } 95.8333% { stroke: #F81018; } 100% { stroke: #0A7FBE; } }
+      @media (prefers-reduced-motion: reduce) {
+        .cycle-left, .cycle-right, .cycle-base, .cycle-glow { animation: none; }
+      }
+    </style>
+  </defs>
+  <path id="left" class="face cycle-left" fill="#F81018" d="M 383 50 L 681 569 L 540 569 L 377 288 L 78 805 L 17 684 Z"/>
+  <path id="right" class="face cycle-right" fill="#00B559" d="M 383 50 L 515 50 L 880 684 L 292 684 L 356 569 L 682 569 Z"/>
+  <path id="base" class="face cycle-base" fill="#FFD619" d="M 377 288 L 448 410 L 292 684 L 880 684 L 819 806 L 78 806 Z"/>
+  <!-- Light leaks from all three hidden inner faces and continues along each edge extension. -->
+  <g id="hidden-face-glow" class="cycle-glow" fill="none" stroke="#0A7FBE" stroke-linecap="round" stroke-width="7" stroke-opacity="0.40" filter="url(#soft-glow)">
+    <path d="M 448 410 L 292 684"/>
+    <path d="M 377 288 L 540 569"/>
+    <path d="M 356 569 L 682 569"/>
+  </g>
+</svg>
+<!-- PENROSE_INLINE_END -->
+      <div class="controls">
+        <label for="speed">播放速度</label>
+        <input id="speed" type="range" min="0.25" max="4" step="0.25" value="1" aria-label="播放速度">
+        <output id="speed-value" for="speed">1× · 72 秒/圈</output>
+        <button id="pause" type="button">暂停</button>
+      </div>
+    </div>
     <div><h2>配色顺序</h2><p>文件名中的四个字母依次是左梁、右梁、底梁、光晕。R 红、G 绿、Y 黄、B 蓝。下面的 SVG 均可独立使用和编辑。</p></div>
   </div>
   <div class="grid" id="grid"></div>
 </main>
 <script>
+  const animatedLogo = document.querySelector('#penrose-animation');
+  const speed = document.querySelector('#speed');
+  const speedValue = document.querySelector('#speed-value');
+  const pauseButton = document.querySelector('#pause');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = false;
+  const motionTracks = () => animatedLogo.getAnimations({ subtree: true });
+  function updateSpeed() {
+    const rate = Number(speed.value);
+    for (const animation of motionTracks()) animation.playbackRate = rate;
+    speedValue.textContent = `${rate.toFixed(2).replace(/\.00$/, '')}× · ${(72 / rate).toFixed(0)} 秒/圈`;
+  }
+  function updateReducedMotion() {
+    speed.disabled = reducedMotion.matches;
+    pauseButton.disabled = reducedMotion.matches;
+    if (reducedMotion.matches) speedValue.textContent = '已按系统设置停止动画';
+    else updateSpeed();
+  }
+  speed.addEventListener('input', updateSpeed);
+  pauseButton.addEventListener('click', () => {
+    paused = !paused;
+    for (const animation of motionTracks()) paused ? animation.pause() : animation.play();
+    pauseButton.textContent = paused ? '继续' : '暂停';
+  });
+  reducedMotion.addEventListener('change', updateReducedMotion);
+  requestAnimationFrame(updateReducedMotion);
+
   const colors = ['R', 'G', 'Y', 'B'];
   const permutations = (items) => items.length ? items.flatMap((item, index) => permutations(items.filter((_, i) => i !== index)).map((tail) => [item, ...tail])) : [[]];
   const grid = document.querySelector('#grid');

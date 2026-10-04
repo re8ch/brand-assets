@@ -20,7 +20,7 @@ Use the graphic logo mark with one of the following brand names:
 - `index.html` - Local preview and usage examples.
 - `README.md` - Integration notes.
 - `penrose-24-color-cycle.svg` - standalone SVG that smoothly loops through all 24 color assignments in 72 seconds.
-- `penrose-24-color-cycle.html` - preview with the animation and all static variants.
+- `penrose-24-color-cycle.html` - preview with the animation and all static variants. The preview includes a 0.25×–4× speed slider and pause control.
 
 ## Quick Start
 
@@ -83,3 +83,7 @@ Open `index.html` directly in a browser, or serve the folder with any static ser
 ```sh
 python3 -m http.server 8080
 ```
+
+## Penrose animation speed
+
+Open `penrose-24-color-cycle.html` to adjust playback from 0.25× to 4× without restarting the cycle. For an inline copy of `penrose-24-color-cycle.svg`, set `--re8ch-penrose-cycle-duration` on the SVG element; its default is `72s`. For example, `style="--re8ch-penrose-cycle-duration: 36s"` plays twice as fast. The preview uses the Web Animations API `playbackRate` so changing speed mid-cycle preserves its current position. Reduced-motion preferences still stop the animation.

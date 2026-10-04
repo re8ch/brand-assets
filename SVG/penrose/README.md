@@ -17,4 +17,6 @@ Generate the complete set and the matching [72-second looping SVG animation](../
 npm run logos:penrose
 ```
 
+The animation duration can be set with the CSS custom property `--re8ch-penrose-cycle-duration` (default `72s`), or changed live with the slider in the HTML preview.
+
 The source of geometry, palette, permutations, and animation is [`scripts/generate-penrose-colorways.mjs`](../../scripts/generate-penrose-colorways.mjs). Edit that file, then regenerate. The SVGs use vector paths and SVG filters; no bitmap image is embedded.

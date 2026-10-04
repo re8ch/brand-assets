@@ -34,6 +34,10 @@ test('animated SVG cycles the same 24 assignments and honors reduced motion', ()
     assert.match(file, new RegExp(`@keyframes ${slot}-${slot === 'glow' ? 'stroke' : 'fill'}-cycle`));
   }
   assert.match(file, /prefers-reduced-motion: reduce/);
-  assert.match(file, /72s ease-in-out infinite/);
+  assert.match(file, /var\(--re8ch-penrose-cycle-duration, 72s\) ease-in-out infinite/);
   assert.doesNotMatch(file, /0\.68/);
+  const preview = fs.readFileSync(path.join(root, 'ANIME', 'penrose-24-color-cycle.html'), 'utf8');
+  assert.match(preview, /type="range" min="0.25" max="4"/);
+  assert.match(preview, /animation.playbackRate = rate/);
+  assert.match(preview, /id="penrose-animation"/);
 });

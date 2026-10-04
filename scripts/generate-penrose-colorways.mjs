@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'SVG', 'penrose');
 const animatedOutput = path.join(root, 'ANIME', 'penrose-24-color-cycle.svg');
+const previewOutput = path.join(root, 'ANIME', 'penrose-24-color-cycle.html');
 
 export const palette = Object.freeze({
   R: '#F81018',
@@ -41,10 +42,10 @@ function cycleKeyframes(slot, property = slot === 'glow' ? 'stroke' : 'fill') {
 export function renderSvg(colorway, animated = false) {
   const color = (slot) => palette[colorway[slot]];
   const cycleCss = animated ? `
-      .cycle-left { animation: left-fill-cycle 72s ease-in-out infinite; }
-      .cycle-right { animation: right-fill-cycle 72s ease-in-out infinite; }
-      .cycle-base { animation: base-fill-cycle 72s ease-in-out infinite; }
-      .cycle-glow { animation: glow-stroke-cycle 72s ease-in-out infinite; }
+      .cycle-left { animation: left-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-right { animation: right-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-base { animation: base-fill-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
+      .cycle-glow { animation: glow-stroke-cycle var(--re8ch-penrose-cycle-duration, 72s) ease-in-out infinite; }
       ${slots.map((slot) => cycleKeyframes(slot)).join('\n      ')}
       @media (prefers-reduced-motion: reduce) {
         .cycle-left, .cycle-right, .cycle-base, .cycle-glow { animation: none; }
@@ -78,8 +79,17 @@ export function generate() {
   for (const colorway of colorways) {
     fs.writeFileSync(path.join(output, `re8ch-${colorway.code}.svg`), renderSvg(colorway));
   }
-  fs.writeFileSync(animatedOutput, renderSvg(colorways[0], true));
-  return { output, animatedOutput, count: colorways.length };
+  const animatedSvg = renderSvg(colorways[0], true);
+  fs.writeFileSync(animatedOutput, animatedSvg);
+  const preview = fs.readFileSync(previewOutput, 'utf8');
+  const start = '<!-- PENROSE_INLINE_START -->';
+  const end = '<!-- PENROSE_INLINE_END -->';
+  const first = preview.indexOf(start);
+  const last = preview.indexOf(end);
+  if (first < 0 || last < first) throw new Error('Preview SVG markers are missing');
+  const inlineSvg = animatedSvg.replace('<svg ', '<svg id=\"penrose-animation\" ');
+  fs.writeFileSync(previewOutput, `${preview.slice(0, first + start.length)}\n${inlineSvg}${preview.slice(last)}`.replace(/[ \t]+$/gm, ''));
+  return { output, animatedOutput, previewOutput, count: colorways.length };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
