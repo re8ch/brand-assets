@@ -16,6 +16,17 @@ This mark directly reuses the original RE8CH flagship SVG path geometry for the 
 - `PNG/icon-no-edge.png` - 512 px PNG render of `SVG/icon-no-edge.svg`.
 - `PNG/icon-gray.png` - 512 px PNG render of `SVG/icon-gray.svg`.
 - `PNG/icon-invert.png` - 512 px PNG render of `SVG/icon-invert.svg`.
+- `../../ANIME/re8ch-cluster-motion.js` - zero-dependency animated Web Component using this icon's exact geometry.
+- `../../ANIME/re8ch-cluster-motion.css` - cluster motion, themes, sizing, and reduced-motion behavior.
+
+## Animated Component
+
+```html
+<script src="../../ANIME/re8ch-cluster-motion.js"></script>
+<re8ch-cluster-motion motion="enter" size="lg" label="RE8CH Cluster"></re8ch-cluster-motion>
+```
+
+Available motions are `idle`, `enter`, `pulse`, `success`, `error`, and `reveal`. Only `idle` and `pulse` loop. Available themes are `color`, `gray`, `invert`, and `no-edge`; every theme keeps a transparent background. The component exposes `play()`, `pause()`, `resume()`, and `restart()` and respects `prefers-reduced-motion`.
 
 ## Public URLs
 

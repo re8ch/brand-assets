@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RE8CH Logo Motion Assets</title>
     <script src="./re8ch-logo-motion.js"></script>
+    <script src="./re8ch-cluster-motion.js"></script>
     <style>
       :root {
         color-scheme: light;
@@ -322,6 +323,29 @@
           <article class="tile"><div class="tile-visual"><re8ch-logo-motion theme="no-edge-gray" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-no-edge-gray</div></article>
           <article class="tile dark"><div class="tile-visual"><re8ch-logo-motion theme="no-edge-invert" motion="idle" size="md"></re8ch-logo-motion></div><div class="tile-name">logo-no-edge-invert</div></article>
         </div>
+      </section>
+
+      <section class="showcase" aria-labelledby="cluster-heading">
+        <div class="stage dark">
+          <re8ch-cluster-motion theme="invert" motion="pulse" loop size="lg" label="RE8CH Cluster status"></re8ch-cluster-motion>
+        </div>
+        <aside class="panel">
+          <h2 id="cluster-heading">Cluster motion</h2>
+          <ul class="spec-list">
+            <li><strong>Tag:</strong> <code>&lt;re8ch-cluster-motion&gt;</code></li>
+            <li><strong>Themes:</strong> color, gray, invert, no-edge</li>
+            <li><strong>Motions:</strong> idle, enter, pulse, success, error, reveal</li>
+            <li><strong>Looping:</strong> intentionally limited to idle and pulse.</li>
+          </ul>
+          <pre><code>&lt;script src="./re8ch-cluster-motion.js"&gt;&lt;/script&gt;
+&lt;re8ch-cluster-motion
+  theme="invert"
+  motion="pulse"
+  loop
+  size="lg"
+  label="RE8CH Cluster status"&gt;
+&lt;/re8ch-cluster-motion&gt;</code></pre>
+        </aside>
       </section>
     </main>
 
