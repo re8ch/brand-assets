@@ -1,0 +1,18 @@
+{
+  "name": "RE8CH User Hub",
+  "short_name": "User Hub",
+  "description": "RE8CH 账号、组织、安全与账单。",
+  "lang": "zh-CN",
+  "id": "https://auth.re8ch.com/",
+  "start_url": "https://auth.re8ch.com/",
+  "scope": "https://auth.re8ch.com/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#f8fafc",
+  "icons": [
+    { "src": "PNG/icon-app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "PNG/icon-app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "PNG/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "SVG/icon-app.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

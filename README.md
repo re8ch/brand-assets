@@ -46,6 +46,7 @@ Use the graphic logo mark with one of the following brand names:
 - `PRODUCTS/registry/` - RE8CH Registry signed image distribution icon.
 - `PRODUCTS/cluster/` - RE8CH Cluster build and operations icon.
 - `PRODUCTS/observable/` - RE8CH Observable observability icon.
+- `PRODUCTS/user-hub/` - RE8CH User Hub account icon, app icons, favicons, and web app manifest.
 - `UI/re8ch-product-system/v1/` - reusable product hero, three-layer stack, and product footer web components.
 - `anycam/` - AnyCAM product icon source assets.
 - `re8ch-registry/` - Re8ch Registry product mark and motion assets.
