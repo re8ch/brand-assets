@@ -125,6 +125,16 @@ const products = [
     accent2: COLORS.red,
     symbol: observable,
   },
+  {
+    slug: 'user-hub',
+    name: 'RE8CH User Hub',
+    description: 'RE8CH User Hub account mark: one person inside the honeycomb cell used across the User Hub interface.',
+    designDirection: 'This mark pairs the hexagonal honeycomb cell from the User Hub sign-in and directory screens with a person glyph, drawn in the RE8CH system-symbol language: rounded 7 px strokes, flagship blue for the person and flagship green for the shoulders. App icon files place the primary mark on the RE8CH light surface for home screens, browser tabs, and installed web apps.',
+    accent: COLORS.blue,
+    accent2: COLORS.green,
+    symbol: userHub,
+    appIcons: true,
+  },
 ];
 
 const baseVariants = [
@@ -278,6 +288,67 @@ function observable(p) {
     </g>`;
 }
 
+function userHub(p) {
+  return `<path d="M48 11L80 29.5V66.5L48 85L16 66.5V29.5Z" stroke="${p.ink}" stroke-width="7"/>
+    <circle cx="48" cy="40" r="9" stroke="${p.accent}" stroke-width="7"/>
+    <path d="M33.5 65Q36.5 56.5 48 56.5Q59.5 56.5 62.5 65" stroke="${p.accent2}" stroke-width="7"/>`;
+}
+
+// Home-screen and browser icons. iOS and Android mask the opaque tiles
+// themselves; the "any" tile keeps its own rounded square and border.
+function appIconTile(product, { size, inset, rounded }) {
+  const p = palette(product, 'primary');
+  const scale = (size - inset * 2) / 96;
+  const radius = rounded ? size * 0.225 : 0;
+  const edge = rounded ? `<rect x="0.5" y="0.5" width="${size - 1}" height="${size - 1}" rx="${radius}" fill="none" stroke="#e2e8f0"/>` : '';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
+  <rect width="${size}" height="${size}" rx="${radius}" fill="${COLORS.white}"/>
+  ${edge}
+  <g transform="translate(${inset} ${inset}) scale(${scale})" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    ${product.symbol(p)}
+  </g>
+</svg>
+`;
+}
+
+async function writeAppIcons(product, base) {
+  const tile = appIconTile(product, { size: 512, inset: 52, rounded: true });
+  await fs.writeFile(path.join(base, 'SVG', 'icon-app.svg'), tile, 'utf8');
+  const renders = [
+    ['icon-app-192.png', tile, 192],
+    ['icon-app-512.png', tile, 512],
+    ['icon-apple-touch-180.png', appIconTile(product, { size: 180, inset: 14, rounded: false }), 180],
+    ['icon-maskable-512.png', appIconTile(product, { size: 512, inset: 84, rounded: false }), 512],
+  ];
+  for (const [fileName, source, size] of renders) {
+    await sharp(Buffer.from(source)).resize(size, size).png().toFile(path.join(base, 'PNG', fileName));
+  }
+  const mark = await fs.readFile(path.join(base, 'SVG', 'icon.svg'));
+  for (const size of [32, 48]) {
+    await sharp(mark).resize(size, size).png().toFile(path.join(base, 'PNG', `icon-${size}.png`));
+  }
+}
+
+function appIconReadme(product) {
+  return `
+## App Icons
+
+- \`SVG/icon-app.svg\` - rounded light tile with the primary mark, the source for installed web app icons.
+- \`PNG/icon-app-192.png\`, \`PNG/icon-app-512.png\` - web app manifest icons (purpose \`any\`).
+- \`PNG/icon-maskable-512.png\` - full-bleed tile with the mark inside the 80% safe zone (purpose \`maskable\`).
+- \`PNG/icon-apple-touch-180.png\` - opaque iOS home-screen icon; iOS applies its own corner mask.
+- \`PNG/icon-32.png\`, \`PNG/icon-48.png\` - PNG favicons for browsers without SVG favicon support.
+- \`manifest.webmanifest\` - web app manifest for https://auth.re8ch.com/. It is served from brand-assets with open CORS, so the page links it cross-origin.
+
+\`\`\`html
+<link rel="icon" href="https://brand-assets.re8ch.com/PRODUCTS/${product.slug}/SVG/icon.svg" type="image/svg+xml">
+<link rel="icon" href="https://brand-assets.re8ch.com/PRODUCTS/${product.slug}/PNG/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="https://brand-assets.re8ch.com/PRODUCTS/${product.slug}/PNG/icon-apple-touch-180.png">
+<link rel="manifest" href="https://brand-assets.re8ch.com/PRODUCTS/${product.slug}/manifest.webmanifest">
+\`\`\`
+`;
+}
+
 function tracedSvgVariant(source, product, mode) {
   const viewBox = source.match(/viewBox="([^"]+)"/)?.[1] || '0 0 512 512';
   const inner = source
@@ -372,7 +443,7 @@ not Apple SF Symbols artwork and do not copy Apple symbol shapes.`}
 ## Files
 
 ${svgFiles}
-${pngFiles}${copiedFiles ? `\n\n${copiedFiles}` : ''}${sourceSection}
+${pngFiles}${copiedFiles ? `\n\n${copiedFiles}` : ''}${sourceSection}${product.appIcons ? appIconReadme(product) : ''}
 
 ## Public URLs
 
@@ -453,6 +524,8 @@ async function main() {
     for (const [source, target] of product.copyFiles || []) {
       await fs.copyFile(path.join(base, source), path.join(base, target));
     }
+
+    if (product.appIcons) await writeAppIcons(product, base);
 
     await fs.writeFile(path.join(base, 'README.md'), readme(product, variants), 'utf8');
   }

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-labelledby="title desc">
+  <title id="title">RE8CH User Hub Icon</title>
+  <desc id="desc">RE8CH User Hub account mark: one person inside the honeycomb cell used across the User Hub interface.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 11L80 29.5V66.5L48 85L16 66.5V29.5Z" stroke="#1f2937" stroke-width="7"/>
+    <circle cx="48" cy="40" r="9" stroke="#64748b" stroke-width="7"/>
+    <path d="M33.5 65Q36.5 56.5 48 56.5Q59.5 56.5 62.5 65" stroke="#cbd5e1" stroke-width="7"/>
+  </g>
+</svg>
