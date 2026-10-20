@@ -1,0 +1,568 @@
+{
+  "generatedFrom": "re8ch/brand-assets",
+  "logos": [
+    {
+      "name": "logo",
+      "svg": "SVG/logo.svg",
+      "png": "PNG/logo.png"
+    },
+    {
+      "name": "logo-no-edge",
+      "svg": "SVG/logo-no-edge.svg",
+      "png": "PNG/logo-no-edge.png"
+    },
+    {
+      "name": "logo-gray",
+      "svg": "SVG/logo-gray.svg",
+      "png": "PNG/logo-gray.png"
+    },
+    {
+      "name": "logo-no-edge-gray",
+      "svg": "SVG/logo-no-edge-gray.svg",
+      "png": "PNG/logo-no-edge-gray.png"
+    },
+    {
+      "name": "logo-invert",
+      "svg": "SVG/logo-invert.svg",
+      "png": "PNG/logo-invert.png"
+    },
+    {
+      "name": "logo-no-edge-invert",
+      "svg": "SVG/logo-no-edge-invert.svg",
+      "png": "PNG/logo-no-edge-invert.png"
+    }
+  ],
+  "products": [
+    {
+      "folder": "compocv",
+      "id": "compocv",
+      "name": "CompoCV",
+      "zh": "简历制作",
+      "en": "CV builder",
+      "color": "#2563eb",
+      "href": "https://compocv.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-dark",
+          "svg": "PRODUCTS/compocv/SVG/icon-dark.svg",
+          "png": null
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/compocv/SVG/icon.svg",
+          "png": null
+        }
+      ]
+    },
+    {
+      "folder": "lizhang-ledger",
+      "id": "ledger",
+      "name": "Ledger",
+      "zh": "理账 · 账本",
+      "en": "Bookkeeping",
+      "color": "#2563eb",
+      "href": "https://ledger.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/lizhang-ledger/SVG/icon-gray.svg",
+          "png": "PRODUCTS/lizhang-ledger/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/lizhang-ledger/SVG/icon-invert.svg",
+          "png": "PRODUCTS/lizhang-ledger/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/lizhang-ledger/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/lizhang-ledger/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/lizhang-ledger/SVG/icon.svg",
+          "png": "PRODUCTS/lizhang-ledger/PNG/icon.png"
+        },
+        {
+          "name": "icon-1024",
+          "svg": null,
+          "png": "PRODUCTS/lizhang-ledger/PNG/icon-1024.png"
+        }
+      ]
+    },
+    {
+      "folder": "anycam",
+      "id": "anycam",
+      "name": "Anycam",
+      "zh": "任意相机",
+      "en": "Camera",
+      "color": "#16a34a",
+      "href": "https://anycam.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/anycam/SVG/icon-gray.svg",
+          "png": "PRODUCTS/anycam/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/anycam/SVG/icon-invert.svg",
+          "png": "PRODUCTS/anycam/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/anycam/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/anycam/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/anycam/SVG/icon.svg",
+          "png": "PRODUCTS/anycam/PNG/icon.png"
+        }
+      ]
+    },
+    {
+      "folder": "anysiteonearth",
+      "id": "anysite",
+      "name": "AnySite",
+      "zh": "地点",
+      "en": "Places on Earth",
+      "color": "#14b8c4",
+      "href": "https://anysiteonearth.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-flat",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-flat.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-flat.png"
+        },
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-gray.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-inverse",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-inverse.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-inverse.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-invert.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-minimal-dark",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-minimal-dark.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-minimal-dark.png"
+        },
+        {
+          "name": "icon-minimal-light",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-minimal-light.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-minimal-light.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/anysiteonearth/SVG/icon.svg",
+          "png": "PRODUCTS/anysiteonearth/PNG/icon.png"
+        },
+        {
+          "name": "icon-1024",
+          "svg": null,
+          "png": "PRODUCTS/anysiteonearth/PNG/icon-1024.png"
+        }
+      ]
+    },
+    {
+      "folder": "phonaid",
+      "id": "phonaid",
+      "name": "Phonaid",
+      "zh": "万能接线助手",
+      "en": "Call assistant",
+      "color": "#8b5cf6",
+      "href": "https://phonaid.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/phonaid/SVG/icon-gray.svg",
+          "png": "PRODUCTS/phonaid/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/phonaid/SVG/icon-invert.svg",
+          "png": "PRODUCTS/phonaid/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/phonaid/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/phonaid/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/phonaid/SVG/icon.svg",
+          "png": "PRODUCTS/phonaid/PNG/icon.png"
+        }
+      ]
+    },
+    {
+      "folder": "aesthete",
+      "id": "aesthete",
+      "name": "Aesthete",
+      "zh": "妆效模拟",
+      "en": "Makeup simulation",
+      "color": "#d6a23e",
+      "href": "https://aesthete.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/aesthete/SVG/icon-gray.svg",
+          "png": "PRODUCTS/aesthete/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/aesthete/SVG/icon-invert.svg",
+          "png": "PRODUCTS/aesthete/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/aesthete/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/aesthete/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/aesthete/SVG/icon.svg",
+          "png": "PRODUCTS/aesthete/PNG/icon.png"
+        }
+      ]
+    },
+    {
+      "folder": "registry",
+      "id": "registry-image",
+      "name": "Registry Image",
+      "zh": "镜像仓库",
+      "en": "Image registry",
+      "color": "#0a7fbe",
+      "href": "https://image.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/registry/SVG/icon-gray.svg",
+          "png": "PRODUCTS/registry/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/registry/SVG/icon-invert.svg",
+          "png": "PRODUCTS/registry/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/registry/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/registry/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/registry/SVG/icon.svg",
+          "png": "PRODUCTS/registry/PNG/icon.png"
+        }
+      ]
+    },
+    {
+      "folder": "cluster",
+      "id": "cluster",
+      "name": "Cluster",
+      "zh": "集群",
+      "en": "Cluster",
+      "color": "#00b559",
+      "href": "https://cluster.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/cluster/SVG/icon-gray.svg",
+          "png": "PRODUCTS/cluster/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/cluster/SVG/icon-invert.svg",
+          "png": "PRODUCTS/cluster/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/cluster/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/cluster/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/cluster/SVG/icon.svg",
+          "png": "PRODUCTS/cluster/PNG/icon.png"
+        }
+      ]
+    },
+    {
+      "folder": "observable",
+      "id": "observable",
+      "name": "Observable",
+      "zh": "可观测",
+      "en": "Observability",
+      "color": "#f81018",
+      "href": "https://observable.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/observable/SVG/icon-gray.svg",
+          "png": "PRODUCTS/observable/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/observable/SVG/icon-invert.svg",
+          "png": "PRODUCTS/observable/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/observable/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/observable/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/observable/SVG/icon.svg",
+          "png": "PRODUCTS/observable/PNG/icon.png"
+        }
+      ]
+    },
+    {
+      "folder": "user-hub",
+      "id": "user-hub",
+      "name": "User Hub",
+      "zh": "账号中心",
+      "en": "Account hub",
+      "color": "#086a9f",
+      "href": "https://auth.re8ch.com",
+      "variants": [
+        {
+          "name": "icon-app",
+          "svg": "PRODUCTS/user-hub/SVG/icon-app.svg",
+          "png": null
+        },
+        {
+          "name": "icon-gray",
+          "svg": "PRODUCTS/user-hub/SVG/icon-gray.svg",
+          "png": "PRODUCTS/user-hub/PNG/icon-gray.png"
+        },
+        {
+          "name": "icon-invert",
+          "svg": "PRODUCTS/user-hub/SVG/icon-invert.svg",
+          "png": "PRODUCTS/user-hub/PNG/icon-invert.png"
+        },
+        {
+          "name": "icon-no-edge",
+          "svg": "PRODUCTS/user-hub/SVG/icon-no-edge.svg",
+          "png": "PRODUCTS/user-hub/PNG/icon-no-edge.png"
+        },
+        {
+          "name": "icon",
+          "svg": "PRODUCTS/user-hub/SVG/icon.svg",
+          "png": "PRODUCTS/user-hub/PNG/icon.png"
+        },
+        {
+          "name": "icon-32",
+          "svg": null,
+          "png": "PRODUCTS/user-hub/PNG/icon-32.png"
+        },
+        {
+          "name": "icon-48",
+          "svg": null,
+          "png": "PRODUCTS/user-hub/PNG/icon-48.png"
+        },
+        {
+          "name": "icon-app-192",
+          "svg": null,
+          "png": "PRODUCTS/user-hub/PNG/icon-app-192.png"
+        },
+        {
+          "name": "icon-app-512",
+          "svg": null,
+          "png": "PRODUCTS/user-hub/PNG/icon-app-512.png"
+        },
+        {
+          "name": "icon-apple-touch-180",
+          "svg": null,
+          "png": "PRODUCTS/user-hub/PNG/icon-apple-touch-180.png"
+        },
+        {
+          "name": "icon-maskable-512",
+          "svg": null,
+          "png": "PRODUCTS/user-hub/PNG/icon-maskable-512.png"
+        }
+      ]
+    }
+  ],
+  "orgs": [
+    {
+      "name": "aesthete-robotics",
+      "svg": "ORGS/aesthete-robotics/avatar.svg",
+      "png": "ORGS/aesthete-robotics/avatar.png"
+    },
+    {
+      "name": "anycam-app",
+      "svg": "ORGS/anycam-app/avatar.svg",
+      "png": "ORGS/anycam-app/avatar.png"
+    },
+    {
+      "name": "anysiteonearth",
+      "svg": "ORGS/anysiteonearth/avatar.svg",
+      "png": "ORGS/anysiteonearth/avatar.png"
+    },
+    {
+      "name": "artchais-studio",
+      "svg": "ORGS/artchais-studio/avatar.svg",
+      "png": "ORGS/artchais-studio/avatar.png"
+    },
+    {
+      "name": "baozou-ppt-studio",
+      "svg": "ORGS/baozou-ppt-studio/avatar.svg",
+      "png": "ORGS/baozou-ppt-studio/avatar.png"
+    },
+    {
+      "name": "bifurcate-systems",
+      "svg": "ORGS/bifurcate-systems/avatar.svg",
+      "png": "ORGS/bifurcate-systems/avatar.png"
+    },
+    {
+      "name": "compocv",
+      "svg": "ORGS/compocv/avatar.svg",
+      "png": "ORGS/compocv/avatar.png"
+    },
+    {
+      "name": "farseer-video",
+      "svg": "ORGS/farseer-video/avatar.svg",
+      "png": "ORGS/farseer-video/avatar.png"
+    },
+    {
+      "name": "garageband-mcp",
+      "svg": "ORGS/garageband-mcp/avatar.svg",
+      "png": "ORGS/garageband-mcp/avatar.png"
+    },
+    {
+      "name": "jjk-live-app",
+      "svg": "ORGS/jjk-live-app/avatar.svg",
+      "png": "ORGS/jjk-live-app/avatar.png"
+    },
+    {
+      "name": "jjklive",
+      "svg": "ORGS/jjklive/avatar.svg",
+      "png": "ORGS/jjklive/avatar.png"
+    },
+    {
+      "name": "lizhang-accounting",
+      "svg": "ORGS/lizhang-accounting/avatar.svg",
+      "png": "ORGS/lizhang-accounting/avatar.png"
+    },
+    {
+      "name": "lizhang-ledger",
+      "svg": "ORGS/lizhang-ledger/avatar.svg",
+      "png": "ORGS/lizhang-ledger/avatar.png"
+    },
+    {
+      "name": "motor-muscle-lab",
+      "svg": "ORGS/motor-muscle-lab/avatar.svg",
+      "png": "ORGS/motor-muscle-lab/avatar.png"
+    },
+    {
+      "name": "motor-muscle-sim",
+      "svg": "ORGS/motor-muscle-sim/avatar.svg",
+      "png": "ORGS/motor-muscle-sim/avatar.png"
+    },
+    {
+      "name": "phonaid",
+      "svg": "ORGS/phonaid/avatar.svg",
+      "png": "ORGS/phonaid/avatar.png"
+    },
+    {
+      "name": "re8ch-ai",
+      "svg": "ORGS/re8ch-ai/avatar.svg",
+      "png": "ORGS/re8ch-ai/avatar.png"
+    },
+    {
+      "name": "re8ch-business",
+      "svg": "ORGS/re8ch-business/avatar.svg",
+      "png": "ORGS/re8ch-business/avatar.png"
+    },
+    {
+      "name": "re8ch-cloud",
+      "svg": "ORGS/re8ch-cloud/avatar.svg",
+      "png": "ORGS/re8ch-cloud/avatar.png"
+    },
+    {
+      "name": "re8ch-image",
+      "svg": "ORGS/re8ch-image/avatar.svg",
+      "png": "ORGS/re8ch-image/avatar.png"
+    },
+    {
+      "name": "re8ch-observability",
+      "svg": "ORGS/re8ch-observability/avatar.svg",
+      "png": "ORGS/re8ch-observability/avatar.png"
+    },
+    {
+      "name": "rover-apps",
+      "svg": "ORGS/rover-apps/avatar.svg",
+      "png": "ORGS/rover-apps/avatar.png"
+    },
+    {
+      "name": "space-mining-stage",
+      "svg": "ORGS/space-mining-stage/avatar.svg",
+      "png": "ORGS/space-mining-stage/avatar.png"
+    },
+    {
+      "name": "thinking-machine-labs",
+      "svg": "ORGS/thinking-machine-labs/avatar.svg",
+      "png": "ORGS/thinking-machine-labs/avatar.png"
+    }
+  ],
+  "iconSets": [
+    {
+      "id": "ledger-ui",
+      "name": "Ledger UI",
+      "icons": [
+        {
+          "name": "account",
+          "svg": "SVG/ledger-ui/ledger-account.svg"
+        },
+        {
+          "name": "book",
+          "svg": "SVG/ledger-ui/ledger-book.svg"
+        },
+        {
+          "name": "document",
+          "svg": "SVG/ledger-ui/ledger-document.svg"
+        },
+        {
+          "name": "empty",
+          "svg": "SVG/ledger-ui/ledger-empty.svg"
+        },
+        {
+          "name": "entry",
+          "svg": "SVG/ledger-ui/ledger-entry.svg"
+        },
+        {
+          "name": "mark",
+          "svg": "SVG/ledger-ui/ledger-mark.svg"
+        },
+        {
+          "name": "profile",
+          "svg": "SVG/ledger-ui/ledger-profile.svg"
+        },
+        {
+          "name": "reconcile",
+          "svg": "SVG/ledger-ui/ledger-reconcile.svg"
+        },
+        {
+          "name": "report",
+          "svg": "SVG/ledger-ui/ledger-report.svg"
+        }
+      ]
+    }
+  ]
+}

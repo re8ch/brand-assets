@@ -25,6 +25,7 @@ Use the graphic logo mark with one of the following brand names:
 - `src/` - source files for the CDN navigator/footer web components and trust mark fallback assets.
 - `dist/` - publishable CDN navigator/footer component files and trust mark fallback assets.
 - `demo/` - local HTML demo for the footer component.
+- `brand-site/` - brand.re8ch.com showcase of logos, color, type, product marks and shared UI. See `brand-site/README.md`.
 - `anycam/` - AnyCAM app icon source assets.
 - `re8ch-registry/` - Re8ch Registry harbor tower mark and motion assets.
 

@@ -11,7 +11,9 @@
     "sync:dry-run": "node scripts/sync-brand-assets.mjs --target=all --dry-run",
     "icons:products": "node scripts/generate-product-icons.mjs",
     "site:dev": "python3 -m http.server 4188 --directory site",
-    "site:deploy": "wrangler pages deploy site --project-name=re8ch-brand-assets --branch=main --commit-dirty=true"
+    "site:deploy": "wrangler pages deploy site --project-name=re8ch-brand-assets --branch=main --commit-dirty=true",
+    "brand-site:inventory": "node scripts/build-brand-site.mjs",
+    "brand-site:dev": "python3 -m http.server 4190"
   },
   "repository": {
     "type": "git",
