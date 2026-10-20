@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>锐奇 RE8CH 品牌中心</title>
+  <meta name="description" content="RE8CH / 锐奇 的标志、色彩、字体、产品标识、共享组件与界面规范。">
+  <link rel="canonical" href="https://brand.re8ch.com/">
+  <link rel="icon" href="https://brand-assets.re8ch.com/SVG/logo.svg" type="image/svg+xml">
+  <meta property="og:title" content="RE8CH Brand">
+  <meta property="og:description" content="Logos, color, type, product marks and shared UI for RE8CH / 锐奇.">
+  <meta property="og:image" content="https://brand-assets.re8ch.com/PNG/logo.png">
+  <link rel="stylesheet" href="./brand.css">
+  <script src="./brand.js" defer></script>
+</head>
+<body>
+  <re8ch-navigator
+    product="re8ch"
+    locale="zh-CN"
+    brand="RE8CH Brand"
+    home-href="/"
+    language-mode="available"
+    max-width="1320px"></re8ch-navigator>
+
+  <div class="page">
+    <aside class="toc" aria-label="页面目录" data-i18n-attr="aria-label:toc">
+      <p class="toc__label" data-i18n="tocLabel">品牌中心</p>
+      <nav>
+        <a href="#overview" data-i18n="nav.overview">概览</a>
+        <a href="#logo" data-i18n="nav.logo">标志</a>
+        <a href="#color" data-i18n="nav.color">色彩</a>
+        <a href="#type" data-i18n="nav.type">字体</a>
+        <a href="#products" data-i18n="nav.products">产品标识</a>
+        <a href="#orgs" data-i18n="nav.orgs">组织头像</a>
+        <a href="#icons" data-i18n="nav.icons">图标</a>
+        <a href="#ui" data-i18n="nav.ui">界面元素</a>
+        <a href="#components" data-i18n="nav.components">共享组件</a>
+        <a href="#motion" data-i18n="nav.motion">标志动效</a>
+        <a href="#examples" data-i18n="nav.examples">产品界面</a>
+        <a href="#rules" data-i18n="nav.rules">设计准则</a>
+      </nav>
+    </aside>
+
+    <main>
+      <!-- Overview -->
+      <section id="overview" class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">RE8CH / 锐奇 · BRAND</p>
+          <h1 data-i18n="hero.title">一套标志，<br>撑起所有产品。</h1>
+          <p class="lead" data-i18n="hero.lead">这里收录锐奇的标志、色彩、字体、产品标识和共享界面组件。所有文件都从 brand-assets CDN 直接引用，不需要另存副本。</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#logo" data-i18n="hero.cta">查看标志</a>
+            <a class="btn" href="https://github.com/re8ch/brand-assets" data-i18n="hero.repo">源文件仓库</a>
+          </div>
+          <dl class="stats" id="stats"></dl>
+        </div>
+        <figure class="hero__mark" aria-hidden="true">
+          <img data-asset="SVG/logo.svg" alt="">
+        </figure>
+      </section>
+
+      <section class="block" aria-labelledby="lockups-title">
+        <header class="block__head">
+          <h2 id="lockups-title" data-i18n="lockups.title">商标组合</h2>
+          <p data-i18n="lockups.lead">图形标志与以下四个名称之一组合使用，名称位于标志右侧并垂直居中。</p>
+        </header>
+        <div class="lockups">
+          <div class="lockup"><img data-asset="SVG/logo.svg" alt=""><span class="lockup__name">锐奇</span></div>
+          <div class="lockup"><img data-asset="SVG/logo.svg" alt=""><span class="lockup__name">锐奇软件开发工作室</span></div>
+          <div class="lockup"><img data-asset="SVG/logo.svg" alt=""><span class="lockup__name lockup__name--latin">RE8CH</span></div>
+          <div class="lockup"><img data-asset="SVG/logo.svg" alt=""><span class="lockup__name lockup__name--latin">Reachieve LLC</span></div>
+        </div>
+      </section>
+
+      <!-- Logo -->
+      <section id="logo" class="block">
+        <header class="block__head">
+          <p class="eyebrow">01</p>
+          <h2 data-i18n="logo.title">标志</h2>
+          <p data-i18n="logo.lead">六个变体覆盖彩色、灰度与反色。浅色背景用黑描边版本，深色背景用反色版本；空间紧凑或尺寸很小时用无描边版本。</p>
+        </header>
+        <div class="tiles tiles--logo" id="logo-grid"></div>
+        <div class="dodont">
+          <div class="dodont__item">
+            <p class="dodont__tag dodont__tag--do" data-i18n="logo.do">推荐</p>
+            <ul>
+              <li data-i18n="logo.do1">按原始比例缩放，四周留出至少半个标志高度的空白</li>
+              <li data-i18n="logo.do2">深色背景使用 invert 变体</li>
+              <li data-i18n="logo.do3">网页中引用 CDN 上的 SVG，并带上版本参数</li>
+            </ul>
+          </div>
+          <div class="dodont__item">
+            <p class="dodont__tag dodont__tag--dont" data-i18n="logo.dont">避免</p>
+            <ul>
+              <li data-i18n="logo.dont1">拉伸、旋转、重新配色或替换色块顺序</li>
+              <li data-i18n="logo.dont2">给标志加投影、描边光晕或渐变</li>
+              <li data-i18n="logo.dont3">放在高饱和或花纹背景上</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Color -->
+      <section id="color" class="block">
+        <header class="block__head">
+          <p class="eyebrow">02</p>
+          <h2 data-i18n="color.title">色彩</h2>
+          <p data-i18n="color.lead">标志的四个色块各自对应一类产品；界面则以冷灰中性色为底，只用一种操作蓝。悬停色块可以在标志上看到它的位置，点击复制色值。</p>
+        </header>
+        <div class="palette">
+          <figure class="palette__mark" id="palette-mark" aria-hidden="true"></figure>
+          <div class="swatches swatches--brand" id="brand-swatches"></div>
+        </div>
+        <h3 class="subhead" data-i18n="color.ui">界面中性色</h3>
+        <div class="swatches swatches--ui" id="ui-swatches"></div>
+        <h3 class="subhead" data-i18n="color.dark">深色模式</h3>
+        <div class="swatches swatches--ui" id="dark-swatches"></div>
+      </section>
+
+      <!-- Type -->
+      <section id="type" class="block">
+        <header class="block__head">
+          <p class="eyebrow">03</p>
+          <h2 data-i18n="type.title">字体</h2>
+          <p data-i18n="type.lead">使用系统字体栈，不额外加载网络字体：中文落到苹方或微软雅黑，拉丁字母优先 Inter。数字和代码使用等宽字体。</p>
+        </header>
+        <div class="type-stack">
+          <code>Inter, ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif</code>
+          <code>ui-monospace, SFMono-Regular, Menlo, Consolas, monospace</code>
+        </div>
+        <div class="type-scale" id="type-scale"></div>
+      </section>
+
+      <!-- Products -->
+      <section id="products" class="block">
+        <header class="block__head block__head--row">
+          <div>
+            <p class="eyebrow">04</p>
+            <h2 data-i18n="products.title">产品标识</h2>
+            <p data-i18n="products.lead">每个产品都有自己的标识，取自母品牌标志的色块与几何语言。点开卡片查看全部变体和下载地址。</p>
+          </div>
+          <div class="segmented" role="group" aria-label="变体" data-i18n-attr="aria-label:products.variant" id="product-variant">
+            <button type="button" data-value="icon" aria-pressed="true" data-i18n="variant.icon">主色</button>
+            <button type="button" data-value="icon-no-edge" aria-pressed="false" data-i18n="variant.noEdge">无描边</button>
+            <button type="button" data-value="icon-gray" aria-pressed="false" data-i18n="variant.gray">灰度</button>
+            <button type="button" data-value="icon-invert" aria-pressed="false" data-i18n="variant.invert">反色</button>
+          </div>
+        </header>
+        <div class="products" id="product-grid"></div>
+      </section>
+
+      <!-- Orgs -->
+      <section id="orgs" class="block">
+        <header class="block__head">
+          <p class="eyebrow">05</p>
+          <h2 data-i18n="orgs.title">组织头像</h2>
+          <p data-i18n="orgs.lead">RE8CH 企业下各 GitHub 组织的头像。黄色虚线环表示与同名组织相关、但独立管理的组织。</p>
+        </header>
+        <div class="orgs" id="org-grid"></div>
+      </section>
+
+      <!-- Icons -->
+      <section id="icons" class="block">
+        <header class="block__head">
+          <p class="eyebrow">06</p>
+          <h2 data-i18n="icons.title">图标</h2>
+          <p data-i18n="icons.lead">产品专用的界面图标集。通用界面图标使用 Lucide，线宽 2、圆角端点，与产品标识的笔画保持一致。</p>
+        </header>
+        <div id="icon-sets"></div>
+      </section>
+
+      <!-- UI kit -->
+      <section id="ui" class="block">
+        <header class="block__head">
+          <p class="eyebrow">07</p>
+          <h2 data-i18n="ui.title">界面元素</h2>
+          <p data-i18n="ui.lead">User Hub、Catalog 和 Cluster 共用的基础元素。边框代替阴影，圆角 8 到 12 像素，控件尺寸紧凑。</p>
+        </header>
+        <div class="kit">
+          <div class="kit__cell">
+            <p class="kit__label" data-i18n="ui.buttons">按钮</p>
+            <div class="kit__row">
+              <button class="btn btn--primary" type="button" data-i18n="ui.primary">主要操作</button>
+              <button class="btn" type="button" data-i18n="ui.secondary">次要操作</button>
+              <button class="btn btn--quiet" type="button" data-i18n="ui.quiet">文字按钮</button>
+              <button class="btn btn--primary" type="button" disabled data-i18n="ui.disabled">不可用</button>
+            </div>
+          </div>
+          <div class="kit__cell">
+            <p class="kit__label" data-i18n="ui.fields">输入</p>
+            <div class="kit__row kit__row--fields">
+              <label class="field"><span data-i18n="ui.org">当前组织</span>
+                <select><option>Re8ch</option><option>RE8CH Admin</option></select>
+              </label>
+              <label class="field"><span data-i18n="ui.search">搜索</span>
+                <input type="search" placeholder="搜索组织、用户名或邮箱" data-i18n-attr="placeholder:ui.searchPh">
+              </label>
+            </div>
+          </div>
+          <div class="kit__cell">
+            <p class="kit__label" data-i18n="ui.segmented">分段与状态</p>
+            <div class="kit__row">
+              <div class="segmented" role="group" aria-label="视图">
+                <button type="button" aria-pressed="true" data-i18n="ui.hex">蜂窝</button>
+                <button type="button" aria-pressed="false" data-i18n="ui.list">列表</button>
+              </div>
+              <span class="status status--ok" data-i18n="ui.ok">运行中</span>
+              <span class="status status--warn" data-i18n="ui.warn">待验证</span>
+              <span class="status status--idle" data-i18n="ui.idle">预览</span>
+            </div>
+          </div>
+          <div class="kit__cell">
+            <p class="kit__label" data-i18n="ui.nav">分组侧栏</p>
+            <nav class="mini-nav" aria-label="示例侧栏">
+              <span class="mini-nav__group" data-i18n="ui.account">账号</span>
+              <a href="#ui" data-i18n="ui.profile">个人资料</a>
+              <span class="mini-nav__group" data-i18n="ui.orgGroup">组织</span>
+              <a href="#ui" aria-current="page" data-i18n="ui.members">组织与成员</a>
+              <a href="#ui" data-i18n="ui.billing">余额与账单</a>
+            </nav>
+          </div>
+          <div class="kit__cell kit__cell--wide">
+            <p class="kit__label" data-i18n="ui.honeycomb">蜂窝选择器</p>
+            <div class="honeycomb" role="listbox" aria-label="示例服务" id="honeycomb">
+              <button class="hex" type="button" role="option" aria-selected="true"><b>BC</b><span>Bifurcate</span></button>
+              <button class="hex" type="button" role="option" aria-selected="false"><b>CM</b><span>ConnecTool</span></button>
+              <button class="hex" type="button" role="option" aria-selected="false"><b>AM</b><span>AmongClusters</span></button>
+              <button class="hex" type="button" role="option" aria-selected="false"><b>RI</b><span>Registry</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Components -->
+      <section id="components" class="block">
+        <header class="block__head">
+          <p class="eyebrow">08</p>
+          <h2 data-i18n="components.title">共享组件</h2>
+          <p data-i18n="components.lead">所有产品网站从 CDN 加载同一套导航和页脚 Web Component，语言、主题和无障碍偏好在两者之间同步。本页顶部与底部就是实际运行的组件。</p>
+        </header>
+
+        <div class="component">
+          <div class="component__head">
+            <h3><code>&lt;re8ch-navigator&gt;</code></h3>
+            <label class="field field--inline"><span data-i18n="components.product">产品</span>
+              <select id="nav-product"></select>
+            </label>
+          </div>
+          <div class="component__stage" id="nav-stage"></div>
+          <div class="code">
+            <button class="code__copy btn btn--quiet" type="button" data-copy-target="nav-code" data-i18n="copy">复制</button>
+            <pre id="nav-code"></pre>
+          </div>
+        </div>
+
+        <div class="component">
+          <div class="component__head">
+            <h3><code>&lt;re8ch-footer&gt;</code></h3>
+            <a class="btn btn--quiet" href="#site-footer" data-i18n="components.seeFooter">看页面底部</a>
+          </div>
+          <p class="component__note" data-i18n="components.footerNote">公司信任条：产品网络横向滚动条、公司记录与公开资料、法律与联系行。内容超出宽度时才会缓慢滚动。</p>
+          <div class="code">
+            <button class="code__copy btn btn--quiet" type="button" data-copy-target="footer-code" data-i18n="copy">复制</button>
+            <pre id="footer-code"></pre>
+          </div>
+        </div>
+
+        <div class="component">
+          <div class="component__head">
+            <h3><code>&lt;re8ch-product-hero&gt;</code> · <code>&lt;re8ch-layer-stack&gt;</code></h3>
+            <a class="btn btn--quiet" data-asset-href="UI/re8ch-product-system/v1/demo.html" data-i18n="components.demo">打开示例</a>
+          </div>
+          <p class="component__note" data-i18n="components.systemNote">产品官网的首屏与三层架构图组件，位于 UI/re8ch-product-system/v1。</p>
+        </div>
+      </section>
+
+      <!-- Motion -->
+      <section id="motion" class="block">
+        <header class="block__head">
+          <p class="eyebrow">09</p>
+          <h2 data-i18n="motion.title">标志动效</h2>
+          <p data-i18n="motion.lead">&lt;re8ch-logo-motion&gt; 是零依赖的动效组件，用于加载、成功、出错等状态。系统开启“减少动态效果”时会自动停用循环动画。点击卡片重播。</p>
+        </header>
+        <div class="motions" id="motion-grid"></div>
+      </section>
+
+      <!-- Product UI examples -->
+      <section id="examples" class="block">
+        <header class="block__head">
+          <p class="eyebrow">10</p>
+          <h2 data-i18n="examples.title">产品界面</h2>
+          <p data-i18n="examples.lead">按照这套规范完成的产品页面，可以作为新页面的参考。</p>
+        </header>
+        <div class="shots">
+          <figure class="shot shot--wide">
+            <img src="./showcase/cluster-light.webp" alt="RE8CH Cluster 首页，浅色" loading="lazy" width="1440" height="900">
+            <figcaption><b>Cluster</b> <span data-i18n="examples.cluster">官网首屏，浅色点阵地球</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="./showcase/userhub-orgs.webp" alt="User Hub 组织与成员" loading="lazy" width="1440" height="900">
+            <figcaption><b>User Hub</b> <span data-i18n="examples.orgs">组织与成员，蜂窝目录</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="./showcase/userhub-dark.webp" alt="User Hub 深色模式" loading="lazy" width="1440" height="900">
+            <figcaption><b>User Hub</b> <span data-i18n="examples.dark">深色模式</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="./showcase/catalog-market.webp" alt="Catalog 服务市场" loading="lazy" width="1440" height="900">
+            <figcaption><b>Catalog</b> <span data-i18n="examples.catalog">服务市场</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="./showcase/userhub-services.webp" alt="User Hub 服务与 AI 工具" loading="lazy" width="1440" height="1100">
+            <figcaption><b>User Hub</b> <span data-i18n="examples.services">服务与 AI 工具</span></figcaption>
+          </figure>
+          <figure class="shot shot--wide">
+            <img src="./showcase/cluster-dark.webp" alt="RE8CH Cluster 首页，深色" loading="lazy" width="1440" height="900">
+            <figcaption><b>Cluster</b> <span data-i18n="examples.clusterDark">官网首屏，深色</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Rules -->
+      <section id="rules" class="block">
+        <header class="block__head">
+          <p class="eyebrow">11</p>
+          <h2 data-i18n="rules.title">设计准则</h2>
+          <p data-i18n="rules.lead">新页面上线前对照检查。完整版本见仓库中的 PRODUCT_SITE_DESIGN_GUIDELINES.md。</p>
+        </header>
+        <ol class="rules">
+          <li><b data-i18n="rules.r1t">浅色背景为默认</b><span data-i18n="rules.r1">背景用 #F8FAFC，深色模式用受控的深蓝灰，不用纯黑。</span></li>
+          <li><b data-i18n="rules.r2t">边框代替阴影</b><span data-i18n="rules.r2">卡片和面板用 1px 边框区分层级，重阴影只留给弹出层。</span></li>
+          <li><b data-i18n="rules.r3t">不用装饰性色块</b><span data-i18n="rules.r3">不加模糊光斑、渐变泡泡或无信息的插画背景。</span></li>
+          <li><b data-i18n="rules.r4t">卡片不嵌套</b><span data-i18n="rules.r4">一张卡片里只放内容和控件，不再套一层卡片。</span></li>
+          <li><b data-i18n="rules.r5t">产品标识优先</b><span data-i18n="rules.r5">产品页以产品标识为页面身份，RE8CH 通过导航、页脚和法律信息出现。</span></li>
+          <li><b data-i18n="rules.r6t">语言不用国旗</b><span data-i18n="rules.r6">语言菜单用文字和书写系统图标，不使用国旗。</span></li>
+          <li><b data-i18n="rules.r7t">焦点可见</b><span data-i18n="rules.r7">所有控件可用键盘操作，焦点框清晰可见。</span></li>
+          <li><b data-i18n="rules.r8t">资源带版本号</b><span data-i18n="rules.r8">CDN 上的组件或标识变化后，引用处更新 ?v= 参数，避免边缘缓存旧文件。</span></li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <re8ch-footer id="site-footer" locale="zh-CN" language-mode="available" theme="light" max-width="1320px"></re8ch-footer>
+
+  <dialog class="sheet" id="product-sheet" aria-labelledby="sheet-title">
+    <div class="sheet__head">
+      <img id="sheet-icon" alt="">
+      <div>
+        <h2 id="sheet-title"></h2>
+        <p id="sheet-sub"></p>
+      </div>
+      <button class="btn btn--quiet sheet__close" type="button" data-close data-i18n="close">关闭</button>
+    </div>
+    <div class="sheet__body" id="sheet-body"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

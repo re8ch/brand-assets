@@ -485,7 +485,12 @@ class Re8chNavigator extends HTMLElement {
 
     // Keep the loaded stylesheet attached when updating locale or account UI.
     const existingNav = this.shadowRoot.querySelector('nav');
-    if (existingNav) existingNav.outerHTML = markup;
+    // outerHTML cannot be set on a direct child of a shadow root.
+    if (existingNav) {
+      const template = document.createElement('template');
+      template.innerHTML = markup;
+      existingNav.replaceWith(template.content);
+    }
     else this.shadowRoot.innerHTML = `<link rel="stylesheet" href="${escapeHtml(CSS_HREF)}">${markup}`;
     this.bindEvents();
     this.syncControlState();
